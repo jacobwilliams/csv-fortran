@@ -1100,20 +1100,20 @@
     integer,dimension(:),allocatable :: itokens
     logical :: finished  !! if we are finished counting the tokens
 
-    temp 		= str		    !make a copy of the string
-    len_token 	= len(token)	!length of the token
-    n_tokens 	= 0				!initialize the number of token counter
-    j			= 0				!length of string removed
+    temp      = str         ! make a copy of the string
+    len_token = len(token)  ! length of the token
+    n_tokens  = 0           ! initialize the number of token counter
+    j         = 0           ! length of string removed
 
     !first, count the number of times the token appears in the string
     do
-        len_str = len(temp)						! length of the string
-        i = index(temp,token)					! location of the next token
-        if (i<=0) exit							! no more tokens found
+        len_str = len(temp)    ! length of the string
+        i = index(temp,token)  ! location of the next token
+        if (i<=0) exit         ! no more tokens found
         call expand_vector(itokens,n_tokens,chunk_size,i+j)	! save the token location
-        if (i+len_token>len_str) exit  			! if the last bit of the string is a token
+        if (i+len_token>len_str) exit  ! if the last bit of the string is a token
         j = j + i
-        temp = temp(i+len_token:len_str)		!remove previously scanned part of string
+        temp = temp(i+len_token:len_str)  !remove previously scanned part of string
     end do
     call expand_vector(itokens,n_tokens,chunk_size,finished=.true.)	! resize the vector
 
@@ -1121,36 +1121,36 @@
 
     if (n_tokens>0) then
 
-    	len_str = len(str)
+        len_str = len(str)
 
-    	i1 = 1
-    	i2 = itokens(1)-1
-    	if (n_tokens>1) then
-    	    vals(1)%str = str(i1:i2)
-    	else
-    	    vals(1)%str = ''	!the first character is a token
-    	end if
+        i1 = 1
+        i2 = itokens(1)-1
+        if (n_tokens>1) then
+            vals(1)%str = str(i1:i2)
+        else
+            vals(1)%str = ''	!the first character is a token
+        end if
 
-    	!      1 2 3
-    	!    'a,b,c,d'
+        !      1 2 3
+        !    'a,b,c,d'
 
-    	do i=2,n_tokens
-    		i1 = itokens(i-1)+len_token
-    		i2 = itokens(i)-1
-    		if (i2>=i1) then
-    		    vals(i)%str = str(i1:i2)
-    		else
-    			vals(i)%str = ''	!empty element (e.g., 'abc,,def')
-    		end if
-    	end do
+        do i=2,n_tokens
+            i1 = itokens(i-1)+len_token
+            i2 = itokens(i)-1
+            if (i2>=i1) then
+                vals(i)%str = str(i1:i2)
+            else
+                vals(i)%str = ''	!empty element (e.g., 'abc,,def')
+            end if
+        end do
 
-    	i1 = itokens(n_tokens) + len_token
-    	i2 = len_str
-    	if (itokens(n_tokens)+len_token<=len_str) then
-    		vals(n_tokens+1)%str = str(i1:i2)
-    	else
-    	    vals(n_tokens+1)%str = ''	!the last character was a token
-    	end if
+        i1 = itokens(n_tokens) + len_token
+        i2 = len_str
+        if (itokens(n_tokens)+len_token<=len_str) then
+            vals(n_tokens+1)%str = str(i1:i2)
+        else
+            vals(n_tokens+1)%str = ''	!the last character was a token
+        end if
 
     else
         !no tokens present, so just return the original string:
