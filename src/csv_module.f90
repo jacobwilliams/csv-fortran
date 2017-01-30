@@ -47,6 +47,14 @@
         type(csv_string),dimension(:),allocatable :: header      !! the header
         type(csv_string),dimension(:,:),allocatable :: csv_data  !! the data in the file
 
+        !for writing a csv file:
+        integer :: icol = 0    !! last column written in current row
+        integer :: iunit = 0  !! file unit for writing
+        logical :: enclose_strings_in_quotes = .true.  !! if true, all string cells
+                                                       !! will be enclosed in quotes.
+        logical :: enclose_all_in_quotes = .false. !! if true, *all* cells will
+                                                   !! be enclosed in quotes.
+
     contains
 
         private
@@ -79,6 +87,12 @@
         procedure :: get_logical_column
         procedure :: get_character_column
         procedure :: get_csv_string_column
+
+        procedure,public :: open => open_csv_file
+        generic,public :: add => add_cell
+        procedure :: add_cell
+        procedure,public :: next_row
+        procedure,public :: close => close_csv_file
 
         procedure :: tokenize => tokenize_csv_line
         procedure :: read_line_from_file
@@ -229,6 +243,213 @@
     end if
 
     end subroutine read_csv_file
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  Open a CSV file for writing
+
+    subroutine open_csv_file(me,filename,&
+                                n_cols,&
+                                enclose_strings_in_quotes,&
+                                enclose_all_in_quotes,&
+                                int_fmt,&
+                                real_fmt,&
+                                status_ok)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+    character(len=*),intent(in) :: filename  !! the CSV file to open
+    integer,intent(in) :: n_cols  !! number of columns in the file
+    logical,intent(in),optional :: enclose_strings_in_quotes  !! default is true
+    logical,intent(in),optional :: enclose_all_in_quotes !! default is false
+    character(len=*),intent(in),optional :: int_fmt !! format string for writing integers
+                                                    !! (default is I10)
+    character(len=*),intent(in),optional :: real_fmt !! format string for writing reals
+                                                     !! (default is E27.17)
+    logical,intent(out) :: status_ok  !! status flag
+
+    integer :: istat  !! open `iostat` flag
+
+    call me%destroy()
+
+    me%n_cols = n_cols
+    me%n_rows = 0
+    me%icol   = 0
+
+    if (present(enclose_strings_in_quotes)) then
+        me%enclose_strings_in_quotes = enclose_strings_in_quotes
+    else
+        me%enclose_strings_in_quotes = .true.
+    end if
+    if (present(enclose_all_in_quotes)) then
+        me%enclose_all_in_quotes = enclose_all_in_quotes
+    else
+        me%enclose_all_in_quotes = .false.
+    end if
+    if (me%enclose_all_in_quotes) me%enclose_strings_in_quotes = .true. ! override
+
+    open(newunit=me%iunit,file=filename,status='REPLACE',iostat=istat)
+    if (istat==0) then
+        status_ok = .true.
+    else
+        write(error_unit,'(A)') 'Error opening file: '//trim(filename)
+        status_ok = .false.
+    end if
+
+    end subroutine open_csv_file
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  Close a CSV file after writing
+
+    subroutine close_csv_file(me,status_ok)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+    logical,intent(out) :: status_ok  !! status flag
+
+    integer :: istat  !! close `iostat` flag
+
+    close(me%iunit,iostat=istat)
+    status_ok = istat==0
+
+    end subroutine close_csv_file
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  Add a cell to a CSV file.
+
+    subroutine add_cell(me,val,int_fmt,real_fmt,trim_str)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+    class(*),intent(in) :: val  !! the value to add
+    character(len=*),intent(in),optional :: int_fmt !! format string for integers
+    character(len=*),intent(in),optional :: real_fmt !! format string for reals
+    logical,intent(in),optional :: trim_str !! to trim the string
+
+    integer :: istat !! write `iostat` flag
+    character(len=:),allocatable :: ifmt !! actual format string to use for integers
+    character(len=:),allocatable :: rfmt !! actual format string to use for REALS
+    logical :: trimstr !! if the strings are to be trimmed
+
+    ! make sure the row isn't already finished
+    if (me%icol<me%n_cols) then
+
+        me%icol = me%icol + 1
+
+        if (me%enclose_all_in_quotes) then
+            write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%quote
+        end if
+
+        select type (val)
+        type is (integer(ip))
+            if (present(int_fmt)) then
+                ifmt = trim(adjustl(int_fmt))
+            else
+                ifmt = '(I10)'
+            end if
+            write(me%iunit,fmt=ifmt,advance='NO',iostat=istat) val    !TODO trim(adjustl()) this string
+        type is (real(wp))
+            if (present(real_fmt)) then
+                rfmt = trim(adjustl(real_fmt))
+            else
+                rfmt = '(E27.17)'
+            end if
+            write(me%iunit,fmt=rfmt,advance='NO',iostat=istat) val    !TODO trim(adjustl()) this string
+        type is (logical)
+            if (val) then
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) 'T'   !TODO make these user-defined strings
+            else
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) 'F'
+            end if
+        type is (character(len=*))
+            if (me%enclose_strings_in_quotes .and. .not. me%enclose_all_in_quotes) &
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%quote
+            if (present(trim_str)) then
+                trimstr = trim_str
+            else
+                trimstr = .false.
+            end if
+            if (trimstr) then
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(val)
+            else
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) val
+            end if
+            if (me%enclose_strings_in_quotes .and. .not. me%enclose_all_in_quotes) &
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%quote
+        type is (csv_string)
+            if (me%enclose_strings_in_quotes .and. .not. me%enclose_all_in_quotes) &
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%quote
+            if (present(trim_str)) then
+                trimstr = trim_str
+            else
+                trimstr = .false.
+            end if
+            if (trimstr) then
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(val%str)
+            else
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) val%str
+            end if
+            if (me%enclose_strings_in_quotes .and. .not. me%enclose_all_in_quotes) &
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%quote
+        class default
+            write(error_unit,'(A)') 'Error: cannot write unknown variable type to CSV file.'
+        end select
+
+        if (me%enclose_all_in_quotes) then
+            write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%quote
+        end if
+        if (me%icol<me%n_cols) write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%delimiter
+
+    else
+        write(error_unit,'(A)') 'Error: cannot write more cells to the current row.'
+    end if
+
+    end subroutine add_cell
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  Advance to the next row in the CSV file
+!  (write any blank cells that are necessary to finish the row)
+
+    subroutine next_row(me)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+
+    integer :: i  !! counter
+    integer :: n  !! number of blank cells to write
+
+    if (me%icol>0) then
+        n = me%n_cols - me%icol
+        do i=1,n
+            if (i==n) then !no trailing delimiter
+                if (me%enclose_strings_in_quotes) then
+                    write(me%iunit,'(A)',advance='NO') me%quote//me%quote
+                end if
+            else
+                if (me%enclose_strings_in_quotes) then
+                    write(me%iunit,'(A)',advance='NO') me%quote//me%quote//me%delimiter
+                else
+                    write(me%iunit,'(A)',advance='NO') me%delimiter
+                end if
+            end if
+        end do
+        write(me%iunit,'(A)') '' ! new line
+    end if
+
+    me%icol = 0  ! this row is finished
+
+    end subroutine next_row
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -869,7 +1090,7 @@
     type(csv_string),dimension(:),allocatable,intent(out) :: vals
 
     integer :: i
-    integer :: len_str     
+    integer :: len_str
     integer :: len_token  !! length of the token
     integer :: n_tokens   !! number of tokens
     integer :: i1         !! index

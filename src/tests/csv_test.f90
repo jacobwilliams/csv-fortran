@@ -12,6 +12,7 @@
     implicit none
 
     type(csv_file) :: f
+    type(csv_file) :: f2
     integer :: i !! counter
     character(len=30),dimension(:),allocatable :: header  !! the header
     character(len=30),dimension(:,:),allocatable :: csv_data  !! the data from the file as strings
@@ -58,6 +59,24 @@
     call f%get(4,z,status_ok)
     write(*,'(F27.16,1x)',advance='NO') z
     write(*,*) ''
+
+    !now test creating a CSF
+    call f2%open('test2.csv',n_cols=3,status_ok=status_ok)
+
+    call f2%add('x')
+    call f2%add('y')
+    call f2%add('z')
+    call f2%next_row()
+
+    call f2%add(1.0_wp)
+    call f2%add(2.0_wp)
+    call f2%add(3.0_wp)
+    call f2%next_row()
+    call f2%add(4.0_wp)
+    call f2%add(5.0_wp)
+    call f2%add(6.0_wp)
+    call f2%next_row()
+    call f2%close(status_ok)
 
     end program csv_test
 !*****************************************************************************************
