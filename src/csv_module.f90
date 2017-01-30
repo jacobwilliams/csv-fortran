@@ -783,25 +783,25 @@
 
     function number_of_lines_in_file(iunit) result(n_lines)
 
-	implicit none
+    implicit none
 
-	integer,intent(in)  :: iunit	 !! the file unit number
+    integer,intent(in)  :: iunit	 !! the file unit number
                                      !! (assumed to be open)
-	integer :: n_lines   !! the number of lines in the file
+    integer :: n_lines   !! the number of lines in the file
 
-	character(len=1) :: tmp
-	integer :: istat
+    character(len=1) :: tmp
+    integer :: istat
 
-	rewind(iunit)
-	n_lines = 0
-	do
-		read(iunit,fmt='(A1)',iostat=istat) tmp
-		if (is_iostat_end(istat)) exit
-		n_lines = n_lines + 1
-	end do
+    rewind(iunit)
+    n_lines = 0
+    do
+        read(iunit,fmt='(A1)',iostat=istat) tmp
+        if (is_iostat_end(istat)) exit
+        n_lines = n_lines + 1
+    end do
     rewind(iunit)
 
-	end function number_of_lines_in_file
+    end function number_of_lines_in_file
 !*****************************************************************************************
 
 !*****************************************************************************************
