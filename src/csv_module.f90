@@ -868,8 +868,8 @@
     integer,intent(in)           :: chunk_size  !! for expanding vectors
     type(csv_string),dimension(:),allocatable,intent(out) :: vals
 
-    integer :: i          !!
-    integer :: len_str    !!
+    integer :: i
+    integer :: len_str     
     integer :: len_token  !! length of the token
     integer :: n_tokens   !! number of tokens
     integer :: i1         !! index
@@ -886,13 +886,13 @@
 
     !first, count the number of times the token appears in the string
     do
-    	len_str = len(temp)						! length of the string
-    	i = index(temp,token)					! location of the next token
-    	if (i<=0) exit							! no more tokens found
+        len_str = len(temp)						! length of the string
+        i = index(temp,token)					! location of the next token
+        if (i<=0) exit							! no more tokens found
         call expand_vector(itokens,n_tokens,chunk_size,i+j)	! save the token location
-    	if (i+len_token>len_str) exit  			! if the last bit of the string is a token
-    	j = j + i
-    	temp = temp(i+len_token:len_str)		!remove previously scanned part of string
+        if (i+len_token>len_str) exit  			! if the last bit of the string is a token
+        j = j + i
+        temp = temp(i+len_token:len_str)		!remove previously scanned part of string
     end do
     call expand_vector(itokens,n_tokens,chunk_size,finished=.true.)	! resize the vector
 
@@ -905,9 +905,9 @@
     	i1 = 1
     	i2 = itokens(1)-1
     	if (n_tokens>1) then
-    		vals(1)%str = str(i1:i2)
+    	    vals(1)%str = str(i1:i2)
     	else
-    		vals(1)%str = ''	!the first character is a token
+    	    vals(1)%str = ''	!the first character is a token
     	end if
 
     	!      1 2 3
@@ -917,7 +917,7 @@
     		i1 = itokens(i-1)+len_token
     		i2 = itokens(i)-1
     		if (i2>=i1) then
-    			vals(i)%str = str(i1:i2)
+    		    vals(i)%str = str(i1:i2)
     		else
     			vals(i)%str = ''	!empty element (e.g., 'abc,,def')
     		end if
@@ -928,12 +928,12 @@
     	if (itokens(n_tokens)+len_token<=len_str) then
     		vals(n_tokens+1)%str = str(i1:i2)
     	else
-    		vals(n_tokens+1)%str = ''	!the last character was a token
+    	    vals(n_tokens+1)%str = ''	!the last character was a token
     	end if
 
     else
-    	!no tokens present, so just return the original string:
-    	vals(1)%str = str
+        !no tokens present, so just return the original string:
+        vals(1)%str = str
     end if
 
     end subroutine split
