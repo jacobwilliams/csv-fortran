@@ -7,9 +7,29 @@
 
     use kinds_module
 
+    private
+
     integer,parameter :: max_size_for_insertion_sort = 20 !! max size for using insertion sort.
 
-    private
+    character(len=*),parameter,public :: default_real_fmt = '(ss,E27.17E4)'
+        !! default real number format statement (for writing real values to strings and files).
+    character(len=*),parameter,public :: default_int_fmt  = '(ss,I0)'
+        !! minimum width format for integers
+    integer(ip),parameter :: rp_safety_factor = 1_ip
+    integer(ip),parameter :: rp_addl_safety = 2_ip
+    integer(ip),parameter :: real_precision = rp_safety_factor*precision(1.0_wp) + &
+                                              rp_addl_safety
+    integer(ip),parameter :: maxexp = maxexponent(1.0_wp)
+    integer(ip),parameter :: minexp = minexponent(1.0_wp)
+    integer(ip),parameter :: real_exponent_digits = floor( 1 + log10( &
+                                  real(max(maxexp,abs(maxexp)),&
+                                  kind=wp) ) )
+    integer(ip),parameter,public :: max_real_str_len = real_precision + real_exponent_digits + 6
+        !! maximum string length of a real number
+        !! `6 = sign + leading 0 + decimal + 'E' + exponent sign + 1 extra`
+    integer(ip),parameter,public :: max_integer_str_len = 256 !! maximum string length of an integer.
+                                                              !! This is totally arbitrary (any way
+                                                              !! to get the compiler to tell us this?)
 
     character(len=*),parameter :: upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' !! uppercase characters
     character(len=*),parameter :: lower = 'abcdefghijklmnopqrstuvwxyz' !! lowercase characters

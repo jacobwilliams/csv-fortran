@@ -38,6 +38,8 @@
 
         private
 
+        logical :: verbose = .true. !! to print error messages
+
         character(len=1) :: quote     = '"'  !! quotation character
         character(len=1) :: delimiter = ','  !! delimiter character
         integer :: n_rows = 0  !! number of rows in the file
@@ -89,8 +91,14 @@
         procedure :: get_csv_string_column
 
         procedure,public :: open => open_csv_file
-        generic,public :: add => add_cell
+
+        generic,public :: add => add_cell,&
+                                 add_vector,&
+                                 add_matrix
         procedure :: add_cell
+        procedure :: add_vector
+        procedure :: add_matrix
+
         procedure,public :: next_row
         procedure,public :: close => close_csv_file
 
@@ -107,16 +115,18 @@
 !>
 !  Constructor.
 
-    subroutine initialize_csv_file(me,quote,delimiter)
+    subroutine initialize_csv_file(me,quote,delimiter,verbose)
 
     implicit none
 
     class(csv_file),intent(out) :: me
-    character(len=1),intent(in) :: quote        !! note: can only be one character
-    character(len=1),intent(in) :: delimiter    !! note: can only be one character
+    character(len=1),intent(in),optional :: quote        !! note: can only be one character
+    character(len=1),intent(in),optional :: delimiter    !! note: can only be one character
+    logical,intent(in),optional :: verbose
 
-    me%quote     = quote
-    me%delimiter = delimiter
+    if (present(quote))      me%quote     = quote
+    if (present(delimiter))  me%delimiter = delimiter
+    if (present(verbose))    me%verbose   = verbose
 
     end subroutine initialize_csv_file
 !*****************************************************************************************
@@ -134,6 +144,10 @@
     if (allocated(me%csv_data)) deallocate(me%csv_data)
     if (allocated(me%header)) deallocate(me%header)
 
+    me%n_cols = 0
+    me%n_rows = 0
+    me%icol   = 0
+
     end subroutine destroy_csv_file
 !*****************************************************************************************
 
@@ -147,9 +161,9 @@
 
     class(csv_file),intent(inout) :: me
     character(len=*),intent(in) :: filename  !! the CSV file to open
+    logical,intent(out) :: status_ok  !! status flag
     integer,intent(in),optional :: header_row  !! the header row
     integer,dimension(:),intent(in),optional :: skip_rows  !! rows to skip
-    logical,intent(out) :: status_ok  !! status flag
 
     integer :: i                !! counter
     integer :: j                !! counter
@@ -166,6 +180,7 @@
     integer :: iheader  !! row number of header row (0 if no header specified)
 
     call me%destroy()
+    arrays_allocated = .false.
 
     open(newunit=iunit, file=filename, status='OLD', iostat=istat)
 
@@ -220,7 +235,7 @@
             end if
 
             if (i==iheader) then
-                do j=1,n_cols
+                do j=1,me%n_cols
                     me%header(j)%str = row_data(j)%str
                 end do
             else
@@ -238,8 +253,8 @@
         status_ok = .true.
 
     else
+        if (me%verbose) write(error_unit,'(A)') 'Error opening file: '//trim(filename)
         status_ok = .false.
-        write(error_unit,'(A)') 'Error opening file: '//trim(filename)
     end if
 
     end subroutine read_csv_file
@@ -253,8 +268,6 @@
                                 n_cols,&
                                 enclose_strings_in_quotes,&
                                 enclose_all_in_quotes,&
-                                int_fmt,&
-                                real_fmt,&
                                 status_ok)
 
     implicit none
@@ -264,10 +277,6 @@
     integer,intent(in) :: n_cols  !! number of columns in the file
     logical,intent(in),optional :: enclose_strings_in_quotes  !! default is true
     logical,intent(in),optional :: enclose_all_in_quotes !! default is false
-    character(len=*),intent(in),optional :: int_fmt !! format string for writing integers
-                                                    !! (default is I10)
-    character(len=*),intent(in),optional :: real_fmt !! format string for writing reals
-                                                     !! (default is E27.17)
     logical,intent(out) :: status_ok  !! status flag
 
     integer :: istat  !! open `iostat` flag
@@ -275,8 +284,6 @@
     call me%destroy()
 
     me%n_cols = n_cols
-    me%n_rows = 0
-    me%icol   = 0
 
     if (present(enclose_strings_in_quotes)) then
         me%enclose_strings_in_quotes = enclose_strings_in_quotes
@@ -294,7 +301,7 @@
     if (istat==0) then
         status_ok = .true.
     else
-        write(error_unit,'(A)') 'Error opening file: '//trim(filename)
+        if (me%verbose) write(error_unit,'(A)') 'Error opening file: '//trim(filename)
         status_ok = .false.
     end if
 
@@ -338,6 +345,10 @@
     character(len=:),allocatable :: ifmt !! actual format string to use for integers
     character(len=:),allocatable :: rfmt !! actual format string to use for REALS
     logical :: trimstr !! if the strings are to be trimmed
+    character(len=max_real_str_len) :: real_val
+    character(len=max_integer_str_len) :: int_val
+
+    !TODO need to check the istat values for errors
 
     ! make sure the row isn't already finished
     if (me%icol<me%n_cols) then
@@ -353,16 +364,18 @@
             if (present(int_fmt)) then
                 ifmt = trim(adjustl(int_fmt))
             else
-                ifmt = '(I10)'
+                ifmt = default_int_fmt
             end if
-            write(me%iunit,fmt=ifmt,advance='NO',iostat=istat) val    !TODO trim(adjustl()) this string
+            write(int_val,fmt=ifmt,iostat=istat) val
+            write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(int_val))
         type is (real(wp))
             if (present(real_fmt)) then
                 rfmt = trim(adjustl(real_fmt))
             else
-                rfmt = '(E27.17)'
+                rfmt = default_real_fmt
             end if
-            write(me%iunit,fmt=rfmt,advance='NO',iostat=istat) val    !TODO trim(adjustl()) this string
+            write(real_val,fmt=rfmt,iostat=istat) val
+            write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
         type is (logical)
             if (val) then
                 write(me%iunit,fmt='(A)',advance='NO',iostat=istat) 'T'   !TODO make these user-defined strings
@@ -400,7 +413,8 @@
             if (me%enclose_strings_in_quotes .and. .not. me%enclose_all_in_quotes) &
                 write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%quote
         class default
-            write(error_unit,'(A)') 'Error: cannot write unknown variable type to CSV file.'
+            if (me%verbose) write(error_unit,'(A)') &
+                    'Error: cannot write unknown variable type to CSV file.'
         end select
 
         if (me%enclose_all_in_quotes) then
@@ -409,10 +423,61 @@
         if (me%icol<me%n_cols) write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%delimiter
 
     else
-        write(error_unit,'(A)') 'Error: cannot write more cells to the current row.'
+        if (me%verbose) write(error_unit,'(A)') &
+                'Error: cannot write more cells to the current row.'
     end if
 
     end subroutine add_cell
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  Add a vector to a CSV file. Each element is added as a cell to the current line.
+
+    subroutine add_vector(me,val,int_fmt,real_fmt,trim_str)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+    class(*),dimension(:),intent(in) :: val  !! the values to add
+    character(len=*),intent(in),optional :: int_fmt !! format string for integers
+    character(len=*),intent(in),optional :: real_fmt !! format string for reals
+    logical,intent(in),optional :: trim_str !! to trim the string
+
+    integer :: i !! counter
+
+    do i=1,size(val)
+        call me%add(val(i),int_fmt,real_fmt,trim_str)
+    end do
+
+    end subroutine add_vector
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  Add a matrix to a CSV file. Each row is added as a new line.
+!  Line breaks are added at the end of each line (in this way it
+!  differs from the other `add` routines).
+
+    subroutine add_matrix(me,val,int_fmt,real_fmt,trim_str)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+    class(*),dimension(:,:),intent(in) :: val  !! the values to add
+    character(len=*),intent(in),optional :: int_fmt !! format string for integers
+    character(len=*),intent(in),optional :: real_fmt !! format string for reals
+    logical,intent(in),optional :: trim_str !! to trim the string
+
+    integer :: i !! counter
+
+    ! add each row:
+    do i=1,size(val,1)
+        call me%add(val(i,:),int_fmt,real_fmt,trim_str)
+        call me%next_row()
+    end do
+
+    end subroutine add_matrix
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -476,7 +541,7 @@
         status_ok = .false.
 
     else
-        write(error_unit,'(A)') 'Error: no header in class.'
+        if (me%verbose) write(error_unit,'(A)') 'Error: no header in class.'
         status_ok = .false.
     end if
 
@@ -507,7 +572,7 @@
         status_ok = .false.
 
     else
-        write(error_unit,'(A)') 'Error: no header in class.'
+        if (me%verbose) write(error_unit,'(A)') 'Error: no header in class.'
         status_ok = .false.
     end if
 
@@ -541,8 +606,8 @@
         end do
         status_ok = .true.
     else
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
         status_ok = .false.
-        write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
     end if
 
     end subroutine get_csv_data_as_str
@@ -664,7 +729,7 @@
             call infer_variable_type(me%csv_data(1,i)%str,itypes(i))
         end do
     else
-        write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
         status_ok = .false.
     end if
 
@@ -794,15 +859,15 @@
                 ! checking for that here. also we know it is real,
                 ! integer, or logical at this point.
                 type is (integer(ip))
-                    write(error_unit,'(A)') &
+                    if (me%verbose) write(error_unit,'(A)') &
                         'Error converting string to integer: '//trim(me%csv_data(i,icol)%str)
                     r(i) = 0
                 type is (real(wp))
-                    write(error_unit,'(A)') &
+                    if (me%verbose) write(error_unit,'(A)') &
                         'Error converting string to real: '//trim(me%csv_data(i,icol)%str)
                     r(i) = zero
                 type is (logical)
-                    write(error_unit,'(A)') &
+                    if (me%verbose) write(error_unit,'(A)') &
                         'Error converting string to logical: '//trim(me%csv_data(i,icol)%str)
                     r(i) = .false.
                 end select
@@ -811,7 +876,8 @@
         end do
 
     else
-        write(error_unit,'(A,1X,I5)') 'Error: invalid column number: ',icol
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: invalid column number: ',icol
+        status_ok = .false.
     end if
 
     end subroutine get_column
@@ -836,7 +902,7 @@
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
     else
-        write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
         status_ok = .false.
     end if
 
@@ -862,7 +928,7 @@
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
     else
-        write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
         status_ok = .false.
     end if
 
@@ -888,7 +954,7 @@
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
     else
-        write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
         status_ok = .false.
     end if
 
@@ -914,7 +980,7 @@
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
     else
-        write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
         status_ok = .false.
     end if
 
@@ -940,7 +1006,7 @@
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
     else
-        write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
         status_ok = .false.
     end if
 
@@ -1006,7 +1072,7 @@
 
     implicit none
 
-    integer,intent(in)  :: iunit	 !! the file unit number
+    integer,intent(in)  :: iunit   !! the file unit number
                                      !! (assumed to be open)
     integer :: n_lines   !! the number of lines in the file
 
@@ -1053,7 +1119,7 @@
             if (nread>0) line = line//buffer(1:nread)
             exit
         elseif (istat==0) then ! all the characters were read
-            line = line//buffer	! add this block of text to the string
+            line = line//buffer  ! add this block of text to the string
         else  ! some kind of error
             error stop 'Read error.'
         end if
@@ -1071,9 +1137,9 @@
 !````Fortran
 !    type(csv_file) :: f
 !    character(len=:),allocatable :: s
-!	 type(csv_string),dimension(:),allocatable :: vals
-!	 s = '1,2,3,4,5'
-!	 vals = f%split(s,',')
+!   type(csv_string),dimension(:),allocatable :: vals
+!   s = '1,2,3,4,5'
+!   vals = f%split(s,',')
 !````
 !
 !@warning Doesn't seem to work for `len(token)>1`
@@ -1110,12 +1176,12 @@
         len_str = len(temp)    ! length of the string
         i = index(temp,token)  ! location of the next token
         if (i<=0) exit         ! no more tokens found
-        call expand_vector(itokens,n_tokens,chunk_size,i+j)	! save the token location
+        call expand_vector(itokens,n_tokens,chunk_size,i+j)  ! save the token location
         if (i+len_token>len_str) exit  ! if the last bit of the string is a token
         j = j + i
         temp = temp(i+len_token:len_str)  !remove previously scanned part of string
     end do
-    call expand_vector(itokens,n_tokens,chunk_size,finished=.true.)	! resize the vector
+    call expand_vector(itokens,n_tokens,chunk_size,finished=.true.)  ! resize the vector
 
     allocate(vals(n_tokens+1))
 
@@ -1128,7 +1194,7 @@
         if (n_tokens>1) then
             vals(1)%str = str(i1:i2)
         else
-            vals(1)%str = ''	!the first character is a token
+            vals(1)%str = ''  !the first character is a token
         end if
 
         !      1 2 3
@@ -1140,7 +1206,7 @@
             if (i2>=i1) then
                 vals(i)%str = str(i1:i2)
             else
-                vals(i)%str = ''	!empty element (e.g., 'abc,,def')
+                vals(i)%str = ''  !empty element (e.g., 'abc,,def')
             end if
         end do
 
@@ -1149,7 +1215,7 @@
         if (itokens(n_tokens)+len_token<=len_str) then
             vals(n_tokens+1)%str = str(i1:i2)
         else
-            vals(n_tokens+1)%str = ''	!the last character was a token
+            vals(n_tokens+1)%str = ''  !the last character was a token
         end if
 
     else

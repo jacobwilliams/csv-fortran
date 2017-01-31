@@ -60,21 +60,15 @@
     write(*,'(F27.16,1x)',advance='NO') z
     write(*,*) ''
 
-    !now test creating a CSF
+    ! now test creating a CSV:
     call f2%open('test2.csv',n_cols=3,status_ok=status_ok)
-
-    call f2%add('x')
-    call f2%add('y')
-    call f2%add('z')
+    call f2%add(['x','y','z'])    ! add header as vector
     call f2%next_row()
-
-    call f2%add(1.0_wp)
+    call f2%add(1.0_wp)  ! add as scalars
     call f2%add(2.0_wp)
     call f2%add(3.0_wp)
     call f2%next_row()
-    call f2%add(4.0_wp)
-    call f2%add(5.0_wp)
-    call f2%add(6.0_wp)
+    call f2%add([4.0_wp,5.0_wp,6.0_wp]) ! add as vectors
     call f2%next_row()
     call f2%close(status_ok)
 
