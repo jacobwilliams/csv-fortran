@@ -11,9 +11,9 @@
 
     integer,parameter :: max_size_for_insertion_sort = 20 !! max size for using insertion sort.
 
-    character(len=*),parameter,public :: default_real_fmt = '(ss,E27.17E4)'
+    character(len=*),parameter,public :: default_real_fmt = '(E27.17E4)'
         !! default real number format statement (for writing real values to strings and files).
-    character(len=*),parameter,public :: default_int_fmt  = '(ss,I0)'
+    character(len=*),parameter,public :: default_int_fmt  = '(I256)'
         !! minimum width format for integers
     integer(ip),parameter :: rp_safety_factor = 1_ip
     integer(ip),parameter :: rp_addl_safety = 2_ip

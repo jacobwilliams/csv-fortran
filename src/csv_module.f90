@@ -433,6 +433,8 @@
 !*****************************************************************************************
 !>
 !  Add a vector to a CSV file. Each element is added as a cell to the current line.
+!
+!@warning There is some bug here with GFortran 6.1 when `val` is a character string.
 
     subroutine add_vector(me,val,int_fmt,real_fmt,trim_str)
 
@@ -652,7 +654,7 @@
 
     integer :: istat  !! read `iostat` error code
 
-    read(str,fmt=*,iostat=istat) val
+    read(str,fmt=default_int_fmt,iostat=istat) val
     if (istat==0) then
         status_ok = .true.
     else
@@ -896,8 +898,6 @@
     real(wp),dimension(:),allocatable,intent(out) :: r
     logical,intent(out) :: status_ok
 
-    integer :: i  !! counter
-
     if (allocated(me%csv_data)) then
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
@@ -921,8 +921,6 @@
     integer,intent(in) :: icol  !! column number
     integer(ip),dimension(:),allocatable,intent(out) :: r
     logical,intent(out) :: status_ok
-
-    integer :: i  !! counter
 
     if (allocated(me%csv_data)) then
         allocate(r(me%n_rows))  ! size the output vector
@@ -948,8 +946,6 @@
     logical,dimension(:),allocatable,intent(out) :: r
     logical,intent(out) :: status_ok
 
-    integer :: i  !! counter
-
     if (allocated(me%csv_data)) then
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
@@ -974,8 +970,6 @@
     character(len=*),dimension(:),allocatable,intent(out) :: r
     logical,intent(out) :: status_ok
 
-    integer :: i  !! counter
-
     if (allocated(me%csv_data)) then
         allocate(r(me%n_rows))  ! size the output vector
         call me%get_column(icol,r,status_ok)
@@ -999,8 +993,6 @@
     integer,intent(in) :: icol  !! column number
     type(csv_string),dimension(:),allocatable,intent(out) :: r
     logical,intent(out) :: status_ok
-
-    integer :: i  !! counter
 
     if (allocated(me%csv_data)) then
         allocate(r(me%n_rows))  ! size the output vector
@@ -1164,7 +1156,6 @@
     integer :: j          !! counters
     character(len=:),allocatable :: temp
     integer,dimension(:),allocatable :: itokens
-    logical :: finished  !! if we are finished counting the tokens
 
     temp      = str         ! make a copy of the string
     len_token = len(token)  ! length of the token

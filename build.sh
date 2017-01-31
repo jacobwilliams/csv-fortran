@@ -17,8 +17,10 @@ FORDMD='fortran-csv-module.md'      # FORD config file name
 
 #compiler flags:
 
-FCOMPILER='gnu' #Set compiler to gfortran
-FCOMPILERFLAGS='-c -O2 -std=f2008'
+#FCOMPILER='gnu' #Set compiler to gfortran
+#FCOMPILERFLAGS='-c -O2 -std=f2008'
+FCOMPILER='intel' #Set compiler to intel
+FCOMPILERFLAGS='-c -O2 -warn -stand f08 -traceback'
 
 #build using FoBiS:
 
