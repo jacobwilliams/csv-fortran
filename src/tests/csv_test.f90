@@ -24,7 +24,7 @@
     integer,dimension(:),allocatable :: itypes
 
     ! read the file:
-    call f%read('test.csv',header_row=1,status_ok=status_ok)
+    call f%read('../files/test.csv',header_row=1,status_ok=status_ok)
 
     ! print the header and type info:
     call f%get_header(header,status_ok)
@@ -44,20 +44,12 @@
     end do
 
     write(*,*) ''
-    write(*,*) 'get the position vectors:'
+    write(*,*) 'get some vectors:'
 
     write(*,*) ''
-    write(*,*) 'x:'
-    call f%get(2,x,status_ok)
+    write(*,*) 'age:'
+    call f%get(3,x,status_ok)
     write(*,'(F27.16,1x)',advance='NO') x
-    write(*,*) ''
-    write(*,*) 'y:'
-    call f%get(3,y,status_ok)
-    write(*,'(F27.16,1x)',advance='NO') y
-    write(*,*) ''
-    write(*,*) 'z:'
-    call f%get(4,z,status_ok)
-    write(*,'(F27.16,1x)',advance='NO') z
     write(*,*) ''
 
     ! now test creating a CSV:
