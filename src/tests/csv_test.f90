@@ -7,7 +7,7 @@
     program csv_test
 
     use csv_module
-    use kinds_module
+    use iso_fortran_env, only: wp => real64
 
     implicit none
 
@@ -16,12 +16,9 @@
     integer :: i !! counter
     character(len=30),dimension(:),allocatable :: header  !! the header
     character(len=30),dimension(:,:),allocatable :: csv_data  !! the data from the file as strings
-
-    real(wp),dimension(:),allocatable :: x
-    !real(wp),dimension(:),allocatable :: y
-    !real(wp),dimension(:),allocatable :: z
-    logical :: status_ok
-    integer,dimension(:),allocatable :: itypes
+    real(wp),dimension(:),allocatable :: x  !! for getting a real vector from a csv file
+    logical :: status_ok  !! error flag
+    integer,dimension(:),allocatable :: itypes  !! array of variable types in the file
 
     ! read the file:
     call f%read('../files/test.csv',header_row=1,status_ok=status_ok)
@@ -49,21 +46,24 @@
     write(*,*) ''
     write(*,*) 'age:'
     call f%get(3,x,status_ok)
-    write(*,'(F27.16,1x)',advance='NO') x
+    write(*,'(F6.3,1x)',advance='NO') x
     write(*,*) ''
 
     ! now test creating a CSV:
+    call f2%initialize(enclose_strings_in_quotes=.false.,verbose=.true.)
     call f2%open('test2.csv',n_cols=4,status_ok=status_ok)
-    call f2%add(['x','y','z','t'])    ! add header as vector
-    call f2%next_row()
-    call f2%add(1.0_wp)  ! add as scalars
-    call f2%add(2.0_wp)
-    call f2%add(3.0_wp)
-    call f2%add(.true.)
-    call f2%next_row()
-    call f2%add([4.0_wp,5.0_wp,6.0_wp]) ! add as vectors
-    call f2%add(.false.)
-    call f2%next_row()
+    if (status_ok) then
+        call f2%add(['x','y','z','t'])    ! add header as vector
+        call f2%next_row()
+        call f2%add(1.0_wp)  ! add as scalars
+        call f2%add(2.0_wp)
+        call f2%add(3.0_wp)
+        call f2%add(.true.)
+        call f2%next_row()
+        call f2%add([4.0_wp,5.0_wp,6.0_wp]) ! add as vectors
+        call f2%add(.false.)
+        call f2%next_row()
+    end if
     call f2%close(status_ok)
 
     end program csv_test

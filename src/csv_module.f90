@@ -6,9 +6,10 @@
 
     module csv_module
 
-    use utilities_module
-    use kinds_module
-    use iso_fortran_env
+    use csv_utilities
+    use csv_kinds
+    use csv_parameters
+    use iso_fortran_env, only: error_unit
 
     implicit none
 
@@ -24,6 +25,9 @@
 
     type,public :: csv_string
         !! a cell from a CSV file.
+        !!
+        !! This use used to store the data internally
+        !! in the [[csv_file]] class.
         private
         character(len=:),allocatable :: str
     end type csv_string
@@ -38,7 +42,7 @@
 
         private
 
-        logical :: verbose = .true. !! to print error messages
+        logical :: verbose = .false. !! to print error messages
 
         character(len=1) :: quote     = '"'  !! quotation character
         character(len=1) :: delimiter = ','  !! delimiter character
@@ -128,17 +132,22 @@
                                     enclose_all_in_quotes,&
                                     logical_true_string,&
                                     logical_false_string,&
+                                    chunk_size,&
                                     verbose)
 
     implicit none
 
     class(csv_file),intent(out) :: me
     character(len=1),intent(in),optional :: quote             !! note: can only be one character
+                                                              !! (Default is `"`)
     character(len=1),intent(in),optional :: delimiter         !! note: can only be one character
+                                                              !! (Default is `,`)
     logical,intent(in),optional :: enclose_strings_in_quotes  !! if true, all string cells
                                                               !! will be enclosed in quotes.
+                                                              !! (Default is True)
     logical,intent(in),optional :: enclose_all_in_quotes      !! if true, *all* cells will
                                                               !! be enclosed in quotes.
+                                                              !! (Default is False)
     character(len=1),intent(in),optional :: logical_true_string !! when writing a logical `true`
                                                                 !! value to a CSV file, this
                                                                 !! is the string to use
@@ -147,7 +156,10 @@
                                                                  !! value to a CSV file, this
                                                                  !! is the string to use
                                                                  !! (default is `F`)
-    logical,intent(in),optional :: verbose
+    integer,intent(in),optional :: chunk_size  !! factor for expanding vectors
+                                               !! (default is 100)
+    logical,intent(in),optional :: verbose  !! print error messages to the
+                                            !! console (default is False)
 
     if (present(quote)) me%quote = quote
     if (present(delimiter)) me%delimiter = delimiter
@@ -160,6 +172,10 @@
     if (present(logical_false_string)) &
         me%logical_false_string = logical_false_string
     if (present(verbose)) me%verbose = verbose
+    if (present(chunk_size)) me%chunk_size = chunk_size
+
+    ! override:
+    if (me%enclose_all_in_quotes) me%enclose_strings_in_quotes = .true.
 
     end subroutine initialize_csv_file
 !*****************************************************************************************
@@ -299,21 +315,17 @@
 
 !*****************************************************************************************
 !>
-!  Open a CSV file for writing
+!  Open a CSV file for writing.
+!
+!  Use `initialize` to set options for the CSV file.
 
-    subroutine open_csv_file(me,filename,&
-                                n_cols,&
-                                enclose_strings_in_quotes,&
-                                enclose_all_in_quotes,&
-                                status_ok)
+    subroutine open_csv_file(me,filename,n_cols,status_ok)
 
     implicit none
 
     class(csv_file),intent(inout) :: me
     character(len=*),intent(in) :: filename  !! the CSV file to open
     integer,intent(in) :: n_cols  !! number of columns in the file
-    logical,intent(in),optional :: enclose_strings_in_quotes  !! default is true
-    logical,intent(in),optional :: enclose_all_in_quotes !! default is false
     logical,intent(out) :: status_ok  !! status flag
 
     integer :: istat  !! open `iostat` flag
@@ -321,18 +333,6 @@
     call me%destroy()
 
     me%n_cols = n_cols
-
-    if (present(enclose_strings_in_quotes)) then
-        me%enclose_strings_in_quotes = enclose_strings_in_quotes
-    else
-        me%enclose_strings_in_quotes = .true.
-    end if
-    if (present(enclose_all_in_quotes)) then
-        me%enclose_all_in_quotes = enclose_all_in_quotes
-    else
-        me%enclose_all_in_quotes = .false.
-    end if
-    if (me%enclose_all_in_quotes) me%enclose_strings_in_quotes = .true. ! override
 
     open(newunit=me%iunit,file=filename,status='REPLACE',iostat=istat)
     if (istat==0) then
@@ -367,6 +367,8 @@
 !*****************************************************************************************
 !>
 !  Add a cell to a CSV file.
+!
+!@todo Need to check the `istat` values for errors.
 
     subroutine add_cell(me,val,int_fmt,real_fmt,trim_str)
 
@@ -374,18 +376,18 @@
 
     class(csv_file),intent(inout) :: me
     class(*),intent(in) :: val  !! the value to add
-    character(len=*),intent(in),optional :: int_fmt !! format string for integers
-    character(len=*),intent(in),optional :: real_fmt !! format string for reals
-    logical,intent(in),optional :: trim_str !! to trim the string
+    character(len=*),intent(in),optional :: int_fmt  !! if `val` is an integer, use
+                                                     !! this format string.
+    character(len=*),intent(in),optional :: real_fmt !! if `val` is a real, use
+                                                     !! this format string.
+    logical,intent(in),optional :: trim_str !! if `val` is a string, then trim it.
 
     integer :: istat !! write `iostat` flag
     character(len=:),allocatable :: ifmt !! actual format string to use for integers
     character(len=:),allocatable :: rfmt !! actual format string to use for reals
     logical :: trimstr !! if the strings are to be trimmed
-    character(len=max_real_str_len) :: real_val
-    character(len=max_integer_str_len) :: int_val
-
-    !TODO need to check the istat values for errors
+    character(len=max_real_str_len) :: real_val  !! for writing a real value
+    character(len=max_integer_str_len) :: int_val !! for writing an integer value
 
     ! make sure the row isn't already finished
     if (me%icol<me%n_cols) then
@@ -479,9 +481,11 @@
 
     class(csv_file),intent(inout) :: me
     class(*),dimension(:),intent(in) :: val  !! the values to add
-    character(len=*),intent(in),optional :: int_fmt !! format string for integers
-    character(len=*),intent(in),optional :: real_fmt !! format string for reals
-    logical,intent(in),optional :: trim_str !! to trim the string
+    character(len=*),intent(in),optional :: int_fmt  !! if `val` is an integer, use
+                                                     !! this format string.
+    character(len=*),intent(in),optional :: real_fmt !! if `val` is a real, use
+                                                     !! this format string.
+    logical,intent(in),optional :: trim_str !! if `val` is a string, then trim it.
 
     integer :: i !! counter
 
@@ -504,9 +508,11 @@
 
     class(csv_file),intent(inout) :: me
     class(*),dimension(:,:),intent(in) :: val  !! the values to add
-    character(len=*),intent(in),optional :: int_fmt !! format string for integers
-    character(len=*),intent(in),optional :: real_fmt !! format string for reals
-    logical,intent(in),optional :: trim_str !! to trim the string
+    character(len=*),intent(in),optional :: int_fmt  !! if `val` is an integer, use
+                                                     !! this format string.
+    character(len=*),intent(in),optional :: real_fmt !! if `val` is a real, use
+                                                     !! this format string.
+    logical,intent(in),optional :: trim_str !! if `val` is a string, then trim it.
 
     integer :: i !! counter
 

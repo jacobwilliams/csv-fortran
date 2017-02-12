@@ -2,7 +2,7 @@
 !>
 !  Numeric kinds.
 
-    module kinds_module
+    module csv_kinds
 
     use iso_fortran_env, only: real64,int32
 
@@ -11,5 +11,5 @@
     integer,parameter,public :: wp = real64  !! default real kind
     integer,parameter,public :: ip = int32   !! default integer kind
 
-    end module kinds_module
+    end module csv_kinds
 !*******************************************************************************
