@@ -60,7 +60,7 @@
         call f2%add(3.0_wp)
         call f2%add(.true.)
         call f2%next_row()
-        call f2%add([4.0_wp,5.0_wp,6.0_wp]) ! add as vectors
+        call f2%add([4.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)') ! add as vectors
         call f2%add(.false.)
         call f2%next_row()
     end if
