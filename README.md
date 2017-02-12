@@ -87,4 +87,4 @@ Various options are user-selectable for specifying the format (e.g., changing th
 
 ### License
 
-This library is released under a BSD-3 license.
+This library is released under a [BSD-3 license](https://github.com/jacobwilliams/fortran-csv-module/blob/master/LICENSE).
