@@ -254,7 +254,8 @@
                 if (any(i==rows_to_skip)) cycle
             end if
 
-            call me%read_line_from_file(iunit,line)
+            call me%read_line_from_file(iunit,line,status_ok)
+            if (.not. status_ok) return ! file read error
             call me%tokenize(line,row_data)
 
             if (.not. arrays_allocated) then
@@ -1123,13 +1124,14 @@
 !>
 !  Reads the next line from a file.
 
-    subroutine read_line_from_file(me,iunit,line)
+    subroutine read_line_from_file(me,iunit,line,status_ok)
 
     implicit none
 
     class(csv_file),intent(in) :: me
     integer,intent(in) :: iunit
     character(len=:),allocatable,intent(out) :: line
+    logical,intent(out) :: status_ok !! true if no problems
 
     integer :: nread  !! character count specifier for read statement
     integer :: istat  !! file read io status flag
@@ -1138,6 +1140,7 @@
     nread  = 0
     buffer = ''
     line   = ''
+    status_ok = .true.
 
     do
         ! read in the next block of text from the line:
@@ -1149,7 +1152,9 @@
         else if (istat==0) then ! all the characters were read
             line = line//buffer  ! add this block of text to the string
         else  ! some kind of error
-            error stop 'Read error.'
+            if (me%verbose) write(error_unit,'(A,1X,I5)') 'Read error for file unit: ',iunit
+            status_ok = .false.
+            exit
         end if
     end do
 
