@@ -51,11 +51,19 @@
 
         !for writing a csv file:
         integer :: icol = 0    !! last column written in current row
-        integer :: iunit = 0  !! file unit for writing
+        integer :: iunit = 0   !! file unit for writing
         logical :: enclose_strings_in_quotes = .true.  !! if true, all string cells
                                                        !! will be enclosed in quotes.
-        logical :: enclose_all_in_quotes = .false. !! if true, *all* cells will
-                                                   !! be enclosed in quotes.
+        logical :: enclose_all_in_quotes = .false.     !! if true, *all* cells will
+                                                       !! be enclosed in quotes.
+        character(len=1) :: logical_true_string = 'T'  !! when writing a logical `true`
+                                                       !! value to a CSV file, this
+                                                       !! is the string to use
+                                                       !! (default is `T`)
+        character(len=1) :: logical_false_string = 'F' !! when writing a logical `false`
+                                                       !! value to a CSV file, this
+                                                       !! is the string to use
+                                                       !! (default is `F`)
 
     contains
 
@@ -118,6 +126,8 @@
     subroutine initialize_csv_file(me,quote,delimiter,&
                                     enclose_strings_in_quotes,&
                                     enclose_all_in_quotes,&
+                                    logical_true_string,&
+                                    logical_false_string,&
                                     verbose)
 
     implicit none
@@ -129,6 +139,14 @@
                                                               !! will be enclosed in quotes.
     logical,intent(in),optional :: enclose_all_in_quotes      !! if true, *all* cells will
                                                               !! be enclosed in quotes.
+    character(len=1),intent(in),optional :: logical_true_string !! when writing a logical `true`
+                                                                !! value to a CSV file, this
+                                                                !! is the string to use
+                                                                !! (default is `T`)
+    character(len=1),intent(in),optional :: logical_false_string !! when writing a logical `false`
+                                                                 !! value to a CSV file, this
+                                                                 !! is the string to use
+                                                                 !! (default is `F`)
     logical,intent(in),optional :: verbose
 
     if (present(quote)) me%quote = quote
@@ -137,6 +155,10 @@
         me%enclose_strings_in_quotes = enclose_strings_in_quotes
     if (present(enclose_all_in_quotes)) &
         me%enclose_all_in_quotes = enclose_all_in_quotes
+    if (present(logical_true_string))  &
+        me%logical_true_string = logical_true_string
+    if (present(logical_false_string)) &
+        me%logical_false_string = logical_false_string
     if (present(verbose)) me%verbose = verbose
 
     end subroutine initialize_csv_file
@@ -176,6 +198,9 @@
     integer,intent(in),optional :: header_row  !! the header row
     integer,dimension(:),intent(in),optional :: skip_rows  !! rows to skip
 
+    type(csv_string),dimension(:),allocatable :: row_data  !! a tokenized row
+    integer,dimension(:),allocatable :: rows_to_skip  !! the actual rows to skip
+    character(len=:),allocatable :: line  !! a line from the file
     integer :: i                !! counter
     integer :: j                !! counter
     integer :: irow             !! row counter
@@ -184,11 +209,10 @@
     integer :: n_cols           !! number of columns in the file (and output data matrix)
     integer :: istat            !! open status flag
     integer :: iunit            !! open file unit
-    integer,dimension(:),allocatable :: rows_to_skip  !! the actual rows to skip
-    logical :: arrays_allocated  !! if the arrays in the class have been allocated
-    type(csv_string),dimension(:),allocatable :: row_data  !! a tokenized row
-    character(len=:),allocatable :: line  !! a line from the file
-    integer :: iheader  !! row number of header row (0 if no header specified)
+    logical :: arrays_allocated !! if the arrays in the
+                                !! class have been allocated
+    integer :: iheader          !! row number of header row
+                                !! (0 if no header specified)
 
     call me%destroy()
     arrays_allocated = .false.
@@ -264,7 +288,8 @@
         status_ok = .true.
 
     else
-        if (me%verbose) write(error_unit,'(A)') 'Error opening file: '//trim(filename)
+        if (me%verbose) write(error_unit,'(A)') &
+                'Error opening file: '//trim(filename)
         status_ok = .false.
     end if
 
@@ -354,7 +379,7 @@
 
     integer :: istat !! write `iostat` flag
     character(len=:),allocatable :: ifmt !! actual format string to use for integers
-    character(len=:),allocatable :: rfmt !! actual format string to use for REALS
+    character(len=:),allocatable :: rfmt !! actual format string to use for reals
     logical :: trimstr !! if the strings are to be trimmed
     character(len=max_real_str_len) :: real_val
     character(len=max_integer_str_len) :: int_val
@@ -389,9 +414,9 @@
             write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
         type is (logical)
             if (val) then
-                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) 'T'   !TODO make these user-defined strings
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%logical_true_string
             else
-                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) 'F'
+                write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%logical_false_string
             end if
         type is (character(len=*))
             if (me%enclose_strings_in_quotes .and. .not. me%enclose_all_in_quotes) &
@@ -709,7 +734,7 @@
     if ( any(tmp==true_str) ) then
         val = .true.
         status_ok = .true.
-    elseif ( any(tmp==false_str) ) then
+    else if ( any(tmp==false_str) ) then
         val = .false.
         status_ok = .true.
     else
@@ -1121,7 +1146,7 @@
             ! add the last block of text before the end of record
             if (nread>0) line = line//buffer(1:nread)
             exit
-        elseif (istat==0) then ! all the characters were read
+        else if (istat==0) then ! all the characters were read
             line = line//buffer  ! add this block of text to the string
         else  ! some kind of error
             error stop 'Read error.'

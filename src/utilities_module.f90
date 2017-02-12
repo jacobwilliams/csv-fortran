@@ -170,7 +170,7 @@
                 end do
             end do
 
-        elseif ( ihigh-ilow>max_size_for_insertion_sort ) then
+        else if ( ihigh-ilow>max_size_for_insertion_sort ) then
 
             ! do the normal quicksort:
             call partition(ilow,ihigh,ipivot)

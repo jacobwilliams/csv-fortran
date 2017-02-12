@@ -18,8 +18,8 @@
     character(len=30),dimension(:,:),allocatable :: csv_data  !! the data from the file as strings
 
     real(wp),dimension(:),allocatable :: x
-    real(wp),dimension(:),allocatable :: y
-    real(wp),dimension(:),allocatable :: z
+    !real(wp),dimension(:),allocatable :: y
+    !real(wp),dimension(:),allocatable :: z
     logical :: status_ok
     integer,dimension(:),allocatable :: itypes
 
