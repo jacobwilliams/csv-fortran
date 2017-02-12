@@ -115,18 +115,29 @@
 !>
 !  Constructor.
 
-    subroutine initialize_csv_file(me,quote,delimiter,verbose)
+    subroutine initialize_csv_file(me,quote,delimiter,&
+                                    enclose_strings_in_quotes,&
+                                    enclose_all_in_quotes,&
+                                    verbose)
 
     implicit none
 
     class(csv_file),intent(out) :: me
-    character(len=1),intent(in),optional :: quote        !! note: can only be one character
-    character(len=1),intent(in),optional :: delimiter    !! note: can only be one character
+    character(len=1),intent(in),optional :: quote             !! note: can only be one character
+    character(len=1),intent(in),optional :: delimiter         !! note: can only be one character
+    logical,intent(in),optional :: enclose_strings_in_quotes  !! if true, all string cells
+                                                              !! will be enclosed in quotes.
+    logical,intent(in),optional :: enclose_all_in_quotes      !! if true, *all* cells will
+                                                              !! be enclosed in quotes.
     logical,intent(in),optional :: verbose
 
-    if (present(quote))      me%quote     = quote
-    if (present(delimiter))  me%delimiter = delimiter
-    if (present(verbose))    me%verbose   = verbose
+    if (present(quote)) me%quote = quote
+    if (present(delimiter)) me%delimiter = delimiter
+    if (present(enclose_strings_in_quotes)) &
+        me%enclose_strings_in_quotes = enclose_strings_in_quotes
+    if (present(enclose_all_in_quotes)) &
+        me%enclose_all_in_quotes = enclose_all_in_quotes
+    if (present(verbose)) me%verbose = verbose
 
     end subroutine initialize_csv_file
 !*****************************************************************************************
@@ -1127,8 +1138,8 @@
 !
 !### Example
 !````Fortran
-!    type(csv_file) :: f
-!    character(len=:),allocatable :: s
+!   type(csv_file) :: f
+!   character(len=:),allocatable :: s
 !   type(csv_string),dimension(:),allocatable :: vals
 !   s = '1,2,3,4,5'
 !   vals = f%split(s,',')
