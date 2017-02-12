@@ -2,6 +2,10 @@
 
 A modern Fortran library for reading and writing CSV (comma-separated value) files.
 
+### Latest Release
+
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg?style=plastic)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
+
 ### Examples
 
 Everything is handled by an object-oriented `csv_file` class. Here is an example for writing a file:
