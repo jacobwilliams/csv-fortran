@@ -1217,7 +1217,7 @@
         call expand_vector(itokens,n_tokens,chunk_size,i+j)  ! save the token location
         if (i+len_token>len_str) exit  ! if the last bit of the string is a token
         j = j + i
-        temp = temp(i+len_token:len_str)  !remove previously scanned part of string
+        temp = trim(temp(i+len_token:len_str))  !remove previously scanned part of string
     end do
     call expand_vector(itokens,n_tokens,chunk_size,finished=.true.)  ! resize the vector
 
