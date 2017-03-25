@@ -1229,7 +1229,7 @@
 
         i1 = 1
         i2 = itokens(1)-1
-        if (n_tokens>1) then
+        if (i2>=i1) then
             vals(1)%str = str(i1:i2)
         else
             vals(1)%str = ''  !the first character is a token
