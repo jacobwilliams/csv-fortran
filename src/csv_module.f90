@@ -267,7 +267,10 @@
 
             ! skip row if necessary
             if (allocated(rows_to_skip)) then
-                if (any(i==rows_to_skip)) cycle
+                if (any(i==rows_to_skip)) then
+                    read(iunit, *)
+                    cycle
+                end if
             end if
 
             call me%read_line_from_file(iunit,line,status_ok)
@@ -1217,7 +1220,7 @@
         call expand_vector(itokens,n_tokens,chunk_size,i+j)  ! save the token location
         if (i+len_token>len_str) exit  ! if the last bit of the string is a token
         j = j + i
-        temp = temp(i+len_token:len_str)  !remove previously scanned part of string
+        temp = trim(temp(i+len_token:len_str))  !remove previously scanned part of string
     end do
     call expand_vector(itokens,n_tokens,chunk_size,finished=.true.)  ! resize the vector
 
@@ -1229,7 +1232,7 @@
 
         i1 = 1
         i2 = itokens(1)-1
-        if (n_tokens>1) then
+        if (i2>=i1) then
             vals(1)%str = str(i1:i2)
         else
             vals(1)%str = ''  !the first character is a token
