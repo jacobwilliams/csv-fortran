@@ -267,7 +267,10 @@
 
             ! skip row if necessary
             if (allocated(rows_to_skip)) then
-                if (any(i==rows_to_skip)) cycle
+                if (any(i==rows_to_skip)) then
+                    read(iunit, *)
+                    cycle
+                end if
             end if
 
             call me%read_line_from_file(iunit,line,status_ok)
