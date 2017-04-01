@@ -26,9 +26,8 @@
     type,public :: csv_string
         !! a cell from a CSV file.
         !!
-        !! This use used to store the data internally
+        !! This is used to store the data internally
         !! in the [[csv_file]] class.
-        private
         character(len=:),allocatable :: str
     end type csv_string
 
@@ -1203,8 +1202,6 @@
 !   call split(s,',',vals)
 !````
 !
-!@warning Doesn't seem to work for `len(token)>1`
-!
 !@warning Does not account for tokens contained within quotes string !!!
 
     pure subroutine split(str,token,chunk_size,vals)
@@ -1216,8 +1213,8 @@
     integer,intent(in)           :: chunk_size  !! for expanding vectors
     type(csv_string),dimension(:),allocatable,intent(out) :: vals
 
-    integer :: i
-    integer :: len_str
+    integer :: i          !! counter
+    integer :: len_str    !! significant length of `str`
     integer :: len_token  !! length of the token
     integer :: n_tokens   !! number of tokens
     integer :: i1         !! index
