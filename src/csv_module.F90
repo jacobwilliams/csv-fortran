@@ -229,6 +229,7 @@
                                 !! class have been allocated
     integer :: iheader          !! row number of header row
                                 !! (0 if no header specified)
+    character(len=1) :: tmp     !! for skipping a row
 
     call me%destroy()
     arrays_allocated = .false.
@@ -267,7 +268,17 @@
 
             ! skip row if necessary
             if (allocated(rows_to_skip)) then
-                if (any(i==rows_to_skip)) cycle
+                if (any(i==rows_to_skip)) then
+                    read(iunit,fmt='(A1)',iostat=istat) tmp
+                    if (istat/=0) then
+                        if (me%verbose) write(error_unit,'(A)') &
+                                'Error skipping row in file: '//trim(filename)
+                        close(unit=iunit,iostat=istat)
+                        status_ok = .false.
+                        return
+                    end if
+                    cycle
+                end if
             end if
 
             call me%read_line_from_file(iunit,line,status_ok)
@@ -884,10 +895,11 @@
     integer,intent(in) :: icol  !! column number
     class(*),dimension(:),intent(out) :: r  !! assumed to have been allocated to
                                             !! the correct size by the caller.
-                                            !! (n_rows)
+                                            !! (`n_rows`)
     logical,intent(out) :: status_ok  !! status flag
 
     integer :: i !! counter
+    character(len=:),allocatable :: tmp !! for gfortran workaround
 
     ! we know the data is allocated, since that
     ! was checked by the calling routines.
@@ -896,8 +908,19 @@
 
         do i=1,me%n_rows  ! row loop
 
+#if defined __GFORTRAN__
+            ! the following is a workaround for gfortran bugs:
+            select type (r)
+            type is (character(len=*))
+                tmp = repeat(' ',len(r)) ! size the string
+                call me%csv_get_value(i,icol,tmp,status_ok)
+                r(i) = tmp
+            class default
+                call me%csv_get_value(i,icol,r(i),status_ok)
+            end select
+#else
             call me%csv_get_value(i,icol,r(i),status_ok)
-
+#endif
             if (.not. status_ok) then
                 select type (r)
                 ! note: character conversion can never fail, so not
@@ -1174,11 +1197,10 @@
 !
 !### Example
 !````Fortran
-!   type(csv_file) :: f
 !   character(len=:),allocatable :: s
 !   type(csv_string),dimension(:),allocatable :: vals
 !   s = '1,2,3,4,5'
-!   vals = f%split(s,',')
+!   call split(s,',',vals)
 !````
 !
 !@warning Doesn't seem to work for `len(token)>1`
@@ -1201,23 +1223,38 @@
     integer :: i1         !! index
     integer :: i2         !! index
     integer :: j          !! counters
-    character(len=:),allocatable :: temp
-    integer,dimension(:),allocatable :: itokens
+    integer,dimension(:),allocatable :: itokens !! start indices of the
+                                                !! token locations in `str`
 
-    temp      = str         ! make a copy of the string
     len_token = len(token)  ! length of the token
-    n_tokens  = 0           ! initialize the number of token counter
-    j         = 0           ! length of string removed
+    n_tokens  = 0           ! initialize the token counter
+    j         = 0           ! index to start looking for the next token
 
-    !first, count the number of times the token appears in the string
+    ! first, count the number of times the token
+    ! appears in the string, and get the token indices.
+    !
+    ! Examples:
+    !  ',         '    --> 1
+    !  '1234,67,90'    --> 5,8
+    !  '123,      '    --> 4
+
+    ! length of the string
+    if (token == ' ') then
+        ! in this case, we can't ignore trailing space
+        len_str = len(str)
+    else
+        ! safe to ignore trailing space when looking for tokens
+        len_str = len_trim(str)
+    end if
+
+    j = 1
+    n_tokens = 0
     do
-        len_str = len(temp)    ! length of the string
-        i = index(temp,token)  ! location of the next token
-        if (i<=0) exit         ! no more tokens found
-        call expand_vector(itokens,n_tokens,chunk_size,i+j)  ! save the token location
-        if (i+len_token>len_str) exit  ! if the last bit of the string is a token
-        j = j + i
-        temp = trim(temp(i+len_token:len_str))  !remove previously scanned part of string
+        if (j>len_str) exit      ! end of string, finished
+        i = index(str(j:),token) ! index of next token in remaining string
+        if (i<=0) exit           ! no more tokens found
+        call expand_vector(itokens,n_tokens,chunk_size,i+j-1)  ! save the token location
+        j = j + i + (len_token - 1)
     end do
     call expand_vector(itokens,n_tokens,chunk_size,finished=.true.)  ! resize the vector
 

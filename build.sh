@@ -6,7 +6,7 @@
 #  Requires: FoBiS and Ford
 #
 
-MODCODE='csv_module.f90'            # module file name
+MODCODE='csv_module.F90'            # module file name
 LIBOUT='libcsv.a'                   # name of library
 DOCDIR='./doc/'                     # build directory for documentation
 SRCDIR='./src/'                     # library source directory
@@ -17,10 +17,10 @@ FORDMD='fortran-csv-module.md'      # FORD config file name
 
 #compiler flags:
 
-#FCOMPILER='gnu' #Set compiler to gfortran
-#FCOMPILERFLAGS='-c -O2 -std=f2008'
-FCOMPILER='intel' #Set compiler to intel
-FCOMPILERFLAGS='-c -O2 -warn -stand f08 -traceback'
+FCOMPILER='gnu' #Set compiler to gfortran
+FCOMPILERFLAGS='-c -O2 -std=f2008'
+#FCOMPILER='intel' #Set compiler to intel
+#FCOMPILERFLAGS='-c -O0 -warn -stand f08 -traceback -g'
 
 #build using FoBiS:
 

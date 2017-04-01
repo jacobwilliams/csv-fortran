@@ -19,35 +19,58 @@
     real(wp),dimension(:),allocatable :: x  !! for getting a real vector from a csv file
     logical :: status_ok  !! error flag
     integer,dimension(:),allocatable :: itypes  !! array of variable types in the file
+    integer :: ifile !! file counter
+    character(len=30),dimension(:),allocatable :: names
 
-    ! read the file:
-    call f%read('../files/test.csv',header_row=1,status_ok=status_ok)
+    character(len=*),dimension(2),parameter :: files_to_test = ['../files/test.csv          ',&
+                                                                '../files/test_2_columns.csv']
 
-    ! print the header and type info:
-    call f%get_header(header,status_ok)
-    call f%variable_types(itypes,status_ok)
-    write(*,*) ''
-    write(*,'(*(A30,1X,A4))') 'Header', 'Type'
-    do i=1,size(header)
-        write(*,'(*(A30,1X,I4))') header(i), itypes(i)
+    do ifile = 1, size(files_to_test)
+
+        ! read the file:
+        if (ifile==1) then
+            call f%read(trim(files_to_test(ifile)),header_row=1,status_ok=status_ok)
+        else
+            ! also skip a row
+            call f%read(trim(files_to_test(ifile)),header_row=1,skip_rows=[2],status_ok=status_ok)
+        end if
+
+        write(*,*) ''
+        write(*,*) 'File: '//trim(files_to_test(ifile))
+        ! print the header and type info:
+        call f%get_header(header,status_ok)
+        call f%variable_types(itypes,status_ok)
+        write(*,*) ''
+        write(*,'(*(A30,1X,A4))') 'Header', 'Type'
+        do i=1,size(header)
+            write(*,'(*(A30,1X,I4))') header(i), itypes(i)
+        end do
+
+        write(*,*) ''
+        write(*,*) 'print all the rows:'
+
+        call f%get(csv_data,status_ok)
+        do i=1,size(csv_data,1)
+            write(*,'(*(A30,1X))') csv_data(i,:)
+        end do
+
+        write(*,*) ''
+        write(*,*) 'get some vectors:'
+        if (ifile==1) then
+            write(*,*) ''
+            write(*,*) 'age:'
+            call f%get(3,x,status_ok)
+            write(*,'(F6.3,1x)',advance='NO') x
+            write(*,*) ''
+        else
+            write(*,*) ''
+            write(*,*) 'name:'
+            call f%get(2,names,status_ok)
+            write(*,'(A10,1x)',advance='NO') names
+            write(*,*) ''
+        end if
+
     end do
-
-    write(*,*) ''
-    write(*,*) 'print all the rows:'
-
-    call f%get(csv_data,status_ok)
-    do i=1,size(csv_data,1)
-        write(*,'(*(A30,1X))') csv_data(i,:)
-    end do
-
-    write(*,*) ''
-    write(*,*) 'get some vectors:'
-
-    write(*,*) ''
-    write(*,*) 'age:'
-    call f%get(3,x,status_ok)
-    write(*,'(F6.3,1x)',advance='NO') x
-    write(*,*) ''
 
     ! now test creating a CSV:
     call f2%initialize(enclose_strings_in_quotes=.false.,verbose=.true.)
