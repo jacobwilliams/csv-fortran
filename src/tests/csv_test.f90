@@ -29,10 +29,12 @@
 
         ! read the file:
         if (ifile==1) then
-            call f%read(trim(files_to_test(ifile)),header_row=1,status_ok=status_ok)
+            call f%read(trim(files_to_test(ifile)),&
+                        header_row=1,status_ok=status_ok)
         else
             ! also skip a row
-            call f%read(trim(files_to_test(ifile)),header_row=1,skip_rows=[2],status_ok=status_ok)
+            call f%read(trim(files_to_test(ifile)),&
+                        header_row=1,skip_rows=[2],status_ok=status_ok)
         end if
 
         write(*,*) ''
