@@ -45,14 +45,15 @@
 
         character(len=1) :: quote     = '"'  !! quotation character
         character(len=1) :: delimiter = ','  !! delimiter character
+
+        ! for reading a csv file:
         integer :: n_rows = 0  !! number of rows in the file
         integer :: n_cols = 0  !! number of columns in the file
         integer :: chunk_size = 100 !! for expanding vectors
-
         type(csv_string),dimension(:),allocatable :: header      !! the header
         type(csv_string),dimension(:,:),allocatable :: csv_data  !! the data in the file
 
-        !for writing a csv file:
+        ! for writing a csv file:
         integer :: icol = 0    !! last column written in current row
         integer :: iunit = 0   !! file unit for writing
         logical :: enclose_strings_in_quotes = .true.  !! if true, all string cells
@@ -124,7 +125,7 @@
 
 !*****************************************************************************************
 !>
-!  Constructor.
+!  Initialize a [[csv_file(type)]].
 
     subroutine initialize_csv_file(me,quote,delimiter,&
                                     enclose_strings_in_quotes,&
@@ -183,18 +184,11 @@
 !>
 !  Destroy the data in a CSV file.
 
-    pure subroutine destroy_csv_file(me)
+    subroutine destroy_csv_file(me)
 
     implicit none
 
-    class(csv_file),intent(inout) :: me
-
-    if (allocated(me%csv_data)) deallocate(me%csv_data)
-    if (allocated(me%header)) deallocate(me%header)
-
-    me%n_cols = 0
-    me%n_rows = 0
-    me%icol   = 0
+    class(csv_file),intent(out) :: me
 
     end subroutine destroy_csv_file
 !*****************************************************************************************
@@ -348,7 +342,8 @@
     if (istat==0) then
         status_ok = .true.
     else
-        if (me%verbose) write(error_unit,'(A)') 'Error opening file: '//trim(filename)
+        if (me%verbose) write(error_unit,'(A)') &
+                            'Error opening file: '//trim(filename)
         status_ok = .false.
     end if
 
@@ -482,8 +477,6 @@
 !*****************************************************************************************
 !>
 !  Add a vector to a CSV file. Each element is added as a cell to the current line.
-!
-!@warning There is some bug here with GFortran 6.1 when `val` is a character string.
 
     subroutine add_vector(me,val,int_fmt,real_fmt,trim_str)
 
@@ -500,7 +493,19 @@
     integer :: i !! counter
 
     do i=1,size(val)
+
+#if defined __GFORTRAN__
+        ! This is a stupid workaround for gfortran bugs (tested with 7.2.0)
+        select type (val)
+        type is (character(len=*))
+            call me%add(val(i),int_fmt,real_fmt,trim_str)
+        class default
+            call me%add(val(i),int_fmt,real_fmt,trim_str)
+        end select
+#else
         call me%add(val(i),int_fmt,real_fmt,trim_str)
+#endif
+
     end do
 
     end subroutine add_vector
