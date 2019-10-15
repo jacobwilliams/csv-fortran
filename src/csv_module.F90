@@ -323,22 +323,38 @@
 !
 !  Use `initialize` to set options for the CSV file.
 
-    subroutine open_csv_file(me,filename,n_cols,status_ok)
+    subroutine open_csv_file(me,filename,n_cols,status_ok,append)
 
     implicit none
 
-    class(csv_file),intent(inout) :: me
-    character(len=*),intent(in) :: filename  !! the CSV file to open
-    integer,intent(in) :: n_cols  !! number of columns in the file
-    logical,intent(out) :: status_ok  !! status flag
+    class(csv_file),intent(inout)   :: me
+    character(len=*),intent(in)     :: filename     !! the CSV file to open
+    integer,intent(in)              :: n_cols       !! number of columns in the file
+    logical,intent(out)             :: status_ok    !! status flag
+    logical,intent(in),optional     :: append       !! append if file exists
 
-    integer :: istat  !! open `iostat` flag
+    integer :: istat       !! open `iostat` flag
+    logical :: append_flag !! local copy of `append` argument
+    logical :: file_exists !! if the file exists
 
     call me%destroy()
 
     me%n_cols = n_cols
 
-    open(newunit=me%iunit,file=filename,status='REPLACE',iostat=istat)
+    ! optional append argument:
+    append_flag = .false.
+    file_exists = .false.
+    if (present(append)) then
+        append_flag = append
+        if (append) inquire(file=filename, exist=file_exists)
+    end if
+
+    if (append_flag .and. file_exists) then
+        open(newunit=me%iunit,file=filename,status='OLD',position='APPEND',iostat=istat)
+    else
+        open(newunit=me%iunit,file=filename,status='REPLACE',iostat=istat)
+    end if
+
     if (istat==0) then
         status_ok = .true.
     else
