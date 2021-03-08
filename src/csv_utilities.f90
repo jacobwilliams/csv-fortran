@@ -226,7 +226,10 @@
     integer :: i  !! index in uppercase array
 
     i = index(upper,c)
-    c_lower = merge(lower(i:i),c,i>0)
+    ! Guard against lower(0:0) when i = 0
+    if (i > 0) then
+        c_lower = merge(lower(i:i),c,i>0)
+    end if
 
     end function lowercase_character
 !*****************************************************************************************
