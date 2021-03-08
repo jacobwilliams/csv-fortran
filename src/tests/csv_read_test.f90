@@ -13,7 +13,7 @@ logical :: status_ok
 integer,dimension(:),allocatable :: itypes
 
 ! read the file
-call f%read('test.csv',header_row=1,status_ok=status_ok)
+call f%read('test_write.csv',header_row=1,status_ok=status_ok)
 
 ! get the header and type info
 call f%get_header(header,status_ok)

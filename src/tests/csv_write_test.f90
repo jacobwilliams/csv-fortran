@@ -9,7 +9,7 @@ type(csv_file) :: f
 logical :: status_ok
 
 ! open the file
-call f%open('test.csv',n_cols=4,status_ok=status_ok)
+call f%open('test_write.csv',n_cols=4,status_ok=status_ok)
 
 ! add header
 call f%add(['x','y','z','t'])
