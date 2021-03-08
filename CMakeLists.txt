@@ -166,6 +166,7 @@ add_custom_target(pretest_setup
 # Create csv_test output as separate target folded into `make all`
 add_custom_target(run_csv_write_test
     ALL
+    DEPENDS pretest_setup
     COMMAND ${CMAKE_COMMAND} -E echo "Running csv_write_test"
     COMMAND $<TARGET_FILE:csv_write_test>
     BYPRODUCTS test_write.csv
