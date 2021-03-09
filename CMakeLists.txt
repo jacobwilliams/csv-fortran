@@ -132,20 +132,29 @@ set(TEST_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/tests")
 add_executable(csv_write_test "${TEST_SOURCE_DIR}/csv_write_test.f90")
 target_link_libraries(csv_write_test ${LIBFCSV_NAME})
 target_compile_options(csv_write_test PUBLIC ${FCOPTS})
+install(TARGETS csv_write_test)
 
 add_executable(csv_read_test "${TEST_SOURCE_DIR}/csv_read_test.f90")
 target_link_libraries(csv_read_test ${LIBFCSV_NAME})
 target_compile_options(csv_read_test PUBLIC ${FCOPTS})
+install(TARGETS csv_read_test)
 
-add_executable(csv_test "${TEST_SOURCE_DIR}/csv_local_test.f90")
+add_executable(csv_local_test "${TEST_SOURCE_DIR}/csv_local_test.f90")
+target_link_libraries(csv_local_test ${LIBFCSV_NAME})
+target_compile_options(csv_local_test PUBLIC ${FCOPTS})
+install(TARGETS csv_local_test)
+
+add_executable(csv_test "${TEST_SOURCE_DIR}/csv_test.f90")
 target_link_libraries(csv_test ${LIBFCSV_NAME})
 target_compile_options(csv_test PUBLIC ${FCOPTS})
+install(TARGETS csv_test)
 
 set_target_properties(
-    csv_write_test csv_read_test csv_test
+    csv_write_test csv_read_test csv_local_test csv_test
     PROPERTIES
     Fortran_MODULE_DIRECTORY ${LIBFCSV_FORTRAN_MODULE_DIR}
 )
+
 
 ###############################################################################
 ## Testing ####################################################################
@@ -156,14 +165,14 @@ set(TEST_DIR "${CMAKE_CURRENT_BINARY_DIR}/test")
 # Create test output as separate target folded into `make all`
 add_custom_target(pretest_setup
     ALL
-    DEPENDS csv_test
+    DEPENDS csv_local_test
     COMMAND ${CMAKE_COMMAND} -E echo "Copying test and reference data"
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/files" "${TEST_DIR}"
     VERBATIM
     USES_TERMINAL
 )
 
-# Create csv_test output as separate target folded into `make all`
+# Create csv_write_test output as separate target folded into `make all`
 add_custom_target(run_csv_write_test
     ALL
     DEPENDS pretest_setup
@@ -187,12 +196,12 @@ add_custom_target(run_csv_read_test
     USES_TERMINAL
 )
 
-# Create csv_test output as separate target folded into `make all`
-add_custom_target(run_csv_test
+# Create csv_local_test output as separate target folded into `make all`
+add_custom_target(run_csv_local_test
     ALL
     DEPENDS pretest_setup
-    COMMAND ${CMAKE_COMMAND} -E echo "Running csv_test"
-    COMMAND $<TARGET_FILE:csv_test> > csv_test.out
+    COMMAND ${CMAKE_COMMAND} -E echo "Running csv_local_test"
+    COMMAND $<TARGET_FILE:csv_local_test> > csv_test.out
     BYPRODUCTS csv_test.out test2.csv
     WORKING_DIRECTORY "${TEST_DIR}"
     VERBATIM
@@ -202,7 +211,7 @@ add_custom_target(run_csv_test
 # ***** Integral Tests *****
 
 # Tests using CMake's simple built-in "compare_files" command
-# Compare output and reformatted original reference data
+# Compare output with original reference data
 
 # Example 1: csv_read_test.out
 add_test(NAME 1_csv_read_test
@@ -237,7 +246,7 @@ set_tests_properties(
     DEPENDS pretest_setup
     DEPENDS run_csv_write_test
     DEPENDS run_csv_read_test
-    DEPENDS run_csv_test
+    DEPENDS run_csv_local_test
     WORKING_DIRECTORY "${TEST_DIR}"
     TIMEOUT 30
 )
