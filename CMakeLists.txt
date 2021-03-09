@@ -94,7 +94,7 @@ if(${FC_ALLOWS_NO_OPTIMIZATION})
     list(APPEND FCOPTS ${FCOPT_NO_OPTIMIZATION})
 endif()
 
-message(STATUS "Fortran compiler options set to ${FCOPTS}")
+message(STATUS "Fortran compiler options for fortran-csv-module set to ${FCOPTS}")
 
 # Target FCSV: fortran-csv-module library
 set(FCSV_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
@@ -163,7 +163,7 @@ set(TEST_DIR "${CMAKE_CURRENT_BINARY_DIR}/test")
 # ***** Pre-Test File and Directory Generation *****
 
 # Create test output as separate target folded into `make all`
-add_custom_target(pretest_setup
+add_custom_target(fcsv_test_setup
     ALL
     DEPENDS csv_local_test
     COMMAND ${CMAKE_COMMAND} -E echo "Copying test and reference data"
@@ -175,7 +175,7 @@ add_custom_target(pretest_setup
 # Create csv_write_test output as separate target folded into `make all`
 add_custom_target(run_csv_write_test
     ALL
-    DEPENDS pretest_setup
+    DEPENDS fcsv_test_setup
     COMMAND ${CMAKE_COMMAND} -E echo "Running csv_write_test"
     COMMAND $<TARGET_FILE:csv_write_test>
     BYPRODUCTS test_write.csv
@@ -199,7 +199,7 @@ add_custom_target(run_csv_read_test
 # Create csv_local_test output as separate target folded into `make all`
 add_custom_target(run_csv_local_test
     ALL
-    DEPENDS pretest_setup
+    DEPENDS fcsv_test_setup
     COMMAND ${CMAKE_COMMAND} -E echo "Running csv_local_test"
     COMMAND $<TARGET_FILE:csv_local_test> > csv_test.out
     BYPRODUCTS csv_test.out test2.csv
@@ -243,7 +243,7 @@ set_tests_properties(
     3_test_write
     4_test2
     PROPERTIES
-    DEPENDS pretest_setup
+    DEPENDS fcsv_test_setup
     DEPENDS run_csv_write_test
     DEPENDS run_csv_read_test
     DEPENDS run_csv_local_test
