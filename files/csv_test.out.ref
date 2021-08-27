@@ -1,11 +1,17 @@
  
+ ============================
+  csv_test_1 
+ ============================
+ 
+ read file: ./test.csv
+ 
  File: test.csv
  
                         Header Type
 id                                3
 first_name                        1
 age                               2
-ok                                1
+ok                                4
  
  print all the rows:
 1                              Julie                          80.244                         false                         
@@ -50,6 +56,7 @@ ok                                1
 54.498 
  2.505 
 39.775  
+ read file: ./test_2_columns.csv
  
  File: test_2_columns.csv
  
@@ -68,3 +75,17 @@ first_name                        1
 Jose       
 Lois       
 Walter      
+ 
+ ============================
+  csv_write_test 
+ ============================
+ 
+ 
+ ============================
+  csv_read_test 
+ ============================
+ 
+ x=   1.0000000000000000        4.0000000000000000     
+ y=   2.0000000000000000        5.0000000000000000     
+ z=   3.0000000000000000        6.0000000000000000     
+ t= T F

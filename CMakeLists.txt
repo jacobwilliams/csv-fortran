@@ -166,44 +166,56 @@ set(TEST_DIR "${CMAKE_CURRENT_BINARY_DIR}/test")
 # Create test output as separate target folded into `make all`
 add_custom_target(fcsv_test_setup
     ALL
-    DEPENDS csv_local_test
+    DEPENDS csv_test
     COMMAND ${CMAKE_COMMAND} -E echo "Copying test and reference data"
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/files" "${TEST_DIR}"
     VERBATIM
     USES_TERMINAL
 )
 
-# Create csv_write_test output as separate target folded into `make all`
-add_custom_target(run_csv_write_test
-    ALL
-    DEPENDS fcsv_test_setup
-    COMMAND ${CMAKE_COMMAND} -E echo "Running csv_write_test"
-    COMMAND $<TARGET_FILE:csv_write_test>
-    BYPRODUCTS test_write.csv
-    WORKING_DIRECTORY "${TEST_DIR}"
-    VERBATIM
-    USES_TERMINAL
-)
+# # Create csv_write_test output as separate target folded into `make all`
+# add_custom_target(run_csv_write_test
+#     ALL
+#     DEPENDS fcsv_test_setup
+#     COMMAND ${CMAKE_COMMAND} -E echo "Running csv_write_test"
+#     COMMAND $<TARGET_FILE:csv_write_test>
+#     BYPRODUCTS test_write.csv
+#     WORKING_DIRECTORY "${TEST_DIR}"
+#     VERBATIM
+#     USES_TERMINAL
+# )
 
-# Create csv_read_test output as separate target folded into `make all`
-add_custom_target(run_csv_read_test
-    ALL
-    DEPENDS run_csv_write_test
-    COMMAND ${CMAKE_COMMAND} -E echo "Running csv_read_test"
-    COMMAND $<TARGET_FILE:csv_read_test> > csv_read_test.out
-    BYPRODUCTS csv_read_test.out
-    WORKING_DIRECTORY "${TEST_DIR}"
-    VERBATIM
-    USES_TERMINAL
-)
+# # Create csv_read_test output as separate target folded into `make all`
+# add_custom_target(run_csv_read_test
+#     ALL
+#     DEPENDS run_csv_write_test
+#     COMMAND ${CMAKE_COMMAND} -E echo "Running csv_read_test"
+#     COMMAND $<TARGET_FILE:csv_read_test> > csv_read_test.out
+#     BYPRODUCTS csv_read_test.out
+#     WORKING_DIRECTORY "${TEST_DIR}"
+#     VERBATIM
+#     USES_TERMINAL
+# )
+
+# # Create csv_local_test output as separate target folded into `make all`
+# add_custom_target(run_csv_local_test
+#     ALL
+#     DEPENDS fcsv_test_setup
+#     COMMAND ${CMAKE_COMMAND} -E echo "Running csv_local_test"
+#     COMMAND $<TARGET_FILE:csv_local_test> > csv_test.out
+#     BYPRODUCTS csv_test.out test2.csv
+#     WORKING_DIRECTORY "${TEST_DIR}"
+#     VERBATIM
+#     USES_TERMINAL
+# )
 
 # Create csv_local_test output as separate target folded into `make all`
 add_custom_target(run_csv_local_test
     ALL
     DEPENDS fcsv_test_setup
     COMMAND ${CMAKE_COMMAND} -E echo "Running csv_local_test"
-    COMMAND $<TARGET_FILE:csv_local_test> > csv_test.out
-    BYPRODUCTS csv_test.out test2.csv
+    COMMAND $<TARGET_FILE:csv_test> > csv_test.out
+    BYPRODUCTS csv_test.out test2.csv test_write.csv
     WORKING_DIRECTORY "${TEST_DIR}"
     VERBATIM
     USES_TERMINAL
@@ -214,11 +226,11 @@ add_custom_target(run_csv_local_test
 # Tests using CMake's simple built-in "compare_files" command
 # Compare output with original reference data
 
-# Example 1: csv_read_test.out
-add_test(NAME 1_csv_read_test
-    COMMAND ${CMAKE_COMMAND} -E compare_files --ignore-eol csv_read_test.out csv_read_test.out.ref
-    CONFIGURATIONS Debug Release ""
-)
+# # Example 1: csv_read_test.out
+# add_test(NAME 1_csv_read_test
+#     COMMAND ${CMAKE_COMMAND} -E compare_files --ignore-eol csv_read_test.out csv_read_test.out.ref
+#     CONFIGURATIONS Debug Release ""
+# )
 
 # Example 2: csv_test.out
 add_test(NAME 2_csv_test
@@ -239,15 +251,15 @@ add_test(NAME 4_test2
 )
 
 set_tests_properties(
-    1_csv_read_test
+   # 1_csv_read_test
     2_csv_test
     3_test_write
     4_test2
     PROPERTIES
     DEPENDS fcsv_test_setup
-    DEPENDS run_csv_write_test
-    DEPENDS run_csv_read_test
-    DEPENDS run_csv_local_test
+    # DEPENDS run_csv_write_test
+    # DEPENDS run_csv_read_test
+    DEPENDS run_csv_test
     WORKING_DIRECTORY "${TEST_DIR}"
     TIMEOUT 30
 )
