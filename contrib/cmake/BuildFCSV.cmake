@@ -17,8 +17,8 @@ if(GIT_FOUND)
         # local file, allowing this to work without net access.
         #    GIT_REPOSITORY         https://github.com/jacobwilliams/fortran-csv-module.git
         #    GIT_TAG                1.2.0
-        GIT_REPOSITORY         https://github.com/apthorpe/fortran-csv-module.git
-        GIT_TAG                2d7c286225f53c77ed113e4776953d1cf0a780ae
+        GIT_REPOSITORY         https://github.com/jacobwilliams/fortran-csv-module
+        GIT_TAG                1.3.1
         SOURCE_DIR             "${FCSV_DIST_DIR}"
         INSTALL_DIR            "${FCSV_LOCAL_INSTALL_DIR}"
         CMAKE_ARGS             ${FCSV_CMAKE_ARGS}

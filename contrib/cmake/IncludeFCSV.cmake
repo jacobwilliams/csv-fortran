@@ -10,9 +10,8 @@ set(FCSV_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/FCSV-source")
 
 FetchContent_Declare(
     FCSV_external
-    #    GIT_REPOSITORY         https://github.com/jacobwilliams/fortran-csv-module.git
-    GIT_REPOSITORY         https://github.com/apthorpe/fortran-csv-module.git
-    GIT_TAG                2d7c286225f53c77ed113e4776953d1cf0a780ae
+    GIT_REPOSITORY         https://github.com/jacobwilliams/fortran-csv-module.git
+    GIT_TAG                1.3.1
     SOURCE_DIR             "${FCSV_SOURCE_DIR}"
 )
 
