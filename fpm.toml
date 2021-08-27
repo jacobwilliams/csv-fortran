@@ -3,9 +3,11 @@ version = "1.3.0"
 author = "Jacob Williams"
 maintainer = "Jacob Williams"
 copyright = "Copyright (c) 2017-2021, Jacob Williams"
-license = "BSD"
+license = "BSD-3"
 description = "Read and Write CSV Files Using Modern Fortran"
 homepage = "https://github.com/jacobwilliams/fortran-csv-module"
+categories = ["io"]
+keywords = ["csv"]
 
 [library]
 source-dir = "src"

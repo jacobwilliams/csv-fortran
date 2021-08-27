@@ -6,6 +6,34 @@ A modern Fortran library for reading and writing CSV (comma-separated value) fil
 
 [![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg?style=plastic)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
 
+### Getting started
+#### Get the code
+```bash
+git clone https://github.com/jacobwilliams/fortran-csv-module
+cd fortran-csv-module
+```
+#### Dependencies
+1. Git
+2. FoBis or [fpm](https://github.com/fortran-lang/fpm)
+3. Ford (optional)
+#### Build with FoBis
+You can build using provided `build.sh`:
+```bash
+./build.sh
+```
+
+#### Build with [fortran-lang/fpm](https://github.com/fortran-lang/fpm)
+Fortran Package Manager (fpm) is a great package manager and build system for Fortran.  
+You can build using provided `fpm.toml`:
+```bash
+fpm build
+```
+To use `fortran-csv-module` within your fpm project, add the following to your `fpm.toml` file:
+```toml
+[dependencies]
+fortran-csv-module = { git="https://github.com/jacobwilliams/fortran-csv-module.git" }
+```
+
 ### Examples
 
 Everything is handled by an object-oriented `csv_file` class. Here is an example for writing a file:
