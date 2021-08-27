@@ -1,0 +1,34 @@
+name = "fortran-csv-module"
+version = "1.2.0"
+author = "Jacob Williams"
+maintainer = "Jacob Williams"
+copyright = "Copyright (c) 2017-2021, Jacob Williams"
+license = "BSD"
+description = "Read and Write CSV Files Using Modern Fortran"
+homepage = "https://github.com/jacobwilliams/fortran-csv-module"
+
+[library]
+source-dir = "src"
+
+[[ test ]]
+name = "csv_read_test"
+source-dir = "src/tests"
+main = "csv_read_test.f90"
+
+[[ test ]]
+name = "csv_test"
+source-dir = "src/tests"
+main = "csv_test.f90"
+
+[[ test ]]
+name = "csv_write_test"
+source-dir = "src/tests"
+main = "csv_write_test.f90"
+
+[install]
+library = true
+
+[build]
+auto-executables = false
+auto-examples = false
+auto-tests = false

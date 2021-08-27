@@ -32,3 +32,6 @@ build
 doc
 lib
 bin
+
+# mac
+.DS_Store
