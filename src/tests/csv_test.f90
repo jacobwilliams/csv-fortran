@@ -134,7 +134,7 @@
         write(*,*) ''
 
         ! open the file
-        call f%open('test.csv',n_cols=4,status_ok=status_ok)
+        call f%open('test_write.csv',n_cols=4,status_ok=status_ok)
         if (status_ok) then
 
             ! add header
@@ -176,7 +176,7 @@
         write(*,*) ''
 
         ! read the file
-        call f%read('test.csv',header_row=1,status_ok=status_ok)
+        call f%read('test_write.csv',header_row=1,status_ok=status_ok)
 
         if (status_ok) then
 
