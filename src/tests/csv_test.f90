@@ -24,6 +24,7 @@
         type(csv_file) :: f
         type(csv_file) :: f2
         integer :: i !! counter
+        integer :: k !! counter
         character(len=30),dimension(:),allocatable :: header  !! the header
         character(len=30),dimension(:,:),allocatable :: csv_data  !! the data from the file as strings
         real(wp),dimension(:),allocatable :: x  !! for getting a real vector from a csv file
@@ -33,8 +34,12 @@
         character(len=30),dimension(:),allocatable :: names
         character(len=:),allocatable :: file
 
-        character(len=*),dimension(2),parameter :: files_to_test = ['../files/test.csv          ',&
-                                                                    '../files/test_2_columns.csv']
+        character(len=*),dimension(2),parameter :: files_to_test = ['test.csv          ',&
+                                                                    'test_2_columns.csv']
+        character(len=*),dimension(4),parameter :: dirs_to_try = ['../files/', &
+                                                                  './files/ ', &
+                                                                  './       ', &
+                                                                  '         ']
 
         write(*,*) ''
         write(*,*) '============================'
@@ -44,12 +49,12 @@
 
         do ifile = 1, size(files_to_test)
 
-            file = trim(files_to_test(ifile))
-            if (.not. file_exists(file)) then
-                file(1:1) = ' '  ! try from current working directory
-                file = trim(adjustl(file))
-            end if
-
+            ! a hack to get it to work with all the different build systems
+            ! no matter the working directory
+            do k = 1, size(dirs_to_try)
+                file = trim(dirs_to_try(k))//trim(files_to_test(ifile))
+                if (file_exists(file)) exit ! found it
+            end do
             write(*,*) 'read file: '//trim(file)
 
             ! read the file:
@@ -134,7 +139,7 @@
         write(*,*) ''
 
         ! open the file
-        call f%open('test.csv',n_cols=4,status_ok=status_ok)
+        call f%open('test_write.csv',n_cols=4,status_ok=status_ok)
         if (status_ok) then
 
             ! add header
@@ -176,7 +181,7 @@
         write(*,*) ''
 
         ! read the file
-        call f%read('test.csv',header_row=1,status_ok=status_ok)
+        call f%read('test_write.csv',header_row=1,status_ok=status_ok)
 
         if (status_ok) then
 
