@@ -35,3 +35,6 @@ bin
 
 # mac
 .DS_Store
+
+# tests
+/*.csv
