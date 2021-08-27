@@ -13,19 +13,9 @@ keywords = ["csv"]
 source-dir = "src"
 
 [[ test ]]
-name = "csv_read_test"
-source-dir = "src/tests"
-main = "csv_read_test.f90"
-
-[[ test ]]
 name = "csv_test"
 source-dir = "src/tests"
 main = "csv_test.f90"
-
-[[ test ]]
-name = "csv_write_test"
-source-dir = "src/tests"
-main = "csv_write_test.f90"
 
 [install]
 library = true

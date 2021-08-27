@@ -50,6 +50,8 @@
                 file = trim(adjustl(file))
             end if
 
+            write(*,*) 'read file: '//trim(file)
+
             ! read the file:
             if (ifile==1) then
                 call f%read(file,header_row=1,status_ok=status_ok)
