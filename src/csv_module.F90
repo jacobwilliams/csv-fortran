@@ -49,7 +49,7 @@
         ! for reading a csv file:
         integer :: n_rows = 0  !! number of rows in the file
         integer :: n_cols = 0  !! number of columns in the file
-        integer :: chunk_size = 100 !! for expanding vectors
+        integer :: chunk_size = 1024 !! for expanding vectors
         type(csv_string),dimension(:),allocatable :: header      !! the header
         type(csv_string),dimension(:,:),allocatable :: csv_data  !! the data in the file
 
@@ -675,8 +675,8 @@
         ! size the output array:
         allocate(csv_data(me%n_rows,me%n_cols))
         ! convert each element to a string:
-        do concurrent (i=1:me%n_rows)
-            do concurrent (j=1:me%n_cols)
+        do concurrent (j=1:me%n_cols)
+            do concurrent (i=1:me%n_rows)
                 csv_data(i,j) = me%csv_data(i,j)%str
             end do
         end do
