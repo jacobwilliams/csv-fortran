@@ -1,3 +1,6 @@
+![fortran-csv-module](/media/logo.png)
+============
+
 ### Description
 
 A modern Fortran library for reading and writing CSV (comma-separated value) files.
@@ -23,7 +26,7 @@ You can build using provided `build.sh`:
 ```
 
 #### Build with [fortran-lang/fpm](https://github.com/fortran-lang/fpm)
-Fortran Package Manager (fpm) is a great package manager and build system for Fortran.  
+Fortran Package Manager (fpm) is a great package manager and build system for Fortran.
 You can build using provided `fpm.toml`:
 ```bash
 fpm build
