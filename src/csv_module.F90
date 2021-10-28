@@ -233,6 +233,7 @@
 
         !get number of lines in the file
         n_rows_in_file = number_of_lines_in_file(iunit)
+        print*,'iiiiii ',n_rows_in_file
 
         !get number of lines in the data array
         if (present(skip_rows)) then
@@ -243,12 +244,14 @@
         else
             n_rows = n_rows_in_file
         end if
+     print*,'aaaa ',n_rows
         if (present(header_row)) then
             iheader = max(0,header_row)
             n_rows = n_rows - 1
         else
             iheader = 0
         end if
+     print*,'bbb ',n_rows
 
         me%n_rows = n_rows
 
@@ -876,7 +879,9 @@
 
     select type (val)
     type is (integer(ip))
-        call to_integer(me%csv_data(row,col)%str,val,status_ok)
+!     print*,'tttt ',row,col,allocated(me%csv_data(row,col)%str)
+        call to_integer(trim(me%csv_data(row,col)%str),val,status_ok)
+    print*,'xxx',trim(me%csv_data(row,col)%str),'xxx',status_ok, val
     type is (real(wp))
         call to_real(me%csv_data(row,col)%str,val,status_ok)
     type is (logical)
@@ -1285,9 +1290,13 @@
         i1 = 1
         i2 = itokens(1)-1
         if (i2>=i1) then
-            vals(1)%str = str(i1:i2)
+            if(len_trim(str(i1:i2)) == 0)then
+             vals(1)%str = '-9998'  !the first character is a token
+            else
+             vals(1)%str = str(i1:i2)
+            endif
         else
-            vals(1)%str = ''  !the first character is a token
+            vals(1)%str = '-9999'  !the first character is a token
         end if
 
         !      1 2 3
@@ -1297,18 +1306,26 @@
             i1 = itokens(i-1)+len_token
             i2 = itokens(i)-1
             if (i2>=i1) then
-                vals(i)%str = str(i1:i2)
+             if(len_trim(str(i1:i2)) == 0)then
+              vals(i)%str = '-9998'
+             else
+              vals(i)%str = str(i1:i2)
+             endif
             else
-                vals(i)%str = ''  !empty element (e.g., 'abc,,def')
+                vals(i)%str = '-9999'  !empty element (e.g., 'abc,,def')
             end if
         end do
 
         i1 = itokens(n_tokens) + len_token
         i2 = len_str
         if (itokens(n_tokens)+len_token<=len_str) then
-            vals(n_tokens+1)%str = str(i1:i2)
+           if(len_trim(str(i1:i2)) == 0)then
+              vals(n_tokens+1)%str = '-9998'
+             else
+              vals(n_tokens+1)%str = str(i1:i2)
+             endif
         else
-            vals(n_tokens+1)%str = ''  !the last character was a token
+            vals(n_tokens+1)%str = '-9999'  !the last character was a token
         end if
 
     else
