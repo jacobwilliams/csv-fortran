@@ -179,12 +179,11 @@
     if (present(verbose)) me%verbose = verbose
     if (present(chunk_size)) me%chunk_size = chunk_size
 
+    me%missing%str = defmissing
     if (present(missing)) me%missing%str = missing
 
     ! override:
     if (me%enclose_all_in_quotes) me%enclose_strings_in_quotes = .true.
-    
-    if (.not.allocated(me%missing%str)) me%missing%str = defmissing
 
     end subroutine initialize_csv_file
 !*****************************************************************************************
@@ -889,7 +888,7 @@
 
     select type (val)
     type is (integer(ip))
-        call to_integer(trim(me%csv_data(row,col)%str),val,status_ok)
+        call to_integer(me%csv_data(row,col)%str,val,status_ok)
     type is (real(wp))
         call to_real(me%csv_data(row,col)%str,val,status_ok)
     type is (logical)
