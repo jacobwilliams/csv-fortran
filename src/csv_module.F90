@@ -23,6 +23,8 @@
 
     real(wp),parameter :: zero = 0.0_wp
 
+    character(len=0), parameter :: defmissing = ''
+
     type,public :: csv_string
         !! a cell from a CSV file.
         !!
@@ -50,6 +52,7 @@
         integer :: n_rows = 0  !! number of rows in the file
         integer :: n_cols = 0  !! number of columns in the file
         integer :: chunk_size = 1024 !! for expanding vectors
+        type(csv_string) :: missing      !! missing value
         type(csv_string),dimension(:),allocatable :: header      !! the header
         type(csv_string),dimension(:,:),allocatable :: csv_data  !! the data in the file
 
@@ -133,6 +136,7 @@
                                     logical_true_string,&
                                     logical_false_string,&
                                     chunk_size,&
+                                    missing,&
                                     verbose)
 
     implicit none
@@ -158,6 +162,7 @@
                                                                  !! (default is `F`)
     integer,intent(in),optional :: chunk_size  !! factor for expanding vectors
                                                !! (default is 100)
+    character(len=*),intent(in),optional :: missing !! string containing a missing code
     logical,intent(in),optional :: verbose  !! print error messages to the
                                             !! console (default is False)
 
@@ -174,8 +179,12 @@
     if (present(verbose)) me%verbose = verbose
     if (present(chunk_size)) me%chunk_size = chunk_size
 
+    if (present(missing)) me%missing%str = missing
+
     ! override:
     if (me%enclose_all_in_quotes) me%enclose_strings_in_quotes = .true.
+    
+    if (.not.allocated(me%missing%str)) me%missing%str = defmissing
 
     end subroutine initialize_csv_file
 !*****************************************************************************************
@@ -197,7 +206,7 @@
 !>
 !  Read a CSV file.
 
-    subroutine read_csv_file(me,filename,header_row,skip_rows,status_ok)
+    subroutine read_csv_file(me,filename,header_row,skip_rows,missing,status_ok)
 
     implicit none
 
@@ -206,6 +215,7 @@
     logical,intent(out) :: status_ok  !! status flag
     integer,intent(in),optional :: header_row  !! the header row
     integer,dimension(:),intent(in),optional :: skip_rows  !! rows to skip
+    character(len=*),intent(in),optional :: missing
 
     type(csv_string),dimension(:),allocatable :: row_data  !! a tokenized row
     integer,dimension(:),allocatable :: rows_to_skip  !! the actual rows to skip
@@ -227,13 +237,15 @@
     call me%destroy()
     arrays_allocated = .false.
 
+    me%missing%str = defmissing
+    if (present(missing)) me%missing%str = missing
+
     open(newunit=iunit, file=filename, status='OLD', iostat=istat)
 
     if (istat==0) then
 
         !get number of lines in the file
         n_rows_in_file = number_of_lines_in_file(iunit)
-        print*,'iiiiii ',n_rows_in_file
 
         !get number of lines in the data array
         if (present(skip_rows)) then
@@ -244,14 +256,12 @@
         else
             n_rows = n_rows_in_file
         end if
-     print*,'aaaa ',n_rows
         if (present(header_row)) then
             iheader = max(0,header_row)
             n_rows = n_rows - 1
         else
             iheader = 0
         end if
-     print*,'bbb ',n_rows
 
         me%n_rows = n_rows
 
@@ -879,9 +889,7 @@
 
     select type (val)
     type is (integer(ip))
-!     print*,'tttt ',row,col,allocated(me%csv_data(row,col)%str)
         call to_integer(trim(me%csv_data(row,col)%str),val,status_ok)
-    print*,'xxx',trim(me%csv_data(row,col)%str),'xxx',status_ok, val
     type is (real(wp))
         call to_real(me%csv_data(row,col)%str,val,status_ok)
     type is (logical)
@@ -1118,7 +1126,7 @@
     character(len=:),allocatable :: tmp !! a temp string with whitespace removed
     integer :: n !! length of compressed string
 
-    call split(line,me%delimiter,me%chunk_size,cells)
+    call split(line,me%delimiter,me%chunk_size,me%missing%str,cells)
 
     ! remove quotes if present:
     do i = 1, size(cells)
@@ -1224,19 +1232,20 @@
 !````Fortran
 !   character(len=:),allocatable :: s
 !   type(csv_string),dimension(:),allocatable :: vals
-!   s = '1,2,3,4,5'
-!   call split(s,',',vals)
+!   s = '1,2,3,,5'
+!   call split(s,',','-999',vals)
 !````
 !
 !@warning Does not account for tokens contained within quotes string !!!
 
-    pure subroutine split(str,token,chunk_size,vals)
+    pure subroutine split(str,token,chunk_size,missing,vals)
 
     implicit none
 
     character(len=*),intent(in)  :: str
     character(len=*),intent(in)  :: token
     integer,intent(in)           :: chunk_size  !! for expanding vectors
+    character(len=*),intent(in)  :: missing
     type(csv_string),dimension(:),allocatable,intent(out) :: vals
 
     integer :: i          !! counter
@@ -1291,12 +1300,12 @@
         i2 = itokens(1)-1
         if (i2>=i1) then
             if(len_trim(str(i1:i2)) == 0)then
-             vals(1)%str = '-9998'  !the first character is a token
+             vals(1)%str = missing !the first character is a token
             else
              vals(1)%str = str(i1:i2)
             endif
         else
-            vals(1)%str = '-9999'  !the first character is a token
+            vals(1)%str = missing !the first character is a token
         end if
 
         !      1 2 3
@@ -1307,12 +1316,12 @@
             i2 = itokens(i)-1
             if (i2>=i1) then
              if(len_trim(str(i1:i2)) == 0)then
-              vals(i)%str = '-9998'
+              vals(i)%str =missing 
              else
               vals(i)%str = str(i1:i2)
              endif
             else
-                vals(i)%str = '-9999'  !empty element (e.g., 'abc,,def')
+                vals(i)%str = missing !empty element (e.g., 'abc,,def')
             end if
         end do
 
@@ -1320,12 +1329,12 @@
         i2 = len_str
         if (itokens(n_tokens)+len_token<=len_str) then
            if(len_trim(str(i1:i2)) == 0)then
-              vals(n_tokens+1)%str = '-9998'
+              vals(n_tokens+1)%str = missing 
              else
               vals(n_tokens+1)%str = str(i1:i2)
              endif
         else
-            vals(n_tokens+1)%str = '-9999'  !the last character was a token
+            vals(n_tokens+1)%str = missing !the last character was a token
         end if
 
     else
