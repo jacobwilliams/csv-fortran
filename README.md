@@ -1,6 +1,8 @@
 ![fortran-csv-module](/media/logo.png)
 ============
 
+![Build Status](https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg)
+
 ### Description
 
 A modern Fortran library for reading and writing CSV (comma-separated value) files.
@@ -17,8 +19,9 @@ cd fortran-csv-module
 ```
 #### Dependencies
 1. Git
-2. FoBis or [fpm](https://github.com/fortran-lang/fpm)
-3. Ford (optional)
+2. [FoBis](https://github.com/szaghi/FoBiS), [fpm](https://github.com/fortran-lang/fpm), or [CMake](https://cmake.org)
+3. [FORD](https://github.com/Fortran-FOSS-Programmers/ford) (optional)
+
 #### Build with FoBis
 You can build using provided `build.sh`:
 ```bash
@@ -39,7 +42,7 @@ fortran-csv-module = { git="https://github.com/jacobwilliams/fortran-csv-module.
 
 ### Examples
 
-Everything is handled by an object-oriented `csv_file` class. Here is an example for writing a file:
+Everything is handled by an object-oriented `csv_file` class. Here is an example for writing a file:
 
 ```fortran
 program csv_write_test
@@ -82,7 +85,7 @@ x,y,z,t
 
 Real, integer, logical, or character data can be added as scalars, vectors, and matrices.
 
-When reading a CSV file, the data is stored internally in the class as allocatable character strings, which can be retrieved as real, integer, logical or character vectors as necessary. For example, to get the `x`, `y`, `z`, and `t` vectors from the previously-generated file:
+When reading a CSV file, the data is stored internally in the class as allocatable character strings, which can be retrieved as real, integer, logical or character vectors as necessary. For example, to get the `x`, `y`, `z`, and `t` vectors from the previously-generated file:
 
 ```fortran
 program csv_read_test
