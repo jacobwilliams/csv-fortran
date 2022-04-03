@@ -9,7 +9,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         gcc_v: [10] # Version of GFortran we want to use.
-        python-version: [3.7]
+        python-version: [3.9]
     env:
       FC: gfortran-${{ matrix.gcc_v }}
       GCC_V: ${{ matrix.gcc_v }}
@@ -29,7 +29,7 @@ jobs:
       uses: ts-graphviz/setup-graphviz@v1
 
     - name: Setup Fortran Package Manager
-      uses: fortran-lang/setup-fpm@v3
+      uses: fortran-lang/setup-fpm@v4
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
