@@ -1,7 +1,8 @@
 ![fortran-csv-module](/media/logo.png)
 ============
 
-![Build Status](https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg)
+![CI Status](https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg)
+[![codecov](https://codecov.io/gh/jacobwilliams/fortran-csv-module/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/fortran-csv-module)
 
 ### Description
 
