@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="./favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="./css/pygments.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/local.css" rel="stylesheet">
-    
     <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,58 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="./lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="./lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="./lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="./lists/types.html">Derived Types</a></li>
-        
-        
+                   <li><a href="./lists/types.html">Derived Types</a></li>
             <li><a href="./program/csv_test.html">Program</a></li>
-               
-        
-        
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="./program/csv_test.html">Program</a></li>
-
-
-
           </ul>
-        
         <form action="./search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -108,35 +72,22 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <p>Read and Write CSV Files Using Modern Fortran</p>
-        	 
 	<p> Find us on&hellip;</p>
         <p>
-			 
           <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/fortran-csv-module" role="button">GitHub</a>
-			 
-			 
-			 
-			 
-			 
-	         
-			 
         </p>
       </div>
 
       <div class="row" id='text'>
-		  
         <div class="col-md-8">
-		  
           <h1>fortran-csv-module</h1>
           <h1><img alt="fortran-csv-module" src="/media/logo.png"></h1>
 <p><img alt="Build Status" src="https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg"></p>
@@ -168,41 +119,41 @@ You can build using provided <code>fpm.toml</code>:</p>
 </code></pre></div>
 
 <p>To use <code>fortran-csv-module</code> within your fpm project, add the following to your <code>fpm.toml</code> file:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
-<span class="n">fortran-csv-module</span> <span class="o">=</span> <span class="p">{</span> <span class="n">git</span><span class="o">=</span><span class="s">&quot;https://github.com/jacobwilliams/fortran-csv-module.git&quot;</span> <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span><span class="w"></span>
+<span class="n">fortran-csv-module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="o">=</span><span class="s">&quot;https://github.com/jacobwilliams/fortran-csv-module.git&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <h3>Examples</h3>
 <p>Everything is handled by an object-oriented <code>csv_file</code> class. Here is an example for writing a file:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">program </span><span class="n">csv_write_test</span>
+<div class="codehilite"><pre><span></span><code><span class="k">program </span><span class="n">csv_write_test</span><span class="w"></span>
 
-<span class="k">use </span><span class="n">csv_module</span>
-<span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span> <span class="k">only</span><span class="p">:</span> <span class="n">wp</span> <span class="o">=&gt;</span> <span class="n">real64</span>
+<span class="k">use </span><span class="n">csv_module</span><span class="w"></span>
+<span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">wp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">real64</span><span class="w"></span>
 
 <span class="k">implicit none</span>
 
-<span class="k">type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
-<span class="kt">logical</span> <span class="kd">::</span> <span class="n">status_ok</span>
+<span class="k">type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
+<span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w"></span>
 
 <span class="c">! open the file</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span><span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span><span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
 <span class="c">! add header</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
 
 <span class="c">! add some data:</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">true</span><span class="p">.)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">4.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="mf">6.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">false</span><span class="p">.)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">true</span><span class="p">.)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">4.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="mf">6.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">false</span><span class="p">.)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
 
 <span class="c">! finished</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">close</span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">close</span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-<span class="k">end program </span><span class="n">csv_write_test</span>
+<span class="k">end program </span><span class="n">csv_write_test</span><span class="w"></span>
 </code></pre></div>
 
 <p>Which produces the following file:</p>
@@ -213,161 +164,105 @@ You can build using provided <code>fpm.toml</code>:</p>
 
 <p>Real, integer, logical, or character data can be added as scalars, vectors, and matrices.</p>
 <p>When reading a CSV file, the data is stored internally in the class as allocatable character strings, which can be retrieved as real, integer, logical or character vectors as necessary. For example, to get the <code>x</code>, <code>y</code>, <code>z</code>, and <code>t</code> vectors from the previously-generated file:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">program </span><span class="n">csv_read_test</span>
+<div class="codehilite"><pre><span></span><code><span class="k">program </span><span class="n">csv_read_test</span><span class="w"></span>
 
-<span class="k">use </span><span class="n">csv_module</span>
-<span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span> <span class="k">only</span><span class="p">:</span> <span class="n">wp</span> <span class="o">=&gt;</span> <span class="n">real64</span>
+<span class="k">use </span><span class="n">csv_module</span><span class="w"></span>
+<span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">wp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">real64</span><span class="w"></span>
 
 <span class="k">implicit none</span>
 
-<span class="k">type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">header</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span>
-<span class="kt">logical</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">t</span>
-<span class="kt">logical</span> <span class="kd">::</span> <span class="n">status_ok</span>
-<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">itypes</span>
+<span class="k">type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">header</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="w"></span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w"></span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">itypes</span><span class="w"></span>
 
 <span class="c">! read the file</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
 <span class="c">! get the header and type info</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get_header</span><span class="p">(</span><span class="n">header</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">variable_types</span><span class="p">(</span><span class="n">itypes</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get_header</span><span class="p">(</span><span class="n">header</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">variable_types</span><span class="p">(</span><span class="n">itypes</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
 <span class="c">! get some data</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
 <span class="c">! destroy the file</span>
-<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
 
-<span class="k">end program </span><span class="n">csv_read_test</span>
+<span class="k">end program </span><span class="n">csv_read_test</span><span class="w"></span>
 </code></pre></div>
 
 <p>Various options are user-selectable for specifying the format (e.g., changing the quote or delimiter characters). You can choose to enclose strings (or all fields) in quotes or not. The library works pretty well, and there are probably additional improvements that could be made. For one thing, it doesn't properly handle the case of a string that contains the delimiter character (I'll eventually fix this). If anybody has any other improvements, fork it and send me a pull request.</p>
 <h3>License</h3>
 <p>This library is released under a <a href="https://github.com/jacobwilliams/fortran-csv-module/blob/master/LICENSE">BSD-3 license</a>.</p>
         </div>
-		  
         <div class="col-md-4">
 	  <div class="well">
           <h2>Developer Info</h2>
           <h4>Jacob Williams</h4>
           
-          
-			   
             <div class="text-center"><div class="btn-group" role="group">
-              
-              
-              
               <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams"><i class="fa fa-github fa-lg"></i></a>
-              
-              
-				  
-              
-              
-              
-              
             </div></div>
-            
        </div>
        </div>
-       
       </div>
-      
-      
-      
-      
-      
-      
-		
-        
       <div class="row">
-        
         <div class="col-xs-6 col-sm-3">
               <h3>Source Files</h3>
-              <ul>
-                    <li><a href='./sourcefile/csv_kinds.f90.html'>csv_kinds.f90</a></li>
-                  
+              <ul>                    <li><a href='./sourcefile/csv_kinds.f90.html'>csv_kinds.f90</a></li>
                     <li><a href='./sourcefile/csv_module.f90.html'>csv_module.F90</a></li>
-                  
                     <li><a href='./sourcefile/csv_parameters.f90.html'>csv_parameters.f90</a></li>
-                  
                     <li><a href='./sourcefile/csv_test.f90.html'>csv_test.f90</a></li>
-                  
                     <li><a href='./sourcefile/csv_utilities.f90.html'>csv_utilities.f90</a></li>
-                  </ul>
+</ul>
           </div>
-        
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Modules</h3>
-              <ul>
-                    <li><a href='./module/csv_kinds.html'>csv_kinds</a></li>
-                  
+              <ul>                    <li><a href='./module/csv_kinds.html'>csv_kinds</a></li>
                     <li><a href='./module/csv_module.html'>csv_module</a></li>
-                  
                     <li><a href='./module/csv_parameters.html'>csv_parameters</a></li>
-                  
                     <li><a href='./module/csv_utilities.html'>csv_utilities</a></li>
-                  </ul>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Procedures</h3>
-              <ul>
-                    <li><a href='./proc/add_cell.html'>add_cell</a></li>
-                  
+              <ul>                    <li><a href='./proc/add_cell.html'>add_cell</a></li>
                     <li><a href='./proc/add_matrix.html'>add_matrix</a></li>
-                  
                     <li><a href='./proc/add_vector.html'>add_vector</a></li>
-                  
                     <li><a href='./proc/close_csv_file.html'>close_csv_file</a></li>
-                  
                     <li><a href='./proc/csv_get_value.html'>csv_get_value</a></li>
-                  
                     <li><a href='./proc/csv_read_test.html'>csv_read_test</a></li>
-                  
                     <li><a href='./proc/csv_test_1.html'>csv_test_1</a></li>
-                  
                     <li><a href='./proc/csv_write_test.html'>csv_write_test</a></li>
-                  
                     <li><a href='./proc/destroy_csv_file.html'>destroy_csv_file</a></li>
-                  
                     <li><a href='./proc/expand_vector.html'>expand_vector</a></li>
-                  </ul>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Derived Types</h3>
-              <ul>
-                    <li><a href='./type/csv_file.html'>csv_file</a></li>
-                  
+              <ul>                    <li><a href='./type/csv_file.html'>csv_file</a></li>
                     <li><a href='./type/csv_string.html'>csv_string</a></li>
-                  </ul>
+</ul>
           </div>
-          
       </div>
-      
-
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -395,14 +290,11 @@ You can build using provided <code>fpm.toml</code>:</p>
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="./tipuesearch/tipuesearch_content.js"></script>
     <script src="./tipuesearch/tipuesearch_set.js"></script>
     <script src="./tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

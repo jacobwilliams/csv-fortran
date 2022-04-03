@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,58 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
             <li><a href="../program/csv_test.html">Program</a></li>
-               
-        
-        
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../program/csv_test.html">Program</a></li>
-
-
-
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -108,51 +72,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>csv_get_value
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 3.0% of total for procedures.">28 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/csv_module.F90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/csv_module.f90.html'>csv_module.F90</a></li>
-    
      <li><a href='../module/csv_module.html'>csv_module</a></li>
-    
-  
      <li class="active">csv_get_value</li>
   </ol>
 </div>
@@ -168,32 +110,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -201,125 +120,56 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine csv_get_value(me, row, col, val, status_ok)
+    <h2>private subroutine csv_get_value(me, row, col, val, status_ok)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Get an individual value from the <code>csv_data</code> structure in the CSV class.</p>
 <p>The output <code>val</code> can be an <code>integer(ip)</code>, <code>real(wp)</code>,
 <code>logical</code>, or <code>character(len=*)</code> variable.</p>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-me~14"></span>class(<a href='../type/csv_file.html'>csv_file</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-row"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>row</strong></td><td><p>row number</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-col"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>col</strong></td><td><p>column number</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-val~8"></span>class(*),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>val</strong></td><td><p>the returned value</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-status_ok~11"></span>logical,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>status_ok</strong></td><td><p>status flag</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -342,65 +192,65 @@ private subroutine csv_get_value(me, row, col, val, status_ok)
 <polygon fill="none" stroke="black" points="87,-66 0,-66 0,-42 87,-42 87,-66"/>
 <text text-anchor="middle" x="43.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_get_value</text>
 </g>
-<!-- proc~to_integer -->
-<g id="proc~~csv_get_value~~CallsGraph_node2" class="node">
-<title>proc~to_integer</title>
-<g id="a_proc~~csv_get_value~~CallsGraph_node2"><a xlink:href=".././proc/to_integer.html" xlink:title="to_integer">
-<polygon fill="#d9534f" stroke="#d9534f" points="190,-108 123,-108 123,-84 190,-84 190,-108"/>
-<text text-anchor="middle" x="156.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_integer</text>
-</a>
-</g>
-</g>
-<!-- proc~csv_get_value&#45;&gt;proc~to_integer -->
-<g id="proc~~csv_get_value~~CallsGraph_edge1" class="edge">
-<title>proc~csv_get_value&#45;&gt;proc~to_integer</title>
-<path fill="none" stroke="#000000" d="M76.31,-66.04C88.15,-70.52 101.77,-75.67 114.33,-80.42"/>
-<polygon fill="#000000" stroke="#000000" points="113.1,-83.7 123.69,-83.96 115.57,-77.15 113.1,-83.7"/>
-</g>
 <!-- proc~to_real -->
-<g id="proc~~csv_get_value~~CallsGraph_node3" class="node">
+<g id="proc~~csv_get_value~~CallsGraph_node2" class="node">
 <title>proc~to_real</title>
-<g id="a_proc~~csv_get_value~~CallsGraph_node3"><a xlink:href=".././proc/to_real.html" xlink:title="to_real">
-<polygon fill="#d9534f" stroke="#d9534f" points="183.5,-66 129.5,-66 129.5,-42 183.5,-42 183.5,-66"/>
-<text text-anchor="middle" x="156.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_real</text>
+<g id="a_proc~~csv_get_value~~CallsGraph_node2"><a xlink:href=".././proc/to_real.html" xlink:title="to_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="183.5,-108 129.5,-108 129.5,-84 183.5,-84 183.5,-108"/>
+<text text-anchor="middle" x="156.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_real</text>
 </a>
 </g>
 </g>
 <!-- proc~csv_get_value&#45;&gt;proc~to_real -->
-<g id="proc~~csv_get_value~~CallsGraph_edge2" class="edge">
+<g id="proc~~csv_get_value~~CallsGraph_edge1" class="edge">
 <title>proc~csv_get_value&#45;&gt;proc~to_real</title>
-<path fill="none" stroke="#000000" d="M87.1,-54C97.63,-54 108.81,-54 119.01,-54"/>
-<polygon fill="#000000" stroke="#000000" points="119.23,-57.5 129.23,-54 119.23,-50.5 119.23,-57.5"/>
+<path fill="none" stroke="#000000" d="M76.31,-66.04C89.81,-71.15 105.63,-77.13 119.55,-82.4"/>
+<polygon fill="#000000" stroke="#000000" points="118.71,-85.82 129.3,-86.09 121.19,-79.27 118.71,-85.82"/>
 </g>
 <!-- proc~to_logical -->
-<g id="proc~~csv_get_value~~CallsGraph_node4" class="node">
+<g id="proc~~csv_get_value~~CallsGraph_node3" class="node">
 <title>proc~to_logical</title>
-<g id="a_proc~~csv_get_value~~CallsGraph_node4"><a xlink:href=".././proc/to_logical.html" xlink:title="to_logical">
-<polygon fill="#d9534f" stroke="#d9534f" points="188.5,-24 124.5,-24 124.5,0 188.5,0 188.5,-24"/>
-<text text-anchor="middle" x="156.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_logical</text>
+<g id="a_proc~~csv_get_value~~CallsGraph_node3"><a xlink:href=".././proc/to_logical.html" xlink:title="to_logical">
+<polygon fill="#d9534f" stroke="#d9534f" points="188.5,-66 124.5,-66 124.5,-42 188.5,-42 188.5,-66"/>
+<text text-anchor="middle" x="156.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_logical</text>
 </a>
 </g>
 </g>
 <!-- proc~csv_get_value&#45;&gt;proc~to_logical -->
-<g id="proc~~csv_get_value~~CallsGraph_edge3" class="edge">
+<g id="proc~~csv_get_value~~CallsGraph_edge2" class="edge">
 <title>proc~csv_get_value&#45;&gt;proc~to_logical</title>
-<path fill="none" stroke="#000000" d="M76.31,-41.96C88.36,-37.41 102.24,-32.15 114.98,-27.33"/>
-<polygon fill="#000000" stroke="#000000" points="116.34,-30.56 124.45,-23.75 113.86,-24.01 116.34,-30.56"/>
+<path fill="none" stroke="#000000" d="M87.1,-54C95.97,-54 105.32,-54 114.15,-54"/>
+<polygon fill="#000000" stroke="#000000" points="114.22,-57.5 124.22,-54 114.22,-50.5 114.22,-57.5"/>
+</g>
+<!-- proc~to_integer -->
+<g id="proc~~csv_get_value~~CallsGraph_node4" class="node">
+<title>proc~to_integer</title>
+<g id="a_proc~~csv_get_value~~CallsGraph_node4"><a xlink:href=".././proc/to_integer.html" xlink:title="to_integer">
+<polygon fill="#d9534f" stroke="#d9534f" points="190,-24 123,-24 123,0 190,0 190,-24"/>
+<text text-anchor="middle" x="156.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_integer</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_get_value&#45;&gt;proc~to_integer -->
+<g id="proc~~csv_get_value~~CallsGraph_edge3" class="edge">
+<title>proc~csv_get_value&#45;&gt;proc~to_integer</title>
+<path fill="none" stroke="#000000" d="M76.31,-41.96C88.15,-37.48 101.77,-32.33 114.33,-27.58"/>
+<polygon fill="#000000" stroke="#000000" points="115.57,-30.85 123.69,-24.04 113.1,-24.3 115.57,-30.85"/>
 </g>
 <!-- proc~lowercase_string -->
 <g id="proc~~csv_get_value~~CallsGraph_node5" class="node">
 <title>proc~lowercase_string</title>
 <g id="a_proc~~csv_get_value~~CallsGraph_node5"><a xlink:href=".././proc/lowercase_string.html" xlink:title="lowercase_string">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-24 226,-24 226,0 327,0 327,-24"/>
-<text text-anchor="middle" x="276.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lowercase_string</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-66 226,-66 226,-42 327,-42 327,-66"/>
+<text text-anchor="middle" x="276.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lowercase_string</text>
 </a>
 </g>
 </g>
 <!-- proc~to_logical&#45;&gt;proc~lowercase_string -->
 <g id="proc~~csv_get_value~~CallsGraph_edge4" class="edge">
 <title>proc~to_logical&#45;&gt;proc~lowercase_string</title>
-<path fill="none" stroke="#000000" d="M188.5,-12C196.93,-12 206.34,-12 215.78,-12"/>
-<polygon fill="#000000" stroke="#000000" points="215.99,-15.5 225.99,-12 215.99,-8.5 215.99,-15.5"/>
+<path fill="none" stroke="#000000" d="M188.5,-54C196.93,-54 206.34,-54 215.78,-54"/>
+<polygon fill="#000000" stroke="#000000" points="215.99,-57.5 225.99,-54 215.99,-50.5 215.99,-57.5"/>
 </g>
 </g>
 </svg>
@@ -465,35 +315,11 @@ private subroutine csv_get_value(me, row, col, val, status_ok)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -501,87 +327,72 @@ private subroutine csv_get_value(me, row, col, val, status_ok)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">csv_get_value</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">csv_get_value</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    class</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">row</span> <span class="c">!! row number</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">col</span> <span class="c">!! column number</span>
-    <span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">val</span> <span class="c">!! the returned value</span>
-    <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">status_ok</span> <span class="c">!! status flag</span>
+<span class="k">    class</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="c">!! row number</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="c">!! column number</span>
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="c">!! the returned value</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w"> </span><span class="c">!! status flag</span>
 
-    <span class="k">select type</span> <span class="p">(</span><span class="n">val</span><span class="p">)</span>
-    <span class="k">type is</span> <span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
-        <span class="k">call </span><span class="n">to_integer</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-    <span class="k">type is</span> <span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">))</span>
-        <span class="k">call </span><span class="n">to_real</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-    <span class="k">type is</span> <span class="p">(</span><span class="kt">logical</span><span class="p">)</span>
-        <span class="k">call </span><span class="n">to_logical</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-    <span class="k">type is</span> <span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">))</span>
-        <span class="n">status_ok</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">            </span><span class="n">val</span> <span class="o">=</span> <span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span>
-        <span class="k">else</span>
-<span class="k">            </span><span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">end if</span>
-<span class="k">    type is</span> <span class="p">(</span><span class="n">csv_string</span><span class="p">)</span>
-        <span class="n">status_ok</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
-        <span class="n">val</span> <span class="o">=</span> <span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
-    <span class="k">class </span><span class="n">default</span>
-        <span class="n">status_ok</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
-    <span class="k">end select</span>
+<span class="w">    </span><span class="k">select type</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">to_integer</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">to_real</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">logical</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">to_logical</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="n">status_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)%</span><span class="n">str</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">    type is</span><span class="w"> </span><span class="p">(</span><span class="n">csv_string</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">status_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"></span>
+<span class="w">        </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">class </span><span class="n">default</span><span class="w"></span>
+<span class="w">        </span><span class="n">status_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="w">    </span><span class="k">end select</span>
 
-<span class="k">    end subroutine </span><span class="n">csv_get_value</span>
+<span class="k">    end subroutine </span><span class="n">csv_get_value</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -609,14 +420,11 @@ private subroutine csv_get_value(me, row, col, val, status_ok)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

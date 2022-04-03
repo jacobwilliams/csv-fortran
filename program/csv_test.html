@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,58 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
             <li><a href="../program/csv_test.html">Program</a></li>
-               
-        
-        
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../program/csv_test.html">Program</a></li>
-
-
-
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -108,53 +72,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
-    <h1>csv_test
-    <small>Program</small>
-    
+    <h1>csv_test    <small>Program</small>
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
      <li><i class="fa fa-pencil"></i> Jacob Williams</li>
-     
-     
-     
     <li><i class="fa fa-legal"></i> BSD</li>
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title="100.0% of total for programs.">153 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/csv_test.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/csv_test.f90.html'>csv_test.f90</a></li>
-    
-  
      <li class="active">csv_test</li>
   </ol>
 </div>
@@ -170,60 +110,27 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
   <div id="funcs-0" class="panel-collapse collapse">
     <div class="list-group">
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-file_exists">file_exists</a>
-      
     </div>
   </div>
 </div>
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
   <div class="list-group">
     <div id="subs-0" class="panel-collapse collapse">
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-csv_test_1">csv_test_1</a>
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-csv_write_test">csv_write_test</a>
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-csv_read_test">csv_read_test</a>
-      
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -231,33 +138,22 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    
-  
-    <div class="panel panel-default">
+        <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Uses</h3>
       </div>
       <ul class="list-group">
-      
       <li class="list-group-item">
   <ul class="list-inline">
-    
-    <li><a href='../module/csv_module.html'>csv_module</a></li>
-    
     <li><a href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html">iso_fortran_env</a></li>
-    
+    <li><a href='../module/csv_module.html'>csv_module</a></li>
   </ul>
       </li>
-      
-      
-      
       <li class="list-group-item">
   <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -265,122 +161,122 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: program~~csv_test~~UsesGraph Pages: 1 -->
-<svg id="programcsv_testUsesGraph" width="641pt" height="131pt"
- viewBox="0.00 0.00 641.00 131.47" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="program~~csv_test~~UsesGraph" class="graph" transform="scale(1.01 1.01) rotate(0) translate(4 128.5)">
+<svg id="programcsv_testUsesGraph" width="641pt" height="128pt"
+ viewBox="0.00 0.00 641.00 127.74" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="program~~csv_test~~UsesGraph" class="graph" transform="scale(1.01 1.01) rotate(0) translate(4 124.74)">
 <title>program~~csv_test~~UsesGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-128.5 642,-128.5 642,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-124.74 642,-124.74 642,4 -4,4"/>
 <!-- program~csv_test -->
 <g id="program~~csv_test~~UsesGraph_node1" class="node">
 <title>program~csv_test</title>
-<polygon fill="none" stroke="black" points="638,-95.96 583,-95.96 583,-71.96 638,-71.96 638,-95.96"/>
-<text text-anchor="middle" x="610.5" y="-81.56" font-family="Helvetica,sans-Serif" font-size="10.50">csv_test</text>
-</g>
-<!-- iso_fortran_env -->
-<g id="program~~csv_test~~UsesGraph_node2" class="node">
-<title>iso_fortran_env</title>
-<g id="a_program~~csv_test~~UsesGraph_node2"><a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
-<polygon fill="#337ab7" stroke="#337ab7" points="94,-114.96 0,-114.96 0,-90.96 94,-90.96 94,-114.96"/>
-<text text-anchor="middle" x="47" y="-100.56" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
-</a>
-</g>
-</g>
-<!-- program~csv_test&#45;&gt;iso_fortran_env -->
-<g id="program~~csv_test~~UsesGraph_edge1" class="edge">
-<title>program~csv_test&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M582.99,-88.04C526.94,-96.45 392.25,-115.56 278.5,-122.96"/>
+<polygon fill="none" stroke="black" points="638,-32 583,-32 583,-8 638,-8 638,-32"/>
+<text text-anchor="middle" x="610.5" y="-17.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_test</text>
 </g>
 <!-- module~csv_module -->
-<g id="program~~csv_test~~UsesGraph_node3" class="node">
+<g id="program~~csv_test~~UsesGraph_node2" class="node">
 <title>module~csv_module</title>
-<g id="a_program~~csv_test~~UsesGraph_node3"><a xlink:href=".././module/csv_module.html" xlink:title="csv_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="547,-75.96 471,-75.96 471,-51.96 547,-51.96 547,-75.96"/>
-<text text-anchor="middle" x="509" y="-61.56" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module</text>
+<g id="a_program~~csv_test~~UsesGraph_node2"><a xlink:href=".././module/csv_module.html" xlink:title="csv_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="547,-71 471,-71 471,-47 547,-47 547,-71"/>
+<text text-anchor="middle" x="509" y="-56.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module</text>
 </a>
 </g>
 </g>
 <!-- program~csv_test&#45;&gt;module~csv_module -->
-<g id="program~~csv_test~~UsesGraph_edge2" class="edge">
+<g id="program~~csv_test~~UsesGraph_edge1" class="edge">
 <title>program~csv_test&#45;&gt;module~csv_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M582.84,-78.6C574.89,-77 565.93,-75.2 557.09,-73.42"/>
-<polygon fill="#000000" stroke="#000000" points="557.71,-69.98 547.21,-71.44 556.33,-76.84 557.71,-69.98"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M582.84,-30.45C572.86,-34.36 561.3,-38.89 550.36,-43.18"/>
+<polygon fill="#000000" stroke="#000000" points="549,-39.95 540.97,-46.86 551.56,-46.47 549,-39.95"/>
 </g>
-<!-- module~csv_module&#45;&gt;iso_fortran_env -->
-<g id="program~~csv_test~~UsesGraph_edge4" class="edge">
-<title>module~csv_module&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M397.5,-84.96C342.44,-92.1 333.85,-118.64 278.5,-122.96"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.5,-122.96C217.81,-127.54 150.72,-120.16 104.49,-113.11"/>
-<polygon fill="#000000" stroke="#000000" points="104.79,-109.61 94.37,-111.52 103.7,-116.53 104.79,-109.61"/>
-</g>
-<!-- module~csv_parameters -->
-<g id="program~~csv_test~~UsesGraph_node4" class="node">
-<title>module~csv_parameters</title>
-<g id="a_program~~csv_test~~UsesGraph_node4"><a xlink:href=".././module/csv_parameters.html" xlink:title="csv_parameters">
-<polygon fill="#337ab7" stroke="#337ab7" points="326,-75.96 229,-75.96 229,-51.96 326,-51.96 326,-75.96"/>
-<text text-anchor="middle" x="277.5" y="-61.56" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_parameters</text>
+<!-- iso_fortran_env -->
+<g id="program~~csv_test~~UsesGraph_node3" class="node">
+<title>iso_fortran_env</title>
+<g id="a_program~~csv_test~~UsesGraph_node3"><a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="94,-90 0,-90 0,-66 94,-66 94,-90"/>
+<text text-anchor="middle" x="47" y="-75.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
 </a>
 </g>
 </g>
-<!-- module~csv_module&#45;&gt;module~csv_parameters -->
-<g id="program~~csv_test~~UsesGraph_edge3" class="edge">
-<title>module~csv_module&#45;&gt;module~csv_parameters</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.53,-72.4C449.71,-76.79 423.28,-81.87 399.5,-84.96"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M397.5,-84.96C373.05,-88.13 345.98,-83.96 323.84,-78.53"/>
-<polygon fill="#000000" stroke="#000000" points="324.6,-75.11 314.04,-75.97 322.83,-81.88 324.6,-75.11"/>
+<!-- program~csv_test&#45;&gt;iso_fortran_env -->
+<g id="program~~csv_test~~UsesGraph_edge2" class="edge">
+<title>program~csv_test&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M582.73,-15.81C542.89,-9.94 465.61,0 399.5,0 399.5,0 399.5,0 276.5,0 201.48,0 119.68,-38.12 77.24,-61.06"/>
+<polygon fill="#000000" stroke="#000000" points="75.38,-58.09 68.31,-65.98 78.76,-64.22 75.38,-58.09"/>
+</g>
+<!-- module~csv_module&#45;&gt;iso_fortran_env -->
+<g id="program~~csv_test~~UsesGraph_edge6" class="edge">
+<title>module~csv_module&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.5,-118C210.91,-115.1 194.48,-111.39 130,-99 120.57,-97.19 110.62,-94.93 101.02,-92.58"/>
+<polygon fill="#000000" stroke="#000000" points="101.74,-89.15 91.19,-90.11 100.03,-95.94 101.74,-89.15"/>
 </g>
 <!-- module~csv_kinds -->
-<g id="program~~csv_test~~UsesGraph_node5" class="node">
+<g id="program~~csv_test~~UsesGraph_node4" class="node">
 <title>module~csv_kinds</title>
-<g id="a_program~~csv_test~~UsesGraph_node5"><a xlink:href=".././module/csv_kinds.html" xlink:title="csv_kinds">
-<polygon fill="#337ab7" stroke="#337ab7" points="193,-75.96 130,-75.96 130,-51.96 193,-51.96 193,-75.96"/>
-<text text-anchor="middle" x="161.5" y="-61.56" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_kinds</text>
+<g id="a_program~~csv_test~~UsesGraph_node4"><a xlink:href=".././module/csv_kinds.html" xlink:title="csv_kinds">
+<polygon fill="#337ab7" stroke="#337ab7" points="193,-90 130,-90 130,-66 193,-66 193,-90"/>
+<text text-anchor="middle" x="161.5" y="-75.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_kinds</text>
 </a>
 </g>
 </g>
 <!-- module~csv_module&#45;&gt;module~csv_kinds -->
-<g id="program~~csv_test~~UsesGraph_edge5" class="edge">
+<g id="program~~csv_test~~UsesGraph_edge3" class="edge">
 <title>module~csv_module&#45;&gt;module~csv_kinds</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M490.57,-51.91C476.29,-42.68 455.22,-30.46 435,-23.96 368.3,-2.51 347.74,5.75 278.5,-4.96"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.5,-4.96C242.35,-9.68 207.85,-30.24 185.89,-45.77"/>
-<polygon fill="#000000" stroke="#000000" points="183.57,-43.12 177.56,-51.85 187.7,-48.78 183.57,-43.12"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M490.57,-71.04C476.29,-80.27 455.22,-92.5 435,-99 368.3,-120.44 348.31,-123.97 278.5,-118"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M276.5,-118C247.16,-116.7 215.82,-104.86 193.44,-94.4"/>
+<polygon fill="#000000" stroke="#000000" points="194.95,-91.24 184.43,-90.03 191.9,-97.54 194.95,-91.24"/>
 </g>
 <!-- module~csv_utilities -->
-<g id="program~~csv_test~~UsesGraph_node6" class="node">
+<g id="program~~csv_test~~UsesGraph_node5" class="node">
 <title>module~csv_utilities</title>
-<g id="a_program~~csv_test~~UsesGraph_node6"><a xlink:href=".././module/csv_utilities.html" xlink:title="csv_utilities">
-<polygon fill="#337ab7" stroke="#337ab7" points="435,-56.96 362,-56.96 362,-32.96 435,-32.96 435,-56.96"/>
-<text text-anchor="middle" x="398.5" y="-42.56" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities</text>
+<g id="a_program~~csv_test~~UsesGraph_node5"><a xlink:href=".././module/csv_utilities.html" xlink:title="csv_utilities">
+<polygon fill="#337ab7" stroke="#337ab7" points="435,-90 362,-90 362,-66 435,-66 435,-90"/>
+<text text-anchor="middle" x="398.5" y="-75.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities</text>
 </a>
 </g>
 </g>
 <!-- module~csv_module&#45;&gt;module~csv_utilities -->
-<g id="program~~csv_test~~UsesGraph_edge6" class="edge">
+<g id="program~~csv_test~~UsesGraph_edge4" class="edge">
 <title>module~csv_module&#45;&gt;module~csv_utilities</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.96,-57.47C462.67,-56.02 453.77,-54.46 445.17,-52.96"/>
-<polygon fill="#000000" stroke="#000000" points="445.72,-49.5 435.27,-51.22 444.52,-56.39 445.72,-49.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.96,-65.49C462.67,-66.94 453.77,-68.5 445.17,-70"/>
+<polygon fill="#000000" stroke="#000000" points="444.52,-66.56 435.27,-71.74 445.72,-73.46 444.52,-66.56"/>
 </g>
-<!-- module~csv_parameters&#45;&gt;module~csv_kinds -->
-<g id="program~~csv_test~~UsesGraph_edge7" class="edge">
-<title>module~csv_parameters&#45;&gt;module~csv_kinds</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M228.81,-63.96C220.32,-63.96 211.54,-63.96 203.26,-63.96"/>
-<polygon fill="#000000" stroke="#000000" points="203.1,-60.46 193.1,-63.96 203.1,-67.46 203.1,-60.46"/>
+<!-- module~csv_parameters -->
+<g id="program~~csv_test~~UsesGraph_node6" class="node">
+<title>module~csv_parameters</title>
+<g id="a_program~~csv_test~~UsesGraph_node6"><a xlink:href=".././module/csv_parameters.html" xlink:title="csv_parameters">
+<polygon fill="#337ab7" stroke="#337ab7" points="326,-52 229,-52 229,-28 326,-28 326,-52"/>
+<text text-anchor="middle" x="277.5" y="-37.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_parameters</text>
+</a>
+</g>
+</g>
+<!-- module~csv_module&#45;&gt;module~csv_parameters -->
+<g id="program~~csv_test~~UsesGraph_edge5" class="edge">
+<title>module~csv_module&#45;&gt;module~csv_parameters</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.87,-55.93C434.54,-52.92 378.66,-48.29 336.48,-44.8"/>
+<polygon fill="#000000" stroke="#000000" points="336.59,-41.3 326.34,-43.96 336.02,-48.27 336.59,-41.3"/>
 </g>
 <!-- module~csv_kinds&#45;&gt;iso_fortran_env -->
-<g id="program~~csv_test~~UsesGraph_edge8" class="edge">
+<g id="program~~csv_test~~UsesGraph_edge7" class="edge">
 <title>module~csv_kinds&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M129.76,-74.61C118.26,-78.6 104.96,-83.21 92.47,-87.54"/>
-<polygon fill="#000000" stroke="#000000" points="90.97,-84.36 82.67,-90.94 93.27,-90.97 90.97,-84.36"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M129.76,-78C121.9,-78 113.21,-78 104.5,-78"/>
+<polygon fill="#000000" stroke="#000000" points="104.33,-74.5 94.33,-78 104.33,-81.5 104.33,-74.5"/>
+</g>
+<!-- module~csv_utilities&#45;&gt;module~csv_kinds -->
+<g id="program~~csv_test~~UsesGraph_edge8" class="edge">
+<title>module~csv_utilities&#45;&gt;module~csv_kinds</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361.81,-78C319.25,-78 248.28,-78 203.51,-78"/>
+<polygon fill="#000000" stroke="#000000" points="203.27,-74.5 193.27,-78 203.27,-81.5 203.27,-74.5"/>
 </g>
 <!-- module~csv_utilities&#45;&gt;module~csv_parameters -->
 <g id="program~~csv_test~~UsesGraph_edge9" class="edge">
 <title>module~csv_utilities&#45;&gt;module~csv_parameters</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361.8,-50.66C353.64,-51.96 344.77,-53.38 335.95,-54.78"/>
-<polygon fill="#000000" stroke="#000000" points="335.39,-51.33 326.07,-56.36 336.5,-58.24 335.39,-51.33"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M361.8,-66.6C350.56,-63.01 337.98,-58.99 326.06,-55.19"/>
+<polygon fill="#000000" stroke="#000000" points="326.84,-51.76 316.25,-52.05 324.71,-58.43 326.84,-51.76"/>
 </g>
-<!-- module~csv_utilities&#45;&gt;module~csv_kinds -->
+<!-- module~csv_parameters&#45;&gt;module~csv_kinds -->
 <g id="program~~csv_test~~UsesGraph_edge10" class="edge">
-<title>module~csv_utilities&#45;&gt;module~csv_kinds</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M379.04,-32.77C356.06,-19.02 315.33,0.74 278.5,-4.96"/>
+<title>module~csv_parameters&#45;&gt;module~csv_kinds</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.43,-52.02C228.49,-56 215.12,-60.46 202.88,-64.54"/>
+<polygon fill="#000000" stroke="#000000" points="201.73,-61.23 193.35,-67.72 203.94,-67.87 201.73,-61.23"/>
 </g>
 </g>
 </svg>
@@ -443,13 +339,10 @@
     </p>
     </div></div></div></div>
       </li>
-      
       </ul>
     </div>
-    
 
     <p>Test of reading and writing CSV files.</p>
-    
     <br>
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -473,48 +366,48 @@
 <polygon fill="none" stroke="black" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
 <text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_test</text>
 </g>
-<!-- proc~csv_test_1 -->
-<g id="program~~csv_test~~CallsGraph_node2" class="node">
-<title>proc~csv_test_1</title>
-<g id="a_program~~csv_test~~CallsGraph_node2"><a xlink:href=".././proc/csv_test_1.html" xlink:title="csv_test_1">
-<polygon fill="#d9534f" stroke="#d9534f" points="167.5,-108 100.5,-108 100.5,-84 167.5,-84 167.5,-108"/>
-<text text-anchor="middle" x="134" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test_1</text>
-</a>
-</g>
-</g>
-<!-- program~csv_test&#45;&gt;proc~csv_test_1 -->
-<g id="program~~csv_test~~CallsGraph_edge1" class="edge">
-<title>program~csv_test&#45;&gt;proc~csv_test_1</title>
-<path fill="none" stroke="#000000" d="M55.14,-64.71C66.8,-69.39 80.72,-74.99 93.55,-80.14"/>
-<polygon fill="#000000" stroke="#000000" points="92.5,-83.5 103.09,-83.98 95.11,-77 92.5,-83.5"/>
-</g>
 <!-- proc~csv_write_test -->
-<g id="program~~csv_test~~CallsGraph_node3" class="node">
+<g id="program~~csv_test~~CallsGraph_node2" class="node">
 <title>proc~csv_write_test</title>
-<g id="a_program~~csv_test~~CallsGraph_node3"><a xlink:href=".././proc/csv_write_test.html" xlink:title="csv_write_test">
-<polygon fill="#d9534f" stroke="#d9534f" points="177,-66 91,-66 91,-42 177,-42 177,-66"/>
-<text text-anchor="middle" x="134" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_write_test</text>
+<g id="a_program~~csv_test~~CallsGraph_node2"><a xlink:href=".././proc/csv_write_test.html" xlink:title="csv_write_test">
+<polygon fill="#d9534f" stroke="#d9534f" points="177,-108 91,-108 91,-84 177,-84 177,-108"/>
+<text text-anchor="middle" x="134" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_write_test</text>
 </a>
 </g>
 </g>
 <!-- program~csv_test&#45;&gt;proc~csv_write_test -->
-<g id="program~~csv_test~~CallsGraph_edge2" class="edge">
+<g id="program~~csv_test~~CallsGraph_edge1" class="edge">
 <title>program~csv_test&#45;&gt;proc~csv_write_test</title>
-<path fill="none" stroke="#000000" d="M55.14,-54C63.05,-54 72,-54 80.94,-54"/>
-<polygon fill="#000000" stroke="#000000" points="80.97,-57.5 90.97,-54 80.97,-50.5 80.97,-57.5"/>
+<path fill="none" stroke="#000000" d="M55.14,-64.71C66.8,-69.39 80.72,-74.99 93.55,-80.14"/>
+<polygon fill="#000000" stroke="#000000" points="92.5,-83.5 103.09,-83.98 95.11,-77 92.5,-83.5"/>
 </g>
 <!-- proc~csv_read_test -->
-<g id="program~~csv_test~~CallsGraph_node4" class="node">
+<g id="program~~csv_test~~CallsGraph_node3" class="node">
 <title>proc~csv_read_test</title>
-<g id="a_program~~csv_test~~CallsGraph_node4"><a xlink:href=".././proc/csv_read_test.html" xlink:title="csv_read_test">
-<polygon fill="#d9534f" stroke="#d9534f" points="176,-24 92,-24 92,0 176,0 176,-24"/>
-<text text-anchor="middle" x="134" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_read_test</text>
+<g id="a_program~~csv_test~~CallsGraph_node3"><a xlink:href=".././proc/csv_read_test.html" xlink:title="csv_read_test">
+<polygon fill="#d9534f" stroke="#d9534f" points="176,-66 92,-66 92,-42 176,-42 176,-66"/>
+<text text-anchor="middle" x="134" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_read_test</text>
 </a>
 </g>
 </g>
 <!-- program~csv_test&#45;&gt;proc~csv_read_test -->
-<g id="program~~csv_test~~CallsGraph_edge3" class="edge">
+<g id="program~~csv_test~~CallsGraph_edge2" class="edge">
 <title>program~csv_test&#45;&gt;proc~csv_read_test</title>
+<path fill="none" stroke="#000000" d="M55.14,-54C63.22,-54 72.4,-54 81.53,-54"/>
+<polygon fill="#000000" stroke="#000000" points="81.78,-57.5 91.78,-54 81.78,-50.5 81.78,-57.5"/>
+</g>
+<!-- proc~csv_test_1 -->
+<g id="program~~csv_test~~CallsGraph_node4" class="node">
+<title>proc~csv_test_1</title>
+<g id="a_program~~csv_test~~CallsGraph_node4"><a xlink:href=".././proc/csv_test_1.html" xlink:title="csv_test_1">
+<polygon fill="#d9534f" stroke="#d9534f" points="167.5,-24 100.5,-24 100.5,0 167.5,0 167.5,-24"/>
+<text text-anchor="middle" x="134" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test_1</text>
+</a>
+</g>
+</g>
+<!-- program~csv_test&#45;&gt;proc~csv_test_1 -->
+<g id="program~~csv_test~~CallsGraph_edge3" class="edge">
+<title>program~csv_test&#45;&gt;proc~csv_test_1</title>
 <path fill="none" stroke="#000000" d="M55.14,-43.29C66.8,-38.61 80.72,-33.01 93.55,-27.86"/>
 <polygon fill="#000000" stroke="#000000" points="95.11,-31 103.09,-24.02 92.5,-24.5 95.11,-31"/>
 </g>
@@ -522,16 +415,16 @@
 <g id="program~~csv_test~~CallsGraph_node5" class="node">
 <title>proc~file_exists</title>
 <g id="a_program~~csv_test~~CallsGraph_node5"><a xlink:href=".././proc/file_exists.html" xlink:title="file_exists">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="277,-108 213,-108 213,-84 277,-84 277,-108"/>
-<text text-anchor="middle" x="245" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">file_exists</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="277,-24 213,-24 213,0 277,0 277,-24"/>
+<text text-anchor="middle" x="245" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">file_exists</text>
 </a>
 </g>
 </g>
 <!-- proc~csv_test_1&#45;&gt;proc~file_exists -->
 <g id="program~~csv_test~~CallsGraph_edge4" class="edge">
 <title>proc~csv_test_1&#45;&gt;proc~file_exists</title>
-<path fill="none" stroke="#000000" d="M167.7,-96C178.65,-96 191,-96 202.53,-96"/>
-<polygon fill="#000000" stroke="#000000" points="202.82,-99.5 212.82,-96 202.82,-92.5 202.82,-99.5"/>
+<path fill="none" stroke="#000000" d="M167.7,-12C178.65,-12 191,-12 202.53,-12"/>
+<polygon fill="#000000" stroke="#000000" points="202.82,-15.5 212.82,-12 202.82,-8.5 202.82,-15.5"/>
 </g>
 </g>
 </svg>
@@ -596,62 +489,28 @@
     </div></div></div></div>
       </div>
     </div>
-     
-    <br>
-
+<br>
      <section class="visible-xs visible-sm hidden-md">
-       
-<h3>Contents</h3>
+       <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
   <div id="funcs-1" class="panel-collapse collapse">
     <div class="list-group">
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-file_exists">file_exists</a>
-      
     </div>
   </div>
 </div>
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
   <div class="list-group">
     <div id="subs-1" class="panel-collapse collapse">
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-csv_test_1">csv_test_1</a>
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-csv_write_test">csv_write_test</a>
-      
       <a class="list-group-item" href="../program/csv_test.html#proc-csv_read_test">csv_read_test</a>
-      
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -659,421 +518,319 @@
   </div>
 </div>
 
-
-
      </section>
      <br class="visible-xs visible-sm hidden-md">
 
-     
 
-    
-    
-    
-    
     
     
     
 
     
-    
-     
+ 
     <section>
     <h2>Functions</h2>
-    
-    
-  <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-file_exists"></span><h3>
-function <a href='../proc/file_exists.html'>file_exists</a>(file) result(exists)
-    
-    
-   
-</h3></div>
+      <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-file_exists"></span><h3>function <a href='../proc/file_exists.html'>file_exists</a>(file) result(exists)</h3></div>
   <div class="panel-body">
        
-    
-
-
-
-
-
-
-
 <p>returns True if the file exists</p>
     
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" ></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>file</strong></td><td></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-      
-    
-    
-
-  
-  
-  
-  
-     <h4>Return Value <small>logical
-  </small></h4>
-  
-    
+<h4>Return Value <small>logical</small></h4>  
 
   </div>
   </div>
 
-    
     </section>
     <br>
-    
 
 
-    
     <section>
     <h2>Subroutines</h2>
-    
-    
-  <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-csv_test_1"></span><h3>
-subroutine <a href='../proc/csv_test_1.html'>csv_test_1</a>()
-    
-    
-   
-</h3></div>
+      <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-csv_test_1"></span><h3>subroutine <a href='../proc/csv_test_1.html'>csv_test_1</a>()</h3></div>
   <div class="panel-body">
-       
-    
-    
-    <h4>Arguments</h4>
-    
-      <em>None</em>
-    
-    
+           
+<h4>Arguments</h4>      <em>None</em>
 
   </div>
   </div>
 
-    
-    
-  <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-csv_write_test"></span><h3>
-subroutine <a href='../proc/csv_write_test.html'>csv_write_test</a>()
-    
-    
-   
-</h3></div>
+      <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-csv_write_test"></span><h3>subroutine <a href='../proc/csv_write_test.html'>csv_write_test</a>()</h3></div>
   <div class="panel-body">
-       
-    
-    
-    <h4>Arguments</h4>
-    
-      <em>None</em>
-    
-    
+           
+<h4>Arguments</h4>      <em>None</em>
 
   </div>
   </div>
 
-    
-    
-  <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="proc-csv_read_test"></span><h3>
-subroutine <a href='../proc/csv_read_test.html'>csv_read_test</a>()
-    
-    
-   
-</h3></div>
+      <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-csv_read_test"></span><h3>subroutine <a href='../proc/csv_read_test.html'>csv_read_test</a>()</h3></div>
   <div class="panel-body">
-       
-    
-    
-    <h4>Arguments</h4>
-    
-      <em>None</em>
-    
-    
+           
+<h4>Arguments</h4>      <em>None</em>
 
   </div>
   </div>
 
-    
     </section>    
-    
-    
     
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">program </span><span class="n">csv_test</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">program </span><span class="n">csv_test</span><span class="w"></span>
 
-    <span class="k">use </span><span class="n">csv_module</span>
-    <span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span> <span class="k">only</span><span class="p">:</span> <span class="n">wp</span> <span class="o">=&gt;</span> <span class="n">real64</span>
+<span class="w">    </span><span class="k">use </span><span class="n">csv_module</span><span class="w"></span>
+<span class="w">    </span><span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">wp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">real64</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    call </span><span class="n">csv_test_1</span><span class="p">()</span>
-    <span class="k">call </span><span class="n">csv_write_test</span><span class="p">()</span>
-    <span class="k">call </span><span class="n">csv_read_test</span><span class="p">()</span>
+<span class="k">    call </span><span class="n">csv_test_1</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">csv_write_test</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">csv_read_test</span><span class="p">()</span><span class="w"></span>
 
-    <span class="k">contains</span>
+<span class="w">    </span><span class="k">contains</span>
 
-<span class="k">        subroutine </span><span class="n">csv_test_1</span><span class="p">()</span>
+<span class="k">        subroutine </span><span class="n">csv_test_1</span><span class="p">()</span><span class="w"></span>
 
-        <span class="k">implicit none</span>
+<span class="w">        </span><span class="k">implicit none</span>
 
-<span class="k">        type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
-        <span class="k">type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f2</span>
-        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span> <span class="c">!! counter</span>
-        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">k</span> <span class="c">!! counter</span>
-        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">header</span>  <span class="c">!! the header</span>
-        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">csv_data</span>  <span class="c">!! the data from the file as strings</span>
-        <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">x</span>  <span class="c">!! for getting a real vector from a csv file</span>
-        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">status_ok</span>  <span class="c">!! error flag</span>
-        <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">itypes</span>  <span class="c">!! array of variable types in the file</span>
-        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ifile</span> <span class="c">!! file counter</span>
-        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">names</span>
-        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="k">file</span>
+<span class="k">        type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
+<span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f2</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="c">!! counter</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="c">!! counter</span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">header</span><span class="w">  </span><span class="c">!! the header</span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">csv_data</span><span class="w">  </span><span class="c">!! the data from the file as strings</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w">  </span><span class="c">!! for getting a real vector from a csv file</span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w">  </span><span class="c">!! error flag</span>
+<span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">itypes</span><span class="w">  </span><span class="c">!! array of variable types in the file</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ifile</span><span class="w"> </span><span class="c">!! file counter</span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">names</span><span class="w"></span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">file</span>
 
-<span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">files_to_test</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;test.csv          &#39;</span><span class="p">,&amp;</span>
-                                                                    <span class="s1">&#39;test_2_columns.csv&#39;</span><span class="p">]</span>
-        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">dirs_to_try</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../files/&#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                                  <span class="s1">&#39;./files/ &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                                  <span class="s1">&#39;./       &#39;</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                                  <span class="s1">&#39;         &#39;</span><span class="p">]</span>
+<span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">files_to_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;test.csv          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                                    </span><span class="s1">&#39;test_2_columns.csv&#39;</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dirs_to_try</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;../files/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                                  </span><span class="s1">&#39;./files/ &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                                  </span><span class="s1">&#39;./       &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                                  </span><span class="s1">&#39;         &#39;</span><span class="p">]</span><span class="w"></span>
 
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;============================&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39; csv_test_1 &#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;============================&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;============================&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; csv_test_1 &#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;============================&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
 
-        <span class="k">do </span><span class="n">ifile</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">files_to_test</span><span class="p">)</span>
+<span class="w">        </span><span class="k">do </span><span class="n">ifile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">files_to_test</span><span class="p">)</span><span class="w"></span>
 
-            <span class="c">! a hack to get it to work with all the different build systems</span>
-            <span class="c">! no matter the working directory</span>
-            <span class="k">do </span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">dirs_to_try</span><span class="p">)</span>
-                <span class="k">file</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">dirs_to_try</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">files_to_test</span><span class="p">(</span><span class="n">ifile</span><span class="p">))</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">file_exists</span><span class="p">(</span><span class="k">file</span><span class="p">))</span> <span class="k">exit</span> <span class="c">! found it</span>
-            <span class="k">end do</span>
-<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;read file: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="k">file</span><span class="p">)</span>
+<span class="w">            </span><span class="c">! a hack to get it to work with all the different build systems</span>
+<span class="w">            </span><span class="c">! no matter the working directory</span>
+<span class="w">            </span><span class="k">do </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">dirs_to_try</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">dirs_to_try</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">files_to_test</span><span class="p">(</span><span class="n">ifile</span><span class="p">))</span><span class="w"></span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">file_exists</span><span class="p">(</span><span class="k">file</span><span class="p">))</span><span class="w"> </span><span class="k">exit</span><span class="w"> </span><span class="c">! found it</span>
+<span class="w">            </span><span class="k">end do</span>
+<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;read file: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="k">file</span><span class="p">)</span><span class="w"></span>
 
-            <span class="c">! read the file:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">ifile</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">                call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="k">file</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">else</span>
-                <span class="c">! also skip a row</span>
-                <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="k">file</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">skip_rows</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">end if</span>
+<span class="w">            </span><span class="c">! read the file:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ifile</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="k">file</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">else</span><span class="w"></span>
+<span class="w">                </span><span class="c">! also skip a row</span>
+<span class="w">                </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="k">file</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">skip_rows</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">end if</span>
 
-<span class="k">            if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="n">status_ok</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">                error stop</span> <span class="s1">&#39;could not open file&#39;</span>
-            <span class="k">end if</span>
+<span class="k">            if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">status_ok</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                error stop</span><span class="w"> </span><span class="s1">&#39;could not open file&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">end if</span>
 
-<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;File: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">files_to_test</span><span class="p">(</span><span class="n">ifile</span><span class="p">))</span>
-            <span class="c">! print the header and type info:</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get_header</span><span class="p">(</span><span class="n">header</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">variable_types</span><span class="p">(</span><span class="n">itypes</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*(A30,1X,A4))&#39;</span><span class="p">)</span> <span class="s1">&#39;Header&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span>
-            <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*(A30,1X,I4))&#39;</span><span class="p">)</span> <span class="n">header</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">itypes</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-            <span class="k">end do</span>
+<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;File: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">files_to_test</span><span class="p">(</span><span class="n">ifile</span><span class="p">))</span><span class="w"></span>
+<span class="w">            </span><span class="c">! print the header and type info:</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get_header</span><span class="p">(</span><span class="n">header</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">variable_types</span><span class="p">(</span><span class="n">itypes</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*(A30,1X,A4))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Header&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Type&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">header</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*(A30,1X,I4))&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">header</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">itypes</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">end do</span>
 
-<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;print all the rows:&#39;</span>
+<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;print all the rows:&#39;</span><span class="w"></span>
 
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="n">csv_data</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">csv_data</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*(A30,1X))&#39;</span><span class="p">)</span> <span class="n">csv_data</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span>
-            <span class="k">end do</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="n">csv_data</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">csv_data</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*(A30,1X))&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">csv_data</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span><span class="w"></span>
+<span class="w">            </span><span class="k">end do</span>
 
-<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;get some vectors:&#39;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">ifile</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">                write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;age:&#39;</span>
-                <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(F6.3,1x)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span> <span class="n">x</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-            <span class="k">else</span>
-<span class="k">                write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;name:&#39;</span>
-                <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A10,1x)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span> <span class="n">names</span>
-                <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-            <span class="k">end if</span>
+<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;get some vectors:&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ifile</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;age:&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(F6.3,1x)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">else</span>
+<span class="k">                write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;name:&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A10,1x)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">names</span><span class="w"></span>
+<span class="w">                </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">end if</span>
 
-<span class="k">        end do</span>
+<span class="k">        end do</span><span class="w"></span>
 
-        <span class="c">! now test creating a CSV:</span>
-        <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">enclose_strings_in_quotes</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.,</span><span class="n">verbose</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
-        <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;test2.csv&#39;</span><span class="p">,</span><span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">status_ok</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">            call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>    <span class="c">! add header as vector</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="p">)</span>  <span class="c">! add as scalars</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(</span><span class="mf">2.0_wp</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(</span><span class="mf">3.0_wp</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">true</span><span class="p">.)</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">4.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="mf">6.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span> <span class="c">! add as vectors</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">false</span><span class="p">.)</span>
-            <span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
-        <span class="k">end if</span>
-<span class="k">        call </span><span class="n">f2</span><span class="p">%</span><span class="k">close</span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! now test creating a CSV:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">enclose_strings_in_quotes</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.,</span><span class="n">verbose</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;test2.csv&#39;</span><span class="p">,</span><span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span><span class="w">    </span><span class="c">! add header as vector</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="p">)</span><span class="w">  </span><span class="c">! add as scalars</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(</span><span class="mf">2.0_wp</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(</span><span class="mf">3.0_wp</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">true</span><span class="p">.)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">4.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="mf">6.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">! add as vectors</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">false</span><span class="p">.)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f2</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        call </span><span class="n">f2</span><span class="p">%</span><span class="k">close</span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-        <span class="k">end subroutine </span><span class="n">csv_test_1</span>
+<span class="w">        </span><span class="k">end subroutine </span><span class="n">csv_test_1</span><span class="w"></span>
 
-        <span class="k">subroutine </span><span class="n">csv_write_test</span><span class="p">()</span>
+<span class="w">        </span><span class="k">subroutine </span><span class="n">csv_write_test</span><span class="p">()</span><span class="w"></span>
 
-        <span class="k">implicit none</span>
+<span class="w">        </span><span class="k">implicit none</span>
 
-<span class="k">        type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
-        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">status_ok</span>
+<span class="k">        type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w"></span>
 
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;============================&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39; csv_write_test &#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;============================&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;============================&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; csv_write_test &#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;============================&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
 
-        <span class="c">! open the file</span>
-        <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;test_write.csv&#39;</span><span class="p">,</span><span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">status_ok</span><span class="p">)</span> <span class="k">then</span>
+<span class="w">        </span><span class="c">! open the file</span>
+<span class="w">        </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;test_write.csv&#39;</span><span class="p">,</span><span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
 
-            <span class="c">! add header</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
+<span class="w">            </span><span class="c">! add header</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
 
-            <span class="c">! add some data:</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">true</span><span class="p">.)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">4.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="mf">6.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">false</span><span class="p">.)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span>
+<span class="w">            </span><span class="c">! add some data:</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="mf">2.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">true</span><span class="p">.)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">([</span><span class="mf">4.0_wp</span><span class="p">,</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="mf">6.0_wp</span><span class="p">],</span><span class="n">real_fmt</span><span class="o">=</span><span class="s1">&#39;(F5.3)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">add</span><span class="p">(.</span><span class="n">false</span><span class="p">.)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">next_row</span><span class="p">()</span><span class="w"></span>
 
-            <span class="c">! finished</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">close</span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="w">            </span><span class="c">! finished</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">close</span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-        <span class="k">else</span>
-<span class="k">            error stop</span> <span class="s1">&#39;could not open file&#39;</span>
-        <span class="k">end if</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            error stop</span><span class="w"> </span><span class="s1">&#39;could not open file&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
 
-<span class="k">        end subroutine </span><span class="n">csv_write_test</span>
+<span class="k">        end subroutine </span><span class="n">csv_write_test</span><span class="w"></span>
 
-        <span class="k">subroutine </span><span class="n">csv_read_test</span><span class="p">()</span>
+<span class="w">        </span><span class="k">subroutine </span><span class="n">csv_read_test</span><span class="p">()</span><span class="w"></span>
 
-        <span class="k">implicit none</span>
+<span class="w">        </span><span class="k">implicit none</span>
 
-<span class="k">        type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
-        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">header</span>
-        <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span>
-        <span class="kt">logical</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">t</span>
-        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">status_ok</span>
-        <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">itypes</span>
+<span class="k">        type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">header</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="w"></span>
+<span class="w">        </span><span class="kt">logical</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<span class="w">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">itypes</span><span class="w"></span>
 
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;============================&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39; csv_read_test &#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;============================&#39;</span>
-        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;============================&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; csv_read_test &#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;============================&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"></span>
 
-        <span class="c">! read the file</span>
-        <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="s1">&#39;test_write.csv&#39;</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! read the file</span>
+<span class="w">        </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">read</span><span class="p">(</span><span class="s1">&#39;test_write.csv&#39;</span><span class="p">,</span><span class="n">header_row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">status_ok</span><span class="p">)</span> <span class="k">then</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_ok</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
 
-            <span class="c">! get the header and type info</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get_header</span><span class="p">(</span><span class="n">header</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">variable_types</span><span class="p">(</span><span class="n">itypes</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="w">            </span><span class="c">! get the header and type info</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get_header</span><span class="p">(</span><span class="n">header</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">variable_types</span><span class="p">(</span><span class="n">itypes</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-            <span class="c">! get some data</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="w">            </span><span class="c">! get some data</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">get</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;x=&#39;</span><span class="p">,</span><span class="n">x</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;y=&#39;</span><span class="p">,</span><span class="n">y</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;z=&#39;</span><span class="p">,</span><span class="n">z</span>
-            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;t=&#39;</span><span class="p">,</span><span class="n">t</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;x=&#39;</span><span class="p">,</span><span class="n">x</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;y=&#39;</span><span class="p">,</span><span class="n">y</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;z=&#39;</span><span class="p">,</span><span class="n">z</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;t=&#39;</span><span class="p">,</span><span class="n">t</span><span class="w"></span>
 
-            <span class="c">! destroy the file</span>
-            <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="w">            </span><span class="c">! destroy the file</span>
+<span class="w">            </span><span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
 
-        <span class="k">else</span>
-<span class="k">            error stop</span> <span class="s1">&#39;could not open file&#39;</span>
-        <span class="k">end if</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            error stop</span><span class="w"> </span><span class="s1">&#39;could not open file&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
 
-<span class="k">        end subroutine </span><span class="n">csv_read_test</span>
+<span class="k">        end subroutine </span><span class="n">csv_read_test</span><span class="w"></span>
 
-        <span class="k">function </span><span class="n">file_exists</span><span class="p">(</span><span class="k">file</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">exists</span><span class="p">)</span>
+<span class="w">        </span><span class="k">function </span><span class="n">file_exists</span><span class="p">(</span><span class="k">file</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">exists</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c">!! returns True if the file exists</span>
+<span class="w">        </span><span class="c">!! returns True if the file exists</span>
 
-        <span class="k">implicit none</span>
-<span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="k">file</span>
-<span class="k">        </span><span class="kt">logical</span> <span class="kd">::</span> <span class="n">exists</span>
+<span class="w">        </span><span class="k">implicit none</span>
+<span class="k">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">file</span>
+<span class="k">        </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">exists</span><span class="w"></span>
 
-        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">istat</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w"></span>
 
-        <span class="k">inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="k">file</span><span class="p">,</span><span class="n">exist</span><span class="o">=</span><span class="n">exists</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+<span class="w">        </span><span class="k">inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="k">file</span><span class="p">,</span><span class="n">exist</span><span class="o">=</span><span class="n">exists</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
 
-        <span class="n">exists</span> <span class="o">=</span> <span class="n">exists</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">istat</span><span class="o">==</span><span class="mi">0</span> <span class="c">! just in case?</span>
+<span class="w">        </span><span class="n">exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exists</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">istat</span><span class="o">==</span><span class="mi">0</span><span class="w"> </span><span class="c">! just in case?</span>
 
-        <span class="k">end function </span><span class="n">file_exists</span>
+<span class="w">        </span><span class="k">end function </span><span class="n">file_exists</span><span class="w"></span>
 
-    <span class="k">end program </span><span class="n">csv_test</span>
+<span class="w">    </span><span class="k">end program </span><span class="n">csv_test</span><span class="w"></span>
 </pre></div>
 
     </section>
     
-    
     </div>
   </div>
 
-  
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -1101,14 +858,11 @@ subroutine <a href='../proc/csv_read_test.html'>csv_read_test</a>()
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

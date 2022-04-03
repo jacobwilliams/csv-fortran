@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,58 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-            <li><a href="../lists/types.html">Derived Types</a></li>
-        
-        
+                   <li><a href="../lists/types.html">Derived Types</a></li>
             <li><a href="../program/csv_test.html">Program</a></li>
-               
-        
-        
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../program/csv_test.html">Program</a></li>
-
-
-
           </ul>
-        
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -108,51 +72,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>read_csv_file
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 8.6% of total for procedures.">81 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/csv_module.F90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/csv_module.f90.html'>csv_module.F90</a></li>
-    
      <li><a href='../module/csv_module.html'>csv_module</a></li>
-    
-  
      <li class="active">read_csv_file</li>
   </ol>
 </div>
@@ -168,32 +110,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -201,125 +120,56 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private subroutine read_csv_file(me, filename, header_row, skip_rows, status_ok)
+    <h2>private subroutine read_csv_file(me, filename, header_row, skip_rows, status_ok)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Read a CSV file.</p>
 <p>rows in the file</p>
 <p>row counter in data array</p>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-me~3"></span>class(<a href='../type/csv_file.html'>csv_file</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>me</strong></td><td></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-filename"></span>character(len=*),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>filename</strong></td><td><p>the CSV file to open</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-header_row"></span>integer,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
   <td><strong>header_row</strong></td><td><p>the header row</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-skip_rows"></span>integer,</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td>dimension(:)</td><td>::</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(:)</td><td>::</td>
   <td><strong>skip_rows</strong></td><td><p>rows to skip</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-status_ok"></span>logical,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>status_ok</strong></td><td><p>status flag</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -465,35 +315,11 @@ private subroutine read_csv_file(me, filename, header_row, skip_rows, status_ok)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -501,173 +327,158 @@ private subroutine read_csv_file(me, filename, header_row, skip_rows, status_ok)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">read_csv_file</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">filename</span><span class="p">,</span><span class="n">header_row</span><span class="p">,</span><span class="n">skip_rows</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">read_csv_file</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">filename</span><span class="p">,</span><span class="n">header_row</span><span class="p">,</span><span class="n">skip_rows</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    class</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">filename</span>  <span class="c">!! the CSV file to open</span>
-    <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">status_ok</span>  <span class="c">!! status flag</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span> <span class="kd">::</span> <span class="n">header_row</span>  <span class="c">!! the header row</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span> <span class="kd">::</span> <span class="n">skip_rows</span>  <span class="c">!! rows to skip</span>
+<span class="k">    class</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"></span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span><span class="w">  </span><span class="c">!! the CSV file to open</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w">  </span><span class="c">!! status flag</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">header_row</span><span class="w">  </span><span class="c">!! the header row</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">skip_rows</span><span class="w">  </span><span class="c">!! rows to skip</span>
 
-    <span class="k">type</span><span class="p">(</span><span class="n">csv_string</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">row_data</span>  <span class="c">!! a tokenized row</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">rows_to_skip</span>  <span class="c">!! the actual rows to skip</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">line</span>  <span class="c">!! a line from the file</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>                <span class="c">!! counter</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">j</span>                <span class="c">!! counter</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">irow</span>             <span class="c">!! row counter</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">n_rows_in_file</span>   <span class="c">!! number of lines in the file</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">n_rows</span>           <span class="c">!! number of rows in the output data matrix</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">n_cols</span>           <span class="c">!! number of columns in the file (and output data matrix)</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">istat</span>            <span class="c">!! open status flag</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">iunit</span>            <span class="c">!! open file unit</span>
-    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">arrays_allocated</span> <span class="c">!! if the arrays in the</span>
-                                <span class="c">!! class have been allocated</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">iheader</span>          <span class="c">!! row number of header row</span>
-                                <span class="c">!! (0 if no header specified)</span>
-    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tmp</span>     <span class="c">!! for skipping a row</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">csv_string</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">row_data</span><span class="w">  </span><span class="c">!! a tokenized row</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rows_to_skip</span><span class="w">  </span><span class="c">!! the actual rows to skip</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w">  </span><span class="c">!! a line from the file</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w">                </span><span class="c">!! counter</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="w">                </span><span class="c">!! counter</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">irow</span><span class="w">             </span><span class="c">!! row counter</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n_rows_in_file</span><span class="w">   </span><span class="c">!! number of lines in the file</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n_rows</span><span class="w">           </span><span class="c">!! number of rows in the output data matrix</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n_cols</span><span class="w">           </span><span class="c">!! number of columns in the file (and output data matrix)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w">            </span><span class="c">!! open status flag</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iunit</span><span class="w">            </span><span class="c">!! open file unit</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">arrays_allocated</span><span class="w"> </span><span class="c">!! if the arrays in the</span>
+<span class="w">                                </span><span class="c">!! class have been allocated</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iheader</span><span class="w">          </span><span class="c">!! row number of header row</span>
+<span class="w">                                </span><span class="c">!! (0 if no header specified)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp</span><span class="w">     </span><span class="c">!! for skipping a row</span>
 
-    <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
-    <span class="n">arrays_allocated</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">arrays_allocated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
 
-    <span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span> <span class="k">file</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s1">&#39;OLD&#39;</span><span class="p">,</span> <span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+<span class="w">    </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;OLD&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">istat</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">istat</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
 
-        <span class="c">!get number of lines in the file</span>
-        <span class="n">n_rows_in_file</span> <span class="o">=</span> <span class="n">number_of_lines_in_file</span><span class="p">(</span><span class="n">iunit</span><span class="p">)</span>
+<span class="w">        </span><span class="c">!get number of lines in the file</span>
+<span class="w">        </span><span class="n">n_rows_in_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number_of_lines_in_file</span><span class="p">(</span><span class="n">iunit</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c">!get number of lines in the data array</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">skip_rows</span><span class="p">))</span> <span class="k">then</span>
-            <span class="c">!get size of unique elements in skip_rows,</span>
-            <span class="c">!and subtract from n_rows_in_file</span>
-            <span class="n">rows_to_skip</span> <span class="o">=</span> <span class="n">unique</span><span class="p">(</span><span class="n">skip_rows</span><span class="p">,</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">me</span><span class="p">%</span><span class="n">chunk_size</span><span class="p">)</span>
-            <span class="n">n_rows</span> <span class="o">=</span> <span class="n">n_rows_in_file</span> <span class="o">-</span> <span class="n">size</span><span class="p">(</span><span class="n">rows_to_skip</span><span class="p">)</span>
-        <span class="k">else</span>
-<span class="k">            </span><span class="n">n_rows</span> <span class="o">=</span> <span class="n">n_rows_in_file</span>
-        <span class="k">end if</span>
-<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">header_row</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">            </span><span class="n">iheader</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">header_row</span><span class="p">)</span>
-            <span class="n">n_rows</span> <span class="o">=</span> <span class="n">n_rows</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="k">else</span>
-<span class="k">            </span><span class="n">iheader</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">end if</span>
+<span class="w">        </span><span class="c">!get number of lines in the data array</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">skip_rows</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">            </span><span class="c">!get size of unique elements in skip_rows,</span>
+<span class="w">            </span><span class="c">!and subtract from n_rows_in_file</span>
+<span class="w">            </span><span class="n">rows_to_skip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">skip_rows</span><span class="p">,</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">me</span><span class="p">%</span><span class="n">chunk_size</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">n_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_rows_in_file</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">rows_to_skip</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            </span><span class="n">n_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_rows_in_file</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">header_row</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">iheader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">header_row</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">n_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_rows</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            </span><span class="n">iheader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
 
-<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">n_rows</span> <span class="o">=</span> <span class="n">n_rows</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">n_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_rows</span><span class="w"></span>
 
-        <span class="c">! we don&#39;t know the number of columns</span>
-        <span class="c">! until we parse the first row (or the header)</span>
+<span class="w">        </span><span class="c">! we don&#39;t know the number of columns</span>
+<span class="w">        </span><span class="c">! until we parse the first row (or the header)</span>
 
-        <span class="c">!read each line in the file, parse it, and populate data</span>
-        <span class="n">irow</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_rows_in_file</span>  <span class="c">!! rows in the file</span>
+<span class="w">        </span><span class="c">!read each line in the file, parse it, and populate data</span>
+<span class="w">        </span><span class="n">irow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">        </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_rows_in_file</span><span class="w">  </span><span class="c">!! rows in the file</span>
 
-            <span class="c">! skip row if necessary</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">rows_to_skip</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">                if</span> <span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">rows_to_skip</span><span class="p">))</span> <span class="k">then</span>
-<span class="k">                    read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A1)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span> <span class="n">tmp</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">                        if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span> <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-                                <span class="s1">&#39;Error skipping row in file: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-                        <span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
-                        <span class="n">status_ok</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
-                        <span class="k">return</span>
+<span class="w">            </span><span class="c">! skip row if necessary</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">rows_to_skip</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                if</span><span class="w"> </span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">rows_to_skip</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                    read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A1)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"> </span><span class="n">tmp</span><span class="w"></span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">istat</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                        if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                </span><span class="s1">&#39;Error skipping row in file: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="w"></span>
+<span class="w">                        </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
+<span class="w">                        </span><span class="n">status_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="w">                        </span><span class="k">return</span>
 <span class="k">                    end if</span>
 <span class="k">                    cycle</span>
 <span class="k">                end if</span>
 <span class="k">            end if</span>
 
-<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">read_line_from_file</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="n">line</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="n">status_ok</span><span class="p">)</span> <span class="k">return</span> <span class="c">! file read error</span>
-            <span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">tokenize</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">row_data</span><span class="p">)</span>
+<span class="k">            call </span><span class="n">me</span><span class="p">%</span><span class="n">read_line_from_file</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="n">line</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">status_ok</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="c">! file read error</span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">tokenize</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">row_data</span><span class="p">)</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="n">arrays_allocated</span><span class="p">)</span> <span class="k">then</span>
-                <span class="c">! note: the number of columns is obtained</span>
-                <span class="c">! from the first one read. It is assumed</span>
-                <span class="c">! that each row has the same number of</span>
-                <span class="c">! columns.</span>
-                <span class="n">n_cols</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
-                <span class="n">me</span><span class="p">%</span><span class="n">n_cols</span> <span class="o">=</span> <span class="n">n_cols</span>
-                <span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span><span class="n">n_cols</span><span class="p">))</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">iheader</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span> <span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">(</span><span class="n">n_cols</span><span class="p">))</span>
-                <span class="n">arrays_allocated</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
-            <span class="k">end if</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">arrays_allocated</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">                </span><span class="c">! note: the number of columns is obtained</span>
+<span class="w">                </span><span class="c">! from the first one read. It is assumed</span>
+<span class="w">                </span><span class="c">! that each row has the same number of</span>
+<span class="w">                </span><span class="c">! columns.</span>
+<span class="w">                </span><span class="n">n_cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="n">me</span><span class="p">%</span><span class="n">n_cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_cols</span><span class="w"></span>
+<span class="w">                </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span><span class="n">n_cols</span><span class="p">))</span><span class="w"></span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iheader</span><span class="o">/=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">(</span><span class="n">n_cols</span><span class="p">))</span><span class="w"></span>
+<span class="w">                </span><span class="n">arrays_allocated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"></span>
+<span class="w">            </span><span class="k">end if</span>
 
-<span class="k">            if</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">iheader</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">                do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">n_cols</span>
-                    <span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">(</span><span class="n">j</span><span class="p">)%</span><span class="n">str</span> <span class="o">=</span> <span class="n">row_data</span><span class="p">(</span><span class="n">j</span><span class="p">)%</span><span class="n">str</span>
-                <span class="k">end do</span>
+<span class="k">            if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">iheader</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">n_cols</span><span class="w"></span>
+<span class="w">                    </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">(</span><span class="n">j</span><span class="p">)%</span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_data</span><span class="p">(</span><span class="n">j</span><span class="p">)%</span><span class="n">str</span><span class="w"></span>
+<span class="w">                </span><span class="k">end do</span>
 <span class="k">            else</span>
-<span class="k">                </span><span class="n">irow</span> <span class="o">=</span> <span class="n">irow</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c">!! row counter in data array</span>
-                <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_cols</span>
-                    <span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">irow</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">row_data</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="c">!%str</span>
-                <span class="k">end do</span>
+<span class="k">                </span><span class="n">irow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">irow</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="c">!! row counter in data array</span>
+<span class="w">                </span><span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_cols</span><span class="w"></span>
+<span class="w">                    </span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">irow</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_data</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="c">!%str</span>
+<span class="w">                </span><span class="k">end do</span>
 <span class="k">            end if</span>
 
-<span class="k">        end do</span>
+<span class="k">        end do</span><span class="w"></span>
 
-        <span class="c">! close the file</span>
-        <span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! close the file</span>
+<span class="w">        </span><span class="k">close</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
 
-        <span class="n">status_ok</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">        </span><span class="n">status_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"></span>
 
-    <span class="k">else</span>
-<span class="k">        if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span> <span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-                <span class="s1">&#39;Error opening file: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-        <span class="n">status_ok</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
-    <span class="k">end if</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                </span><span class="s1">&#39;Error opening file: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">status_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span>
 
-<span class="k">    end subroutine </span><span class="n">read_csv_file</span>
+<span class="k">    end subroutine </span><span class="n">read_csv_file</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -695,14 +506,11 @@ private subroutine read_csv_file(me, filename, header_row, skip_rows, status_ok)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>
