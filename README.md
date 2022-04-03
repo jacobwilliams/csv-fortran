@@ -56,6 +56,9 @@ implicit none
 type(csv_file) :: f
 logical :: status_ok
 
+! set optional inputs:
+call f%initialize(verbose = .true.)
+
 ! open the file
 call f%open('test.csv',n_cols=4,status_ok=status_ok)
 
