@@ -136,6 +136,9 @@ You can build using provided <code>fpm.toml</code>:</p>
 <span class="k">type</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
 <span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w"></span>
 
+<span class="c">! set optional inputs:</span>
+<span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.)</span><span class="w"></span>
+
 <span class="c">! open the file</span>
 <span class="k">call </span><span class="n">f</span><span class="p">%</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span><span class="n">n_cols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
 
