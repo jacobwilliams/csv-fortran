@@ -7,7 +7,7 @@
     program csv_test
 
     use csv_module
-    use iso_fortran_env, only: wp => real64
+    use iso_fortran_env, only: wp => real64, sp => real32
 
     implicit none
 
@@ -27,7 +27,8 @@
         integer :: k !! counter
         character(len=30),dimension(:),allocatable :: header  !! the header
         character(len=30),dimension(:,:),allocatable :: csv_data  !! the data from the file as strings
-        real(wp),dimension(:),allocatable :: x  !! for getting a real vector from a csv file
+        real(wp),dimension(:),allocatable :: x  !! for getting a real(wp) vector from a csv file
+        real(sp),dimension(:),allocatable :: y  !! for getting a real(sp) vector from a csv file
         logical :: status_ok  !! error flag
         integer,dimension(:),allocatable :: itypes  !! array of variable types in the file
         integer :: ifile !! file counter
@@ -92,9 +93,15 @@
             write(*,*) 'get some vectors:'
             if (ifile==1) then
                 write(*,*) ''
+                write(*,*) 'get real(wp) vector:'
                 write(*,*) 'age:'
                 call f%get(3,x,status_ok)
                 write(*,'(F6.3,1x)',advance='NO') x
+                write(*,*) ''
+                write(*,*) 'get real(sp) vector:'
+                write(*,*) 'age:'
+                call f%get(3,y,status_ok)
+                write(*,'(F6.3,1x)',advance='NO') y
                 write(*,*) ''
             else
                 write(*,*) ''
@@ -120,6 +127,13 @@
             call f2%add([4.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)') ! add as vectors
             call f2%add(.false.)
             call f2%next_row()
+            call f2%add(1.5_sp) ! add as scalars
+            call f2%add(2.5_sp)
+            call f2%add(3.5_sp)
+            call f2%add(.true.)
+            call f2%next_row()
+            call f2%add([4.5_sp,5.5_sp,6.5_sp],real_fmt='(F5.3)') ! add as vectors
+            call f2%add(.false.)
         end if
         call f2%close(status_ok)
 
@@ -153,6 +167,12 @@
             call f%add([4.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
             call f%add(.false.)
             call f%next_row()
+            call f%add([1.5_sp,2.5_sp,3.5_sp],real_fmt='(F5.3)')
+            call f%add(.true.)
+            call f%next_row()
+            call f%add([4.5_sp,5.5_sp,6.5_sp],real_fmt='(F5.3)')
+            call f%add(.false.)
+            call f%next_row()
 
             ! finished
             call f%close(status_ok)
@@ -170,6 +190,7 @@
         type(csv_file) :: f
         character(len=30),dimension(:),allocatable :: header
         real(wp),dimension(:),allocatable :: x,y,z
+        real(sp),dimension(:),allocatable :: u,v,w
         logical,dimension(:),allocatable :: t
         logical :: status_ok
         integer,dimension(:),allocatable :: itypes
@@ -198,6 +219,16 @@
             write(*,*) 'x=',x
             write(*,*) 'y=',y
             write(*,*) 'z=',z
+            write(*,*) 't=',t
+            
+            call f%get(1,u,status_ok)
+            call f%get(2,v,status_ok)
+            call f%get(3,w,status_ok)
+            call f%get(4,t,status_ok)
+
+            write(*,*) 'x=',u
+            write(*,*) 'y=',v
+            write(*,*) 'z=',w
             write(*,*) 't=',t
 
             ! destroy the file
