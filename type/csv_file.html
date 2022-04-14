@@ -88,7 +88,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p>93.6% of total for derived types.</p>Including implementation: 836 statements, 99.6% of total for derived types.">44 statements</a>
+    title="<p>93.8% of total for derived types.</p>Including implementation: 888 statements, 99.7% of total for derived types.">45 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/csv_module.F90"> Source File</a></li>
   </ul>
@@ -148,7 +148,8 @@
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get">get</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_csv_data_as_str">get_csv_data_as_str</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-csv_get_value">csv_get_value</a>
-      <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_real_column">get_real_column</a>
+      <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_real_sp_column">get_real_sp_column</a>
+      <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_real_wp_column">get_real_wp_column</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_integer_column">get_integer_column</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_logical_column">get_logical_column</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_character_column">get_character_column</a>
@@ -300,7 +301,8 @@
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get">get</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_csv_data_as_str">get_csv_data_as_str</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-csv_get_value">csv_get_value</a>
-      <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_real_column">get_real_column</a>
+      <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_real_sp_column">get_real_sp_column</a>
+      <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_real_wp_column">get_real_wp_column</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_integer_column">get_integer_column</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_logical_column">get_logical_column</a>
       <a class="list-group-item" href="../type/csv_file.html#boundprocedure-get_character_column">get_character_column</a>
@@ -757,7 +759,7 @@ console (default is False)</p></td>
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get"></span><h3>generic, public :: <strong>get</strong>  => <a href='../type/csv_file.html#boundprocedure-get_csv_data_as_str'>get_csv_data_as_str</a>, <a href='../type/csv_file.html#boundprocedure-csv_get_value'>csv_get_value</a>, <a href='../type/csv_file.html#boundprocedure-get_real_column'>get_real_column</a>, <a href='../type/csv_file.html#boundprocedure-get_integer_column'>get_integer_column</a>, <a href='../type/csv_file.html#boundprocedure-get_logical_column'>get_logical_column</a>, <a href='../type/csv_file.html#boundprocedure-get_character_column'>get_character_column</a>, <a href='../type/csv_file.html#boundprocedure-get_csv_string_column'>get_csv_string_column</a>   </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get"></span><h3>generic, public :: <strong>get</strong>  => <a href='../type/csv_file.html#boundprocedure-get_csv_data_as_str'>get_csv_data_as_str</a>, <a href='../type/csv_file.html#boundprocedure-csv_get_value'>csv_get_value</a>, <a href='../type/csv_file.html#boundprocedure-get_real_sp_column'>get_real_sp_column</a>, <a href='../type/csv_file.html#boundprocedure-get_real_wp_column'>get_real_wp_column</a>, <a href='../type/csv_file.html#boundprocedure-get_integer_column'>get_integer_column</a>, <a href='../type/csv_file.html#boundprocedure-get_logical_column'>get_logical_column</a>, <a href='../type/csv_file.html#boundprocedure-get_character_column'>get_character_column</a>, <a href='../type/csv_file.html#boundprocedure-get_csv_string_column'>get_csv_string_column</a>   </h3></div>
   <div class="panel-body">
     
     <p>For getting data from the class
@@ -838,7 +840,43 @@ after the file has been read.</p>
 
       </li>
       <li class="list-group-item">
-            <h3>private subroutine <a href='../proc/get_real_column.html'>get_real_column</a>(me, icol, r, status_ok)</h3>
+            <h3>private subroutine <a href='../proc/get_real_sp_column.html'>get_real_sp_column</a>(me, icol, r, status_ok)</h3>
+<p>Return a column from a CSV file as a <code>real(sp)</code> vector.</p>
+    
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" ></span>class(<a href='../type/csv_file.html'>csv_file</a>),</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>integer,</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>icol</strong></td><td><p>column number</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=sp),</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>r</strong></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>logical,</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>status_ok</strong></td><td></td>
+</tr>
+</tbody>
+</table>
+
+
+      </li>
+      <li class="list-group-item">
+            <h3>private subroutine <a href='../proc/get_real_wp_column.html'>get_real_wp_column</a>(me, icol, r, status_ok)</h3>
 <p>Return a column from a CSV file as a <code>real(wp)</code> vector.</p>
     
 <h4>Arguments</h4>      <table class="table table-striped varlist">
@@ -1106,10 +1144,52 @@ after the file has been read.</p>
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_real_column"></span><h3>procedure, public :: <strong>get_real_column</strong>    </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_real_sp_column"></span><h3>procedure, public :: <strong>get_real_sp_column</strong>    </h3></div>
   <ul class="list-group">
       <li class="list-group-item">
-          <h3>private subroutine <a href='../proc/get_real_column.html'>get_real_column</a>(me, icol, r, status_ok)</h3>
+          <h3>private subroutine <a href='../proc/get_real_sp_column.html'>get_real_sp_column</a>(me, icol, r, status_ok)</h3>
+<p>Return a column from a CSV file as a <code>real(sp)</code> vector.</p>
+    
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" ></span>class(<a href='../type/csv_file.html'>csv_file</a>),</td>
+<td>intent(inout)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>integer,</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>icol</strong></td><td><p>column number</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=sp),</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>r</strong></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>logical,</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>status_ok</strong></td><td></td>
+</tr>
+</tbody>
+</table>
+
+
+      </li>
+  </ul>
+</div>
+
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_real_wp_column"></span><h3>procedure, public :: <strong>get_real_wp_column</strong>    </h3></div>
+  <ul class="list-group">
+      <li class="list-group-item">
+          <h3>private subroutine <a href='../proc/get_real_wp_column.html'>get_real_wp_column</a>(me, icol, r, status_ok)</h3>
 <p>Return a column from a CSV file as a <code>real(wp)</code> vector.</p>
     
 <h4>Arguments</h4>      <table class="table table-striped varlist">
@@ -1894,14 +1974,16 @@ the correct size by the caller.
 <span class="w">        </span><span class="c">! after the file has been read.</span>
 <span class="w">        </span><span class="k">generic</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_csv_data_as_str</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">                                 </span><span class="n">csv_get_value</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="w">                                 </span><span class="n">get_real_column</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                 </span><span class="n">get_real_sp_column</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                 </span><span class="n">get_real_wp_column</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">                                 </span><span class="n">get_integer_column</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">                                 </span><span class="n">get_logical_column</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">                                 </span><span class="n">get_character_column</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">                                 </span><span class="n">get_csv_string_column</span><span class="w"></span>
 <span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_csv_data_as_str</span><span class="w"></span>
 <span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">csv_get_value</span><span class="w"></span>
-<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_real_column</span><span class="w"></span>
+<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_real_sp_column</span><span class="w"></span>
+<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_real_wp_column</span><span class="w"></span>
 <span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_integer_column</span><span class="w"></span>
 <span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_logical_column</span><span class="w"></span>
 <span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_character_column</span><span class="w"></span>

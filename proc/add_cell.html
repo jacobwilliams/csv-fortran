@@ -88,7 +88,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 8.3% of total for procedures.">78 statements</a>
+    title=" 8.5% of total for procedures.">86 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/csv_module.F90"> Source File</a></li>
   </ul>
@@ -142,7 +142,7 @@
   <td><strong>me</strong></td><td></td>
 </tr>
 <tr>
-  <td><span class="anchor" id="variable-val~2"></span>class(*),</td>
+  <td><span class="anchor" id="variable-val"></span>class(*),</td>
 <td>intent(in)</td>
   <td></td>  <td></td><td>::</td>
   <td><strong>val</strong></td><td><p>the value to add</p></td>
@@ -233,6 +233,14 @@ this format string.</p></td>
 <span class="w">            </span><span class="k">end if</span>
 <span class="k">            write</span><span class="p">(</span><span class="n">int_val</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="n">ifmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"> </span><span class="n">val</span><span class="w"></span>
 <span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">int_val</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">sp</span><span class="p">))</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">real_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                </span><span class="n">rfmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">real_fmt</span><span class="p">))</span><span class="w"></span>
+<span class="w">            </span><span class="k">else</span>
+<span class="k">                </span><span class="n">rfmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">default_real_fmt</span><span class="w"></span>
+<span class="w">            </span><span class="k">end if</span>
+<span class="k">            write</span><span class="p">(</span><span class="n">real_val</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="n">rfmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"> </span><span class="n">val</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">real_val</span><span class="p">))</span><span class="w"></span>
 <span class="w">        </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">))</span><span class="w"></span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">real_fmt</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
 <span class="k">                </span><span class="n">rfmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">real_fmt</span><span class="p">))</span><span class="w"></span>
