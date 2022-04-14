@@ -89,14 +89,16 @@
         ! after the file has been read.
         generic,public :: get => get_csv_data_as_str,&
                                  csv_get_value,&
-                                 get_real_column,&
+                                 get_real_sp_column,&
+                                 get_real_wp_column,&
                                  get_integer_column,&
                                  get_logical_column,&
                                  get_character_column,&
                                  get_csv_string_column
         procedure :: get_csv_data_as_str
         procedure :: csv_get_value
-        procedure :: get_real_column
+        procedure :: get_real_sp_column
+        procedure :: get_real_wp_column
         procedure :: get_integer_column
         procedure :: get_logical_column
         procedure :: get_character_column
@@ -428,6 +430,14 @@
             end if
             write(int_val,fmt=ifmt,iostat=istat) val
             write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(int_val))
+        type is (real(sp))
+            if (present(real_fmt)) then
+                rfmt = trim(adjustl(real_fmt))
+            else
+                rfmt = default_real_fmt
+            end if
+            write(real_val,fmt=rfmt,iostat=istat) val
+            write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
         type is (real(wp))
             if (present(real_fmt)) then
                 rfmt = trim(adjustl(real_fmt))
@@ -691,9 +701,34 @@
 
 !*****************************************************************************************
 !>
+!  Convert a string to a `real(sp)`
+
+    pure elemental subroutine to_real_sp(str,val,status_ok)
+
+    implicit none
+
+    character(len=*),intent(in) :: str
+    real(sp),intent(out) :: val
+    logical,intent(out) :: status_ok
+
+    integer :: istat  !! read `iostat` error code
+
+    read(str,fmt=*,iostat=istat) val
+    if (istat==0) then
+        status_ok = .true.
+    else
+        status_ok = .false.
+        val = zero
+    end if
+
+    end subroutine to_real_sp
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
 !  Convert a string to a `real(wp)`
 
-    pure elemental subroutine to_real(str,val,status_ok)
+    pure elemental subroutine to_real_wp(str,val,status_ok)
 
     implicit none
 
@@ -711,7 +746,7 @@
         val = zero
     end if
 
-    end subroutine to_real
+    end subroutine to_real_wp
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -840,7 +875,7 @@
         return
     end if
 
-    call to_real(str,rval,status_ok)
+    call to_real_wp(str,rval,status_ok)
     if (status_ok) then
         itype = csv_type_double
         return
@@ -878,8 +913,10 @@
     select type (val)
     type is (integer(ip))
         call to_integer(me%csv_data(row,col)%str,val,status_ok)
+    type is (real(sp))
+        call to_real_sp(me%csv_data(row,col)%str,val,status_ok)
     type is (real(wp))
-        call to_real(me%csv_data(row,col)%str,val,status_ok)
+        call to_real_wp(me%csv_data(row,col)%str,val,status_ok)
     type is (logical)
         call to_logical(me%csv_data(row,col)%str,val,status_ok)
     type is (character(len=*))
@@ -951,9 +988,13 @@
                     if (me%verbose) write(error_unit,'(A)') &
                         'Error converting string to integer: '//trim(me%csv_data(i,icol)%str)
                     r(i) = 0
+                type is (real(sp))
+                    if (me%verbose) write(error_unit,'(A)') &
+                        'Error converting string to real(real32): '//trim(me%csv_data(i,icol)%str)
+                    r(i) = zero
                 type is (real(wp))
                     if (me%verbose) write(error_unit,'(A)') &
-                        'Error converting string to real: '//trim(me%csv_data(i,icol)%str)
+                        'Error converting string to real(real64): '//trim(me%csv_data(i,icol)%str)
                     r(i) = zero
                 type is (logical)
                     if (me%verbose) write(error_unit,'(A)') &
@@ -974,9 +1015,33 @@
 
 !*****************************************************************************************
 !>
+!  Return a column from a CSV file as a `real(sp)` vector.
+
+    subroutine get_real_sp_column(me,icol,r,status_ok)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+    integer,intent(in) :: icol  !! column number
+    real(sp),dimension(:),allocatable,intent(out) :: r
+    logical,intent(out) :: status_ok
+
+    if (allocated(me%csv_data)) then
+        allocate(r(me%n_rows))  ! size the output vector
+        call me%get_column(icol,r,status_ok)
+    else
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        status_ok = .false.
+    end if
+
+    end subroutine get_real_sp_column
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
 !  Return a column from a CSV file as a `real(wp)` vector.
 
-    subroutine get_real_column(me,icol,r,status_ok)
+    subroutine get_real_wp_column(me,icol,r,status_ok)
 
     implicit none
 
@@ -993,7 +1058,7 @@
         status_ok = .false.
     end if
 
-    end subroutine get_real_column
+    end subroutine get_real_wp_column
 !*****************************************************************************************
 
 !*****************************************************************************************
