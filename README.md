@@ -20,14 +20,8 @@ cd fortran-csv-module
 ```
 #### Dependencies
 1. Git
-2. [FoBis](https://github.com/szaghi/FoBiS), [fpm](https://github.com/fortran-lang/fpm), or [CMake](https://cmake.org)
+2. [fpm](https://github.com/fortran-lang/fpm), or [CMake](https://cmake.org)
 3. [FORD](https://github.com/Fortran-FOSS-Programmers/ford) (optional)
-
-#### Build with FoBis
-You can build using provided `build.sh`:
-```bash
-./build.sh
-```
 
 #### Build with [fortran-lang/fpm](https://github.com/fortran-lang/fpm)
 Fortran Package Manager (fpm) is a great package manager and build system for Fortran.
