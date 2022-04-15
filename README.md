@@ -1,8 +1,10 @@
 ![fortran-csv-module](/media/logo.png)
 ============
 
-![CI Status](https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg)
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
+[![Build Status](https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg)](https://github.com/jacobwilliams/fortran-csv-module/actions)
 [![codecov](https://codecov.io/gh/jacobwilliams/fortran-csv-module/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/fortran-csv-module)
+[![last-commit](https://img.shields.io/github/last-commit/jacobwilliams/fortran-csv-module)](https://github.com/jacobwilliams/fortran-csv-module/commits/master)
 
 ### Description
 
@@ -20,7 +22,7 @@ cd fortran-csv-module
 ```
 #### Dependencies
 1. Git
-2. [fpm](https://github.com/fortran-lang/fpm), or [CMake](https://cmake.org)
+2. [fpm](https://github.com/fortran-lang/fpm) or [CMake](https://cmake.org)
 3. [FORD](https://github.com/Fortran-FOSS-Programmers/ford) (optional)
 
 #### Build with [fortran-lang/fpm](https://github.com/fortran-lang/fpm)
