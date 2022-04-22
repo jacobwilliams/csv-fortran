@@ -56,7 +56,7 @@
                 file = trim(dirs_to_try(k))//trim(files_to_test(ifile))
                 if (file_exists(file)) exit ! found it
             end do
-            write(*,*) 'read file: '//trim(file)
+            write(*,*) 'read file: ' 
 
             ! read the file:
             if (ifile==1) then
@@ -70,45 +70,45 @@
                 error stop 'could not open file'
             end if
 
-            write(*,*) ''
-            write(*,*) 'File: '//trim(files_to_test(ifile))
+            write(*,'(A)') ''
+            write(*,'(A)') 'File: '//trim(files_to_test(ifile))
             ! print the header and type info:
             call f%get_header(header,status_ok)
             call f%variable_types(itypes,status_ok)
-            write(*,*) ''
+            write(*,'(A)') ''
             write(*,'(*(A30,1X,A4))') 'Header', 'Type'
             do i=1,size(header)
                 write(*,'(*(A30,1X,I4))') header(i), itypes(i)
             end do
 
-            write(*,*) ''
-            write(*,*) 'print all the rows:'
+            write(*,'(A)') ''
+            write(*,'(A)') 'print all the rows:'
 
             call f%get(csv_data,status_ok)
             do i=1,size(csv_data,1)
                 write(*,'(*(A30,1X))') csv_data(i,:)
             end do
 
-            write(*,*) ''
-            write(*,*) 'get some vectors:'
+            write(*,'(A)') ''
+            write(*,'(A)') 'get some vectors:'
             if (ifile==1) then
-                write(*,*) ''
-                write(*,*) 'get real(wp) vector:'
-                write(*,*) 'age:'
+                write(*,'(A)') ''
+                write(*,'(A)') 'get real(wp) vector:'
+                write(*,'(A)') 'age:'
                 call f%get(3,x,status_ok)
                 write(*,'(F6.3,1x)',advance='NO') x
-                write(*,*) ''
-                write(*,*) 'get real(sp) vector:'
-                write(*,*) 'age:'
+                write(*,'(A)') ''
+                write(*,'(A)') 'get real(sp) vector:'
+                write(*,'(A)') 'age:'
                 call f%get(3,y,status_ok)
                 write(*,'(F6.3,1x)',advance='NO') y
-                write(*,*) ''
+                write(*,'(A)') ''
             else
-                write(*,*) ''
-                write(*,*) 'name:'
+                write(*,'(A)') ''
+                write(*,'(A)') 'name:'
                 call f%get(2,names,status_ok)
                 write(*,'(A10,1x)',advance='NO') names
-                write(*,*) ''
+                write(*,'(A)') ''
             end if
 
         end do
@@ -146,11 +146,11 @@
         type(csv_file) :: f
         logical :: status_ok
 
-        write(*,*) ''
-        write(*,*) '============================'
-        write(*,*) ' csv_write_test '
-        write(*,*) '============================'
-        write(*,*) ''
+        write(*,'(A)') ''
+        write(*,'(A)') '============================'
+        write(*,'(A)') ' csv_write_test '
+        write(*,'(A)') '============================'
+        write(*,'(A)') ''
 
         ! open the file
         call f%open('test_write.csv',n_cols=4,status_ok=status_ok)
@@ -195,11 +195,11 @@
         logical :: status_ok
         integer,dimension(:),allocatable :: itypes
 
-        write(*,*) ''
-        write(*,*) '============================'
-        write(*,*) ' csv_read_test '
-        write(*,*) '============================'
-        write(*,*) ''
+        write(*,'(A)') ''
+        write(*,'(A)') '============================'
+        write(*,'(A)') ' csv_read_test '
+        write(*,'(A)') '============================'
+        write(*,'(A)') ''
 
         ! read the file
         call f%read('test_write.csv',header_row=1,status_ok=status_ok)
@@ -216,20 +216,20 @@
             call f%get(3,z,status_ok)
             call f%get(4,t,status_ok)
 
-            write(*,*) 'x=',x
-            write(*,*) 'y=',y
-            write(*,*) 'z=',z
-            write(*,*) 't=',t
+            write(*,'(A,1X,*(F12.3,1X))') 'x=',x
+            write(*,'(A,1X,*(F12.3,1X))') 'y=',y
+            write(*,'(A,1X,*(F12.3,1X))') 'z=',z
+            write(*,'(A,1X,*(L1,1X))') 't=',t
             
             call f%get(1,u,status_ok)
             call f%get(2,v,status_ok)
             call f%get(3,w,status_ok)
             call f%get(4,t,status_ok)
 
-            write(*,*) 'x=',u
-            write(*,*) 'y=',v
-            write(*,*) 'z=',w
-            write(*,*) 't=',t
+            write(*,'(A,1X,*(F12.3,1X))') 'x=',u
+            write(*,'(A,1X,*(F12.3,1X))') 'y=',v
+            write(*,'(A,1X,*(F12.3,1X))') 'z=',w
+            write(*,'(A,1X,*(L1,1X))') 't=',t
 
             ! destroy the file
             call f%destroy()
