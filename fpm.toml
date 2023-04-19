@@ -12,7 +12,7 @@ keywords = ["csv"]
 [library]
 source-dir = "src"
 
-[[ test ]]
+[[test]]
 name = "csv_test"
 source-dir = "src/tests"
 main = "csv_test.f90"
