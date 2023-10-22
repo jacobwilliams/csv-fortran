@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        gcc_v: [8,9,10,11,12]  # gfortran versions to test
+        gcc_v: [9,10,11,12]  # gfortran versions to test
         python-version: [3.9]
     env:
       FC: gfortran-${{ matrix.gcc_v }}
