@@ -520,7 +520,7 @@
 
     do i=1,size(val)
 
-#if defined __GFORTRAN__
+#if ( defined __GFORTRAN__ ) && ( __GNUC__ <= 9 )
         ! This is a stupid workaround for gfortran bugs (tested with 7.2.0)
         select type (val)
         type is (character(len=*))
