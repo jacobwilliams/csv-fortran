@@ -966,19 +966,19 @@
 
         do i=1,me%n_rows  ! row loop
 
-! #if defined __GFORTRAN__
-!             ! the following is a workaround for gfortran bugs:
-!             select type (r)
-!             type is (character(len=*))
-!                 tmp = repeat(' ',len(r)) ! size the string
-!                 call me%csv_get_value(i,icol,tmp,status_ok)
-!                 r(i) = tmp
-!             class default
-!                 call me%csv_get_value(i,icol,r(i),status_ok)
-!             end select
-! #else
+#if ( defined __GFORTRAN__ ) && ( __GNUC__ <= 9 )
+            ! the following is a workaround for gfortran bugs:
+            select type (r)
+            type is (character(len=*))
+                tmp = repeat(' ',len(r)) ! size the string
+                call me%csv_get_value(i,icol,tmp,status_ok)
+                r(i) = tmp
+            class default
+                call me%csv_get_value(i,icol,r(i),status_ok)
+            end select
+#else
             call me%csv_get_value(i,icol,r(i),status_ok)
-! #endif
+#endif
             if (.not. status_ok) then
                 select type (r)
                 ! note: character conversion can never fail, so not
