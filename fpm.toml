@@ -17,6 +17,16 @@ name = "csv_test"
 source-dir = "src/tests"
 main = "csv_test.f90"
 
+[[test]]
+name = "csv_test2"
+source-dir = "src/tests"
+main = "csv_test2.f90"
+
+[[test]]
+name = "csv_test3"
+source-dir = "src/tests"
+main = "csv_test3.f90"
+
 [install]
 library = true
 
