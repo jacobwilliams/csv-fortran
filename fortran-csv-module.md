@@ -1,6 +1,7 @@
 project: fortran-csv-module
 project_dir: ./src
 output_dir: ./doc
+media_dir: ./media
 project_github: https://github.com/jacobwilliams/fortran-csv-module
 summary: Read and Write CSV Files Using Modern Fortran
 author: Jacob Williams
