@@ -1,5 +1,5 @@
 name = "fortran-csv-module"
-version = "1.5.0"
+version = "2.0.1"
 author = "Jacob Williams"
 maintainer = "Jacob Williams"
 copyright = "Copyright (c) 2017-2023, Jacob Williams"
