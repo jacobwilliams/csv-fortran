@@ -4,160 +4,430 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
+      <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>next_row &ndash; fortran-csv-module</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">fortran-csv-module </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-            <li><a href="../program/csv_test.html">Program</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/csv_test.html">Program</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
     <h1>next_row
       <small>Subroutine</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 2.4% of total for procedures.">24 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/csv_module.F90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li><a href='../sourcefile/csv_module.f90.html'>csv_module.F90</a></li>
-     <li><a href='../module/csv_module.html'>csv_module</a></li>
-     <li class="active">next_row</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 2.4% of total for procedures.">24 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/csv_module.F90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/csv_module.f90.html'>csv_module.F90</a></li>
+                <li class="breadcrumb-item"><a href='../module/csv_module.html'>csv_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">next_row</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/next_row.html#src">next_row</a>
-  </div>
-</div>
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/next_row.html#src">next_row</a>
+      </div>
+    </div>
 
-</div>
+
+  </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private subroutine next_row(me)</h2>
+    <h2>private  subroutine next_row(me)  
+</h2>
     
 
     <p>Advance to the next row in the CSV file
 (write any blank cells that are necessary to finish the row)</p>
 
+    <h3>Type Bound</h3>
+    <p><a href='../type/csv_file.html'>csv_file</a></p>
+
     <h3>Arguments</h3>
-      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-me~9"></span>class(<a href='../type/csv_file.html'>csv_file</a>),</td>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~19"></span>
+              class(<a href='../type/csv_file.html'>csv_file</a>),
+            </td>
 <td>intent(inout)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>me</strong></td><td></td>
-</tr>
-</tbody>
-</table>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
 
     <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~next_row~~CalledByGraph Pages: 1 -->
+<svg id="procnext_rowCalledByGraph" width="641pt" height="138pt"
+ viewBox="0.00 0.00 641.00 138.36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~next_row~~CalledByGraph" class="graph" transform="scale(1.14 1.14) rotate(0) translate(4 154)">
+<title>proc~~next_row~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 728,-154 728,4 -4,4"/>
+<!-- proc~next_row -->
+<g id="proc~~next_row~~CalledByGraph_node1" class="node">
+<title>proc~next_row</title>
+<polygon fill="none" stroke="black" points="497,-66 319,-66 319,-42 497,-42 497,-66"/>
+<text text-anchor="middle" x="408" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_module::csv_file%next_row</text>
+</g>
+<!-- proc~add_matrix -->
+<g id="proc~~next_row~~CalledByGraph_node2" class="node">
+<title>proc~add_matrix</title>
+<g id="a_proc~~next_row~~CalledByGraph_node2"><a xlink:href=".././proc/add_matrix.html" xlink:title="csv_module::csv_file%add_matrix">
+<polygon fill="#d9534f" stroke="#d9534f" points="283,-150 91,-150 91,-126 283,-126 283,-150"/>
+<text text-anchor="middle" x="187" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module::csv_file%add_matrix</text>
+</a>
+</g>
+</g>
+<!-- proc~add_matrix&#45;&gt;proc~next_row -->
+<g id="proc~~next_row~~CalledByGraph_edge1" class="edge">
+<title>proc~add_matrix&#45;&gt;proc~next_row</title>
+<path fill="none" stroke="#000000" d="M263.9,-125.98C270.59,-123.52 277.06,-120.56 283,-117 304.09,-104.36 298.02,-87.81 319,-75 321.97,-73.19 325.09,-71.53 328.3,-70.01"/>
+<polygon fill="#000000" stroke="#000000" points="329.72,-73.21 337.59,-66.11 327.01,-66.76 329.72,-73.21"/>
+</g>
+<!-- none~add -->
+<g id="proc~~next_row~~CalledByGraph_node6" class="node">
+<title>none~add</title>
+<g id="a_proc~~next_row~~CalledByGraph_node6"><a xlink:href=".././type/csv_file.html#boundprocedure-add" xlink:title="csv_module::csv_file%add">
+<polygon fill="#a7506f" stroke="#a7506f" points="484,-108 332,-108 332,-84 484,-84 484,-108"/>
+<text text-anchor="middle" x="408" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module::csv_file%add</text>
+</a>
+</g>
+</g>
+<!-- proc~add_matrix&#45;&gt;none~add -->
+<g id="proc~~next_row~~CalledByGraph_edge8" class="edge">
+<title>proc~add_matrix&#45;&gt;none~add</title>
+<path fill="none" stroke="#000000" d="M224.16,-125.9C250.7,-119.43 287.87,-111.82 321.78,-105.74"/>
+<polygon fill="#000000" stroke="#000000" points="322.47,-109.18 331.71,-103.99 321.25,-102.28 322.47,-109.18"/>
+</g>
+<!-- proc~csv_test_1 -->
+<g id="proc~~next_row~~CalledByGraph_node3" class="node">
+<title>proc~csv_test_1</title>
+<g id="a_proc~~next_row~~CalledByGraph_node3"><a xlink:href=".././proc/csv_test_1.html" xlink:title="csv_test::csv_test_1">
+<polygon fill="#d9534f" stroke="#d9534f" points="245,-108 129,-108 129,-84 245,-84 245,-108"/>
+<text text-anchor="middle" x="187" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test::csv_test_1</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_test_1&#45;&gt;proc~next_row -->
+<g id="proc~~next_row~~CalledByGraph_edge2" class="edge">
+<title>proc~csv_test_1&#45;&gt;proc~next_row</title>
+<path fill="none" stroke="#000000" d="M245.25,-85.02C272.46,-79.8 305.29,-73.51 334.24,-67.95"/>
+<polygon fill="#000000" stroke="#000000" points="335.15,-71.34 344.31,-66.02 333.83,-64.47 335.15,-71.34"/>
+</g>
+<!-- proc~csv_test_1&#45;&gt;none~add -->
+<g id="proc~~next_row~~CalledByGraph_edge10" class="edge">
+<title>proc~csv_test_1&#45;&gt;none~add</title>
+<path fill="none" stroke="#000000" d="M245.25,-96C268.64,-96 296.17,-96 321.83,-96"/>
+<polygon fill="#000000" stroke="#000000" points="321.93,-99.5 331.93,-96 321.93,-92.5 321.93,-99.5"/>
+</g>
+<!-- proc~csv_write_test -->
+<g id="proc~~next_row~~CalledByGraph_node4" class="node">
+<title>proc~csv_write_test</title>
+<g id="a_proc~~next_row~~CalledByGraph_node4"><a xlink:href=".././proc/csv_write_test.html" xlink:title="csv_test::csv_write_test">
+<polygon fill="#d9534f" stroke="#d9534f" points="255,-66 119,-66 119,-42 255,-42 255,-66"/>
+<text text-anchor="middle" x="187" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test::csv_write_test</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_write_test&#45;&gt;proc~next_row -->
+<g id="proc~~next_row~~CalledByGraph_edge3" class="edge">
+<title>proc~csv_write_test&#45;&gt;proc~next_row</title>
+<path fill="none" stroke="#000000" d="M255.2,-54C272.17,-54 290.75,-54 308.9,-54"/>
+<polygon fill="#000000" stroke="#000000" points="308.93,-57.5 318.93,-54 308.93,-50.5 308.93,-57.5"/>
+</g>
+<!-- proc~csv_write_test&#45;&gt;none~add -->
+<g id="proc~~next_row~~CalledByGraph_edge11" class="edge">
+<title>proc~csv_write_test&#45;&gt;none~add</title>
+<path fill="none" stroke="#000000" d="M250.76,-66.04C276.76,-71.02 307.09,-76.84 334.07,-82.01"/>
+<polygon fill="#000000" stroke="#000000" points="333.75,-85.52 344.23,-83.96 335.07,-78.64 333.75,-85.52"/>
+</g>
+<!-- program~csv_test3 -->
+<g id="proc~~next_row~~CalledByGraph_node5" class="node">
+<title>program~csv_test3</title>
+<g id="a_proc~~next_row~~CalledByGraph_node5"><a xlink:href=".././program/csv_test3.html" xlink:title="csv_test3">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="217.5,-24 156.5,-24 156.5,0 217.5,0 217.5,-24"/>
+<text text-anchor="middle" x="187" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test3</text>
+</a>
+</g>
+</g>
+<!-- program~csv_test3&#45;&gt;proc~next_row -->
+<g id="proc~~next_row~~CalledByGraph_edge4" class="edge">
+<title>program~csv_test3&#45;&gt;proc~next_row</title>
+<path fill="none" stroke="#000000" d="M217.54,-17.66C247.35,-23.38 294.55,-32.43 334.38,-40.07"/>
+<polygon fill="#000000" stroke="#000000" points="333.86,-43.54 344.34,-41.98 335.18,-36.66 333.86,-43.54"/>
+</g>
+<!-- program~csv_test3&#45;&gt;none~add -->
+<g id="proc~~next_row~~CalledByGraph_edge12" class="edge">
+<title>program~csv_test3&#45;&gt;none~add</title>
+<path fill="none" stroke="#000000" d="M217.63,-13.68C237.34,-15.93 263.15,-21.11 283,-33 304.09,-45.64 298.02,-62.19 319,-75 321.97,-76.81 325.09,-78.47 328.3,-79.99"/>
+<polygon fill="#000000" stroke="#000000" points="327.01,-83.24 337.59,-83.89 329.72,-76.79 327.01,-83.24"/>
+</g>
+<!-- none~add&#45;&gt;proc~add_matrix -->
+<g id="proc~~next_row~~CalledByGraph_edge5" class="edge">
+<title>none~add&#45;&gt;proc~add_matrix</title>
+<path fill="none" stroke="#000000" d="M371.02,-108.06C349.55,-113.3 321.08,-119.29 293,-124.61"/>
+<polygon fill="#000000" stroke="#000000" points="292.29,-121.18 283.1,-126.46 293.57,-128.06 292.29,-121.18"/>
+</g>
+<!-- proc~add_vector -->
+<g id="proc~~next_row~~CalledByGraph_node8" class="node">
+<title>proc~add_vector</title>
+<g id="a_proc~~next_row~~CalledByGraph_node8"><a xlink:href=".././proc/add_vector.html" xlink:title="csv_module::csv_file%add_vector">
+<polygon fill="#d9534f" stroke="#d9534f" points="724,-108 533,-108 533,-84 724,-84 724,-108"/>
+<text text-anchor="middle" x="628.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module::csv_file%add_vector</text>
+</a>
+</g>
+</g>
+<!-- none~add&#45;&gt;proc~add_vector -->
+<g id="proc~~next_row~~CalledByGraph_edge13" class="edge">
+<title>none~add&#45;&gt;proc~add_vector</title>
+<path fill="none" stroke="#000000" d="M484.2,-89.55C496.57,-89.33 509.58,-89.23 522.52,-89.25"/>
+<polygon fill="#000000" stroke="#000000" points="522.85,-92.76 532.87,-89.3 522.88,-85.76 522.85,-92.76"/>
+</g>
+<!-- program~csv_test -->
+<g id="proc~~next_row~~CalledByGraph_node7" class="node">
+<title>program~csv_test</title>
+<g id="a_proc~~next_row~~CalledByGraph_node7"><a xlink:href=".././program/csv_test.html" xlink:title="csv_test">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="55,-87 0,-87 0,-63 55,-63 55,-87"/>
+<text text-anchor="middle" x="27.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test</text>
+</a>
+</g>
+</g>
+<!-- program~csv_test&#45;&gt;proc~csv_test_1 -->
+<g id="proc~~next_row~~CalledByGraph_edge6" class="edge">
+<title>program~csv_test&#45;&gt;proc~csv_test_1</title>
+<path fill="none" stroke="#000000" d="M55.22,-78.56C72.65,-80.89 96.23,-84.03 118.57,-87.01"/>
+<polygon fill="#000000" stroke="#000000" points="118.35,-90.51 128.72,-88.36 119.27,-83.57 118.35,-90.51"/>
+</g>
+<!-- program~csv_test&#45;&gt;proc~csv_write_test -->
+<g id="proc~~next_row~~CalledByGraph_edge7" class="edge">
+<title>program~csv_test&#45;&gt;proc~csv_write_test</title>
+<path fill="none" stroke="#000000" d="M55.22,-71.44C70.09,-69.45 89.44,-66.87 108.68,-64.31"/>
+<polygon fill="#000000" stroke="#000000" points="109.26,-67.76 118.71,-62.97 108.34,-60.82 109.26,-67.76"/>
+</g>
+<!-- proc~add_vector&#45;&gt;none~add -->
+<g id="proc~~next_row~~CalledByGraph_edge9" class="edge">
+<title>proc~add_vector&#45;&gt;none~add</title>
+<path fill="none" stroke="#000000" d="M532.87,-102.7C520.02,-102.79 506.91,-102.76 494.24,-102.6"/>
+<polygon fill="#000000" stroke="#000000" points="494.25,-99.1 484.2,-102.45 494.14,-106.1 494.25,-99.1"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocnext_rowCalledByGraph = svgPanZoom('#procnext_rowCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CalledByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
 
-    <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/next_row.html#src">next_row</a>
-  </div>
-</div>
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
 
 
     
@@ -165,32 +435,33 @@
 
     
     
+
 
 
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">next_row</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w"></span>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">next_row</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    class</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"></span>
+<span class="k">    class</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
 
 <span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="c">!! counter</span>
 <span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w">  </span><span class="c">!! number of blank cells to write</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">icol</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">n_cols</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">icol</span><span class="w"></span>
-<span class="w">        </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="w"></span>
+<span class="k">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">n_cols</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">icol</span>
+<span class="w">        </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c">!no trailing delimiter</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">enclose_strings_in_quotes</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">                    write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">quote</span><span class="o">//</span><span class="n">me</span><span class="p">%</span><span class="n">quote</span><span class="w"></span>
+<span class="k">                    write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">quote</span><span class="o">//</span><span class="n">me</span><span class="p">%</span><span class="n">quote</span>
 <span class="w">                </span><span class="k">end if</span>
 <span class="k">            else</span>
 <span class="k">                if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">enclose_strings_in_quotes</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">                    write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">quote</span><span class="o">//</span><span class="n">me</span><span class="p">%</span><span class="n">quote</span><span class="o">//</span><span class="n">me</span><span class="p">%</span><span class="n">delimiter</span><span class="w"></span>
+<span class="k">                    write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">quote</span><span class="o">//</span><span class="n">me</span><span class="p">%</span><span class="n">quote</span><span class="o">//</span><span class="n">me</span><span class="p">%</span><span class="n">delimiter</span>
 <span class="w">                </span><span class="k">else</span>
-<span class="k">                    write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">delimiter</span><span class="w"></span>
+<span class="k">                    write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iunit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;NO&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">delimiter</span>
 <span class="w">                </span><span class="k">end if</span>
 <span class="k">            end if</span>
 <span class="k">        end do</span>
@@ -199,7 +470,7 @@
 
 <span class="k">    </span><span class="n">me</span><span class="p">%</span><span class="n">icol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">  </span><span class="c">! this row is finished</span>
 
-<span class="w">    </span><span class="k">end subroutine </span><span class="n">next_row</span><span class="w"></span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">next_row</span>
 </pre></div>
 
     </section>
@@ -208,50 +479,45 @@
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2022 
+        <div class="row justify-content-between">
+          <div class="col"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>

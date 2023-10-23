@@ -4,143 +4,159 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
+      <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>csv_kinds &ndash; fortran-csv-module</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">fortran-csv-module </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-            <li><a href="../program/csv_test.html">Program</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/csv_test.html">Program</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
-    <h1>csv_kinds 
-    <small>Module</small>
+    <h1>csv_kinds
+      <small>Module</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 0.8% of total for modules and submodules.">7 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/csv_kinds.f90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li><a href='../sourcefile/csv_kinds.f90.html'>csv_kinds.f90</a></li>
-     <li class="active">csv_kinds</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
-  </div>
-  
-  <div class="row">
-    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
-  <div id="vars-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/csv_kinds.html#variable-wp">wp</a>
-      <a class="list-group-item" href="../module/csv_kinds.html#variable-sp">sp</a>
-      <a class="list-group-item" href="../module/csv_kinds.html#variable-ip">ip</a>
-    </div>
-  </div>
-</div>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.8% of total for modules and submodules.">7 statements</a>
+            </li>
 
-</div>
-
-    </div>
-    
-    <div class="col-md-9" id='text'>
-    <p>Numeric kinds.</p>
-<br>        <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Uses</h3>
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/csv_kinds.f90"> Source File</a>
+            </li>
+        </ul>
       </div>
-      <ul class="list-group">
-      <li class="list-group-item">
-  <ul class="list-inline">
-    <li><a href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html">iso_fortran_env</a></li>
-  </ul>
-      </li>
-      <li class="list-group-item">
-  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/csv_kinds.f90.html'>csv_kinds.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">csv_kinds</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/csv_kinds.html#variable-wp">wp</a>
+            <a class="list-group-item" href="../module/csv_kinds.html#variable-sp">sp</a>
+            <a class="list-group-item" href="../module/csv_kinds.html#variable-ip">ip</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>Numeric kinds.</p>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -160,11 +176,8 @@
 <!-- iso_fortran_env -->
 <g id="module~~csv_kinds~~UsesGraph_node2" class="node">
 <title>iso_fortran_env</title>
-<g id="a_module~~csv_kinds~~UsesGraph_node2"><a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
 <polygon fill="#337ab7" stroke="#337ab7" points="94,-24 0,-24 0,0 94,0 94,-24"/>
 <text text-anchor="middle" x="47" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
-</a>
-</g>
 </g>
 <!-- module~csv_kinds&#45;&gt;iso_fortran_env -->
 <g id="module~~csv_kinds~~UsesGraph_edge1" class="edge">
@@ -174,9 +187,19 @@
 </g>
 </g>
 </svg>
-</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -226,122 +249,165 @@
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a submodule to the (sub)module which it is
-    descended from. Dashed arrows point from a module or program unit to 
-    modules which it uses.
-    </p>
-    </div></div></div></div>
-      </li>
-      </ul>
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
     </div>
 
-        <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Used by</h3>
-      </div>
-      <ul class="list-group">
-  <li class="list-group-item">
-    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: module~~csv_kinds~~UsedByGraph Pages: 1 -->
-<svg id="modulecsv_kindsUsedByGraph" width="516pt" height="72pt"
- viewBox="0.00 0.00 516.00 72.38" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~csv_kinds~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 68.38)">
+<svg id="modulecsv_kindsUsedByGraph" width="522pt" height="116pt"
+ viewBox="0.00 0.00 522.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~csv_kinds~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>module~~csv_kinds~~UsedByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-68.38 512,-68.38 512,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 518,-112 518,4 -4,4"/>
 <!-- module~csv_kinds -->
 <g id="module~~csv_kinds~~UsedByGraph_node1" class="node">
 <title>module~csv_kinds</title>
-<polygon fill="none" stroke="black" points="63,-56.26 0,-56.26 0,-32.26 63,-32.26 63,-56.26"/>
-<text text-anchor="middle" x="31.5" y="-41.86" font-family="Helvetica,sans-Serif" font-size="10.50">csv_kinds</text>
-</g>
-<!-- module~csv_utilities -->
-<g id="module~~csv_kinds~~UsedByGraph_node2" class="node">
-<title>module~csv_utilities</title>
-<g id="a_module~~csv_kinds~~UsedByGraph_node2"><a xlink:href=".././module/csv_utilities.html" xlink:title="csv_utilities">
-<polygon fill="#337ab7" stroke="#337ab7" points="305,-36.26 232,-36.26 232,-12.26 305,-12.26 305,-36.26"/>
-<text text-anchor="middle" x="268.5" y="-21.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities</text>
-</a>
-</g>
-</g>
-<!-- module~csv_utilities&#45;&gt;module~csv_kinds -->
-<g id="module~~csv_kinds~~UsedByGraph_edge1" class="edge">
-<title>module~csv_utilities&#45;&gt;module~csv_kinds</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M245.86,-36.31C222.56,-48.13 184.03,-64.38 148.5,-64.26"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M146.5,-64.26C121.87,-64.18 94.69,-59.59 73.04,-54.83"/>
-<polygon fill="#000000" stroke="#000000" points="73.74,-51.39 63.21,-52.57 72.17,-58.22 73.74,-51.39"/>
-</g>
-<!-- module~csv_parameters -->
-<g id="module~~csv_kinds~~UsedByGraph_node4" class="node">
-<title>module~csv_parameters</title>
-<g id="a_module~~csv_kinds~~UsedByGraph_node4"><a xlink:href=".././module/csv_parameters.html" xlink:title="csv_parameters">
-<polygon fill="#337ab7" stroke="#337ab7" points="196,-36.26 99,-36.26 99,-12.26 196,-12.26 196,-36.26"/>
-<text text-anchor="middle" x="147.5" y="-21.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_parameters</text>
-</a>
-</g>
-</g>
-<!-- module~csv_utilities&#45;&gt;module~csv_parameters -->
-<g id="module~~csv_kinds~~UsedByGraph_edge6" class="edge">
-<title>module~csv_utilities&#45;&gt;module~csv_parameters</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M231.8,-24.26C223.73,-24.26 214.96,-24.26 206.24,-24.26"/>
-<polygon fill="#000000" stroke="#000000" points="206.07,-20.76 196.07,-24.26 206.07,-27.76 206.07,-20.76"/>
+<polygon fill="none" stroke="black" points="63,-46 0,-46 0,-22 63,-22 63,-46"/>
+<text text-anchor="middle" x="31.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_kinds</text>
 </g>
 <!-- module~csv_module -->
-<g id="module~~csv_kinds~~UsedByGraph_node3" class="node">
+<g id="module~~csv_kinds~~UsedByGraph_node2" class="node">
 <title>module~csv_module</title>
-<g id="a_module~~csv_kinds~~UsedByGraph_node3"><a xlink:href=".././module/csv_module.html" xlink:title="csv_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="417,-36.26 341,-36.26 341,-12.26 417,-12.26 417,-36.26"/>
-<text text-anchor="middle" x="379" y="-21.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module</text>
+<g id="a_module~~csv_kinds~~UsedByGraph_node2"><a xlink:href=".././module/csv_module.html" xlink:title="csv_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="417,-66 341,-66 341,-42 417,-42 417,-66"/>
+<text text-anchor="middle" x="379" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module</text>
 </a>
 </g>
 </g>
 <!-- module~csv_module&#45;&gt;module~csv_kinds -->
-<g id="module~~csv_kinds~~UsedByGraph_edge2" class="edge">
+<g id="module~~csv_kinds~~UsedByGraph_edge1" class="edge">
 <title>module~csv_module&#45;&gt;module~csv_kinds</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.77,-36.21C329.38,-39.53 316.76,-42.87 305,-45.26 236.34,-59.21 218.57,-64.5 148.5,-64.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M267.5,-74C192.14,-74.57 172.72,-70.64 99,-55 90.49,-53.19 81.51,-50.75 73.01,-48.16"/>
+<polygon fill="#000000" stroke="#000000" points="73.88,-44.77 63.29,-45.09 71.77,-51.44 73.88,-44.77"/>
 </g>
-<!-- module~csv_module&#45;&gt;module~csv_utilities -->
-<g id="module~~csv_kinds~~UsedByGraph_edge4" class="edge">
-<title>module~csv_module&#45;&gt;module~csv_utilities</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.96,-24.26C332.76,-24.26 323.97,-24.26 315.46,-24.26"/>
-<polygon fill="#000000" stroke="#000000" points="315.27,-20.76 305.27,-24.26 315.27,-27.76 315.27,-20.76"/>
+<!-- module~csv_parameters -->
+<g id="module~~csv_kinds~~UsedByGraph_node3" class="node">
+<title>module~csv_parameters</title>
+<g id="a_module~~csv_kinds~~UsedByGraph_node3"><a xlink:href=".././module/csv_parameters.html" xlink:title="csv_parameters">
+<polygon fill="#337ab7" stroke="#337ab7" points="196,-46 99,-46 99,-22 196,-22 196,-46"/>
+<text text-anchor="middle" x="147.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_parameters</text>
+</a>
+</g>
 </g>
 <!-- module~csv_module&#45;&gt;module~csv_parameters -->
 <g id="module~~csv_kinds~~UsedByGraph_edge7" class="edge">
 <title>module~csv_module&#45;&gt;module~csv_parameters</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M343.53,-12.2C331.49,-8.57 317.8,-5.07 305,-3.26 272.87,1.27 264.2,0.73 232,-3.26 220.87,-4.64 209.09,-7.01 198,-9.68"/>
-<polygon fill="#000000" stroke="#000000" points="196.88,-6.35 188.05,-12.19 198.6,-13.14 196.88,-6.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.65,-64.21C319.87,-69.04 293.44,-73.82 269.5,-74"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M267.5,-74C236.28,-74.24 202.73,-61.68 179.24,-50.58"/>
+<polygon fill="#000000" stroke="#000000" points="180.66,-47.37 170.14,-46.11 177.57,-53.66 180.66,-47.37"/>
+</g>
+<!-- module~csv_utilities -->
+<g id="module~~csv_kinds~~UsedByGraph_node4" class="node">
+<title>module~csv_utilities</title>
+<g id="a_module~~csv_kinds~~UsedByGraph_node4"><a xlink:href=".././module/csv_utilities.html" xlink:title="csv_utilities">
+<polygon fill="#337ab7" stroke="#337ab7" points="305,-46 232,-46 232,-22 305,-22 305,-46"/>
+<text text-anchor="middle" x="268.5" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities</text>
+</a>
+</g>
+</g>
+<!-- module~csv_module&#45;&gt;module~csv_utilities -->
+<g id="module~~csv_kinds~~UsedByGraph_edge9" class="edge">
+<title>module~csv_module&#45;&gt;module~csv_utilities</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M340.96,-47.17C332.67,-45.64 323.77,-44 315.17,-42.42"/>
+<polygon fill="#000000" stroke="#000000" points="315.74,-38.96 305.27,-40.59 314.47,-45.85 315.74,-38.96"/>
 </g>
 <!-- module~csv_parameters&#45;&gt;module~csv_kinds -->
-<g id="module~~csv_kinds~~UsedByGraph_edge3" class="edge">
+<g id="module~~csv_kinds~~UsedByGraph_edge2" class="edge">
 <title>module~csv_parameters&#45;&gt;module~csv_kinds</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M98.81,-32.63C90.23,-34.13 81.35,-35.69 72.99,-37.16"/>
-<polygon fill="#000000" stroke="#000000" points="72.35,-33.72 63.1,-38.89 73.56,-40.61 72.35,-33.72"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M98.81,-34C90.32,-34 81.54,-34 73.26,-34"/>
+<polygon fill="#000000" stroke="#000000" points="73.1,-30.5 63.1,-34 73.1,-37.5 73.1,-30.5"/>
+</g>
+<!-- module~csv_utilities&#45;&gt;module~csv_kinds -->
+<g id="module~~csv_kinds~~UsedByGraph_edge3" class="edge">
+<title>module~csv_utilities&#45;&gt;module~csv_kinds</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M233.75,-21.94C221.97,-18.31 208.55,-14.8 196,-13 153.33,-6.86 141.61,-6.43 99,-13 90.4,-14.33 81.39,-16.56 72.87,-19.09"/>
+<polygon fill="#000000" stroke="#000000" points="71.64,-15.81 63.16,-22.16 73.75,-22.49 71.64,-15.81"/>
+</g>
+<!-- module~csv_utilities&#45;&gt;module~csv_parameters -->
+<g id="module~~csv_kinds~~UsedByGraph_edge8" class="edge">
+<title>module~csv_utilities&#45;&gt;module~csv_parameters</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M231.8,-34C223.73,-34 214.96,-34 206.24,-34"/>
+<polygon fill="#000000" stroke="#000000" points="206.07,-30.5 196.07,-34 206.07,-37.5 206.07,-30.5"/>
 </g>
 <!-- program~csv_test -->
 <g id="module~~csv_kinds~~UsedByGraph_node5" class="node">
 <title>program~csv_test</title>
 <g id="a_module~~csv_kinds~~UsedByGraph_node5"><a xlink:href=".././program/csv_test.html" xlink:title="csv_test">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="508,-36.26 453,-36.26 453,-12.26 508,-12.26 508,-36.26"/>
-<text text-anchor="middle" x="480.5" y="-21.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="511,-108 456,-108 456,-84 511,-84 511,-108"/>
+<text text-anchor="middle" x="483.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test</text>
 </a>
 </g>
 </g>
 <!-- program~csv_test&#45;&gt;module~csv_module -->
-<g id="module~~csv_kinds~~UsedByGraph_edge5" class="edge">
+<g id="module~~csv_kinds~~UsedByGraph_edge4" class="edge">
 <title>program~csv_test&#45;&gt;module~csv_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M452.84,-24.26C444.97,-24.26 436.13,-24.26 427.37,-24.26"/>
-<polygon fill="#000000" stroke="#000000" points="427.21,-20.76 417.21,-24.26 427.21,-27.76 427.21,-20.76"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M455.84,-85.07C444.6,-80.47 431.31,-75.02 419.01,-69.98"/>
+<polygon fill="#000000" stroke="#000000" points="420,-66.61 409.42,-66.05 417.34,-73.08 420,-66.61"/>
+</g>
+<!-- program~csv_test2 -->
+<g id="module~~csv_kinds~~UsedByGraph_node6" class="node">
+<title>program~csv_test2</title>
+<g id="a_module~~csv_kinds~~UsedByGraph_node6"><a xlink:href=".././program/csv_test2.html" xlink:title="csv_test2">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="514,-66 453,-66 453,-42 514,-42 514,-66"/>
+<text text-anchor="middle" x="483.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test2</text>
+</a>
+</g>
+</g>
+<!-- program~csv_test2&#45;&gt;module~csv_module -->
+<g id="module~~csv_kinds~~UsedByGraph_edge5" class="edge">
+<title>program~csv_test2&#45;&gt;module~csv_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M452.85,-54C444.86,-54 436.02,-54 427.32,-54"/>
+<polygon fill="#000000" stroke="#000000" points="427.24,-50.5 417.24,-54 427.24,-57.5 427.24,-50.5"/>
+</g>
+<!-- program~csv_test3 -->
+<g id="module~~csv_kinds~~UsedByGraph_node7" class="node">
+<title>program~csv_test3</title>
+<g id="a_module~~csv_kinds~~UsedByGraph_node7"><a xlink:href=".././program/csv_test3.html" xlink:title="csv_test3">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="514,-24 453,-24 453,0 514,0 514,-24"/>
+<text text-anchor="middle" x="483.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test3</text>
+</a>
+</g>
+</g>
+<!-- program~csv_test3&#45;&gt;module~csv_module -->
+<g id="module~~csv_kinds~~UsedByGraph_edge6" class="edge">
+<title>program~csv_test3&#45;&gt;module~csv_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M453.13,-24.04C442.41,-28.43 430.11,-33.47 418.7,-38.14"/>
+<polygon fill="#000000" stroke="#000000" points="417.3,-34.93 409.38,-41.96 419.96,-41.41 417.3,-34.93"/>
 </g>
 </g>
 </svg>
-</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -391,115 +457,141 @@
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a submodule to the (sub)module which it is
-    descended from. Dashed arrows point from a module or program unit to 
-    modules which it uses.
-    </p>
-    </div></div></div></div>
-  </li>
-      </ul>
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
     </div>
 
-    <br>
+      <br>
 
-    <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
-  <div id="vars-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/csv_kinds.html#variable-wp">wp</a>
-      <a class="list-group-item" href="../module/csv_kinds.html#variable-sp">sp</a>
-      <a class="list-group-item" href="../module/csv_kinds.html#variable-ip">ip</a>
+
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wp"></span>
+              integer,
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>wp</strong></td>
+<td> =</td>
+                <td>real64</td>
+            <td>
+                <p>default real kind</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sp"></span>
+              integer,
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>sp</strong></td>
+<td> =</td>
+                <td>real32</td>
+            <td>
+                <p>additional real kind, single precision</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ip"></span>
+              integer,
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>ip</strong></td>
+<td> =</td>
+                <td>int32</td>
+            <td>
+                <p>default integer kind</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+        </section>
+        <br>
+
+
+
+
+
+
+
+
+
     </div>
   </div>
-</div>
 
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
-
-    <section>
-    <h2>Variables</h2>
-    <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-wp"></span>integer,</td>
-<td>public,</td>  <td>parameter</td><td>::</td>
-  <td><strong>wp</strong></td><td> =</td><td>real64</td><td><p>default real kind</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-sp"></span>integer,</td>
-<td>public,</td>  <td>parameter</td><td>::</td>
-  <td><strong>sp</strong></td><td> =</td><td>real32</td><td><p>additional real kind, single precision</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-ip"></span>integer,</td>
-<td>public,</td>  <td>parameter</td><td>::</td>
-  <td><strong>ip</strong></td><td> =</td><td>int32</td><td><p>default integer kind</p></td>
-</tr>
-</tbody>
-</table>
-
-    </section>
-    <br>
-    
-    
-
-    
-    
-
-    
-    </div>
-  </div>
-
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2022 
+        <div class="row justify-content-between">
+          <div class="col"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>

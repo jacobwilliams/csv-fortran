@@ -4,139 +4,156 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
+      <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>csv_parameters.f90 &ndash; fortran-csv-module</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">fortran-csv-module </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-              data-toggle="dropdown" role="button"
-              aria-haspopup="true"
-     aria-expanded="false">Contents <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
-            <li><a href="../lists/modules.html">Modules</a></li>
-            <li><a href="../lists/procedures.html">Procedures</a></li>
-                   <li><a href="../lists/types.html">Derived Types</a></li>
-            <li><a href="../program/csv_test.html">Program</a></li>
-       
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
             </ul>
-        
-            </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/csv_test.html">Program</a></li>
-          </ul>
-        <form action="../search.html" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
         </div>
-<!--
-        <button type="submit" class="btn btn-default">Submit</button>
--->
-        </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
     <h1>csv_parameters.f90
-    <small>Source File</small>
+      <small>Source File</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title=" 0.7% of total for source files.">8 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/csv_parameters.f90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li class="active">csv_parameters.f90</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.7% of total for source files.">8 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/csv_parameters.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">csv_parameters.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
-  <div id="mods-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/csv_parameters.html">csv_parameters</a>
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/csv_parameters.html">csv_parameters</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../sourcefile/csv_parameters.f90.html#src">csv_parameters.f90</a>
-  </div>
-</div>
 
-</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/csv_parameters.f90.html#src">csv_parameters.f90</a>
+      </div>
+    </div>
+
+
+  </div>
 
     </div>
     <div class="col-md-9" id='text'>
       
       <br>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">This file depends on</h3>
-      </div>
-      <div class="panel-body">
-  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -170,9 +187,19 @@
 </g>
 </g>
 </svg>
-</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#EfferentGraph-help-text">Help</a></div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -198,92 +225,134 @@
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a file to a file which it depends on. A file
-    is dependent upon another if the latter must be compiled before the former
-    can be.
-    </p>
-    </div></div></div></div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Files dependent on this one</h3>
-      </div>
-      <div class="panel-body">
-  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: sourcefile~~csv_parameters.f90~~AfferentGraph Pages: 1 -->
-<svg id="sourcefilecsv_parametersf90AfferentGraph" width="501pt" height="52pt"
- viewBox="0.00 0.00 501.00 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sourcefile~~csv_parameters.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 48)">
+<svg id="sourcefilecsv_parametersf90AfferentGraph" width="508pt" height="116pt"
+ viewBox="0.00 0.00 508.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>sourcefile~~csv_parameters.f90~~AfferentGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 497,-48 497,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 504,-112 504,4 -4,4"/>
 <!-- sourcefile~csv_parameters.f90 -->
 <g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node1" class="node">
 <title>sourcefile~csv_parameters.f90</title>
-<polygon fill="none" stroke="black" points="118,-44 0,-44 0,-20 118,-20 118,-44"/>
-<text text-anchor="middle" x="59" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_parameters.f90</text>
-</g>
-<!-- sourcefile~csv_utilities.f90 -->
-<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node2" class="node">
-<title>sourcefile~csv_utilities.f90</title>
-<g id="a_sourcefile~~csv_parameters.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/csv_utilities.f90.html" xlink:title="csv_utilities.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="248,-24 154,-24 154,0 248,0 248,-24"/>
-<text text-anchor="middle" x="201" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities.f90</text>
-</a>
-</g>
-</g>
-<!-- sourcefile~csv_utilities.f90&#45;&gt;sourcefile~csv_parameters.f90 -->
-<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge1" class="edge">
-<title>sourcefile~csv_utilities.f90&#45;&gt;sourcefile~csv_parameters.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M153.77,-18.6C145.64,-19.77 137.03,-21 128.44,-22.22"/>
-<polygon fill="#000000" stroke="#000000" points="127.82,-18.78 118.41,-23.66 128.81,-25.71 127.82,-18.78"/>
+<polygon fill="none" stroke="black" points="118,-66 0,-66 0,-42 118,-42 118,-66"/>
+<text text-anchor="middle" x="59" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_parameters.f90</text>
 </g>
 <!-- sourcefile~csv_module.f90 -->
-<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node3" class="node">
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node2" class="node">
 <title>sourcefile~csv_module.f90</title>
-<g id="a_sourcefile~~csv_parameters.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/csv_module.f90.html" xlink:title="csv_module.F90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="382,-44 284,-44 284,-20 382,-20 382,-44"/>
-<text text-anchor="middle" x="333" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module.F90</text>
+<g id="a_sourcefile~~csv_parameters.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/csv_module.f90.html" xlink:title="csv_module.F90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="382,-66 284,-66 284,-42 382,-42 382,-66"/>
+<text text-anchor="middle" x="333" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module.F90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~csv_module.f90&#45;&gt;sourcefile~csv_parameters.f90 -->
-<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge2" class="edge">
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge1" class="edge">
 <title>sourcefile~csv_module.f90&#45;&gt;sourcefile~csv_parameters.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M283.58,-32.67C271.93,-32.81 259.52,-32.93 248,-33 206.22,-33.25 195.78,-33.22 154,-33 145.67,-32.96 136.93,-32.89 128.27,-32.81"/>
-<polygon fill="#000000" stroke="#000000" points="128.2,-29.31 118.17,-32.72 128.13,-36.31 128.2,-29.31"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M283.58,-54.67C271.93,-54.81 259.52,-54.93 248,-55 206.22,-55.25 195.78,-55.22 154,-55 145.67,-54.96 136.93,-54.89 128.27,-54.81"/>
+<polygon fill="#000000" stroke="#000000" points="128.2,-51.31 118.17,-54.72 128.13,-58.31 128.2,-51.31"/>
+</g>
+<!-- sourcefile~csv_utilities.f90 -->
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~csv_utilities.f90</title>
+<g id="a_sourcefile~~csv_parameters.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/csv_utilities.f90.html" xlink:title="csv_utilities.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="248,-46 154,-46 154,-22 248,-22 248,-46"/>
+<text text-anchor="middle" x="201" y="-31.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities.f90</text>
+</a>
+</g>
 </g>
 <!-- sourcefile~csv_module.f90&#45;&gt;sourcefile~csv_utilities.f90 -->
-<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge3" class="edge">
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge6" class="edge">
 <title>sourcefile~csv_module.f90&#45;&gt;sourcefile~csv_utilities.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M283.96,-24.61C275.54,-23.31 266.71,-21.96 258.09,-20.63"/>
-<polygon fill="#000000" stroke="#000000" points="258.53,-17.16 248.11,-19.09 257.46,-24.07 258.53,-17.16"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M283.96,-46.61C275.54,-45.31 266.71,-43.96 258.09,-42.63"/>
+<polygon fill="#000000" stroke="#000000" points="258.53,-39.16 248.11,-41.09 257.46,-46.07 258.53,-39.16"/>
+</g>
+<!-- sourcefile~csv_utilities.f90&#45;&gt;sourcefile~csv_parameters.f90 -->
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~csv_utilities.f90&#45;&gt;sourcefile~csv_parameters.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M153.77,-40.6C145.64,-41.77 137.03,-43 128.44,-44.22"/>
+<polygon fill="#000000" stroke="#000000" points="127.82,-40.78 118.41,-45.66 128.81,-47.71 127.82,-40.78"/>
 </g>
 <!-- sourcefile~csv_test.f90 -->
 <g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node4" class="node">
 <title>sourcefile~csv_test.f90</title>
 <g id="a_sourcefile~~csv_parameters.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/csv_test.f90.html" xlink:title="csv_test.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="493,-44 418,-44 418,-20 493,-20 493,-44"/>
-<text text-anchor="middle" x="455.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="496.5,-108 421.5,-108 421.5,-84 496.5,-84 496.5,-108"/>
+<text text-anchor="middle" x="459" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~csv_test.f90&#45;&gt;sourcefile~csv_module.f90 -->
-<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge4" class="edge">
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge3" class="edge">
 <title>sourcefile~csv_test.f90&#45;&gt;sourcefile~csv_module.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417.69,-32C409.63,-32 400.91,-32 392.24,-32"/>
-<polygon fill="#000000" stroke="#000000" points="392.14,-28.5 382.14,-32 392.14,-35.5 392.14,-28.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M422.47,-83.96C408.98,-79.4 393.43,-74.13 379.17,-69.3"/>
+<polygon fill="#000000" stroke="#000000" points="380.13,-65.93 369.54,-66.04 377.89,-72.56 380.13,-65.93"/>
+</g>
+<!-- sourcefile~csv_test2.f90 -->
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~csv_test2.f90</title>
+<g id="a_sourcefile~~csv_parameters.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/csv_test2.f90.html" xlink:title="csv_test2.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="500,-66 418,-66 418,-42 500,-42 500,-66"/>
+<text text-anchor="middle" x="459" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test2.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~csv_test2.f90&#45;&gt;sourcefile~csv_module.f90 -->
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~csv_test2.f90&#45;&gt;sourcefile~csv_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417.74,-54C409.61,-54 400.9,-54 392.3,-54"/>
+<polygon fill="#000000" stroke="#000000" points="392.27,-50.5 382.27,-54 392.27,-57.5 392.27,-50.5"/>
+</g>
+<!-- sourcefile~csv_test3.f90 -->
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~csv_test3.f90</title>
+<g id="a_sourcefile~~csv_parameters.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/csv_test3.f90.html" xlink:title="csv_test3.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="500,-24 418,-24 418,0 500,0 500,-24"/>
+<text text-anchor="middle" x="459" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_test3.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~csv_test3.f90&#45;&gt;sourcefile~csv_module.f90 -->
+<g id="sourcefile~~csv_parameters.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~csv_test3.f90&#45;&gt;sourcefile~csv_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M422.47,-24.04C408.98,-28.6 393.43,-33.87 379.17,-38.7"/>
+<polygon fill="#000000" stroke="#000000" points="377.89,-35.44 369.54,-41.96 380.13,-42.07 377.89,-35.44"/>
 </g>
 </g>
 </svg>
-</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#AfferentGraph-help-text">Help</a></div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -309,108 +378,84 @@
 </g>
 </svg>
 
-    
-    <p>Solid arrows point from a file to a file which it depends on. A file
-    is dependent upon another if the latter must be compiled before the former
-    can be.
-    </p>
-    </div></div></div></div>
-      </div>
-    </div>
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
 <br>
-    <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
-  <div id="mods-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../module/csv_parameters.html">csv_parameters</a>
-    </div>
-  </div>
-</div>
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../sourcefile/csv_parameters.f90.html#src">csv_parameters.f90</a>
-  </div>
-</div>
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
-    <section>
-      <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">!*******************************************************************************</span>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">!*******************************************************************************</span>
 <a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">!&gt;</span>
 <a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">!  Various parameters.</span>
 <a id="ln-4" name="ln-4" href="#ln-4"></a>
-<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="w">    </span><span class="k">module </span><span class="n">csv_parameters</span><span class="w"></span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="w">    </span><span class="k">module </span><span class="n">csv_parameters</span>
 <a id="ln-6" name="ln-6" href="#ln-6"></a>
-<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">use </span><span class="n">csv_kinds</span><span class="w"></span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">use </span><span class="n">csv_kinds</span>
 <a id="ln-8" name="ln-8" href="#ln-8"></a>
 <a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="k">private</span>
 <a id="ln-10" name="ln-10" href="#ln-10"></a>
 <a id="ln-11" name="ln-11" href="#ln-11"></a><span class="k">    </span><span class="kt">integer</span><span class="p">(</span><span class="n">ip</span><span class="p">),</span><span class="k">parameter</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">max_real_str_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">27</span><span class="w"> </span><span class="c">!! maximum string length of a real number</span>
-<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">default_real_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;(E27.17E4)&#39;</span><span class="w"></span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">default_real_fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;(E27.17E4)&#39;</span>
 <a id="ln-13" name="ln-13" href="#ln-13"></a><span class="w">        </span><span class="c">!! default real number format statement (for writing real values to strings and files).</span>
 <a id="ln-14" name="ln-14" href="#ln-14"></a>
 <a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="n">ip</span><span class="p">),</span><span class="k">parameter</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">max_integer_str_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="c">!! maximum string length of an integer.</span>
-<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">default_int_fmt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;(I256)&#39;</span><span class="w"></span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">default_int_fmt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;(I256)&#39;</span>
 <a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">        </span><span class="c">!! default integer number format statement (for writing real values to strings and files).</span>
 <a id="ln-18" name="ln-18" href="#ln-18"></a>
-<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">    </span><span class="k">end module </span><span class="n">csv_parameters</span><span class="w"></span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">    </span><span class="k">end module </span><span class="n">csv_parameters</span>
 <a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">!*******************************************************************************</span>
 </pre></div>
 
-    </section>
+      </section>
     </div>
   </div>
 
-    <hr>    
+      <hr>
     </div> <!-- /container -->
     <footer>
       <div class="container">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2022 
+        <div class="row justify-content-between">
+          <div class="col"><p>fortran-csv-module was developed by Jacob Williams<br>&copy; 2023 
 </p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
         </div>
-        <div class="col-xs-6 col-md-6">
-          <p class="text-right">
-            Documentation generated by 
-            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-          </p>
-        </div>
-      </div>
-      <br>
-      </div> <!-- /container -->    
+        <br>
+      </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
--->
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
     <!-- MathJax JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
   </body>
 </html>
