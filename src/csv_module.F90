@@ -226,7 +226,10 @@
                                 !! (0 if no header specified)
     character(len=1) :: tmp     !! for skipping a row
 
+    ! clear existing data:
     arrays_allocated = .false.
+    if (allocated(me%csv_data)) deallocate(me%csv_data)
+    if (allocated(me%header))   deallocate(me%header)
 
     open(newunit=iunit, file=filename, status='OLD', iostat=istat)
 
@@ -286,9 +289,7 @@
                 ! columns.
                 n_cols = size(row_data)
                 me%n_cols = n_cols
-                if(allocated(me%csv_data)) deallocate(me%csv_data)
                 allocate(me%csv_data(n_rows,n_cols))
-                if(allocated(me%header)) deallocate(me%header)
                 if (iheader/=0) allocate(me%header(n_cols))
                 arrays_allocated = .true.
             end if
@@ -339,6 +340,10 @@
     integer :: istat       !! open `iostat` flag
     logical :: append_flag !! local copy of `append` argument
     logical :: file_exists !! if the file exists
+
+    ! clear existing data:
+    if (allocated(me%csv_data)) deallocate(me%csv_data)
+    if (allocated(me%header))   deallocate(me%header)
 
     me%n_cols = n_cols
 
