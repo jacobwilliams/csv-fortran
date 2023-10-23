@@ -226,8 +226,10 @@
                                 !! (0 if no header specified)
     character(len=1) :: tmp     !! for skipping a row
 
-    call me%destroy()
+    ! clear existing data:
     arrays_allocated = .false.
+    if (allocated(me%csv_data)) deallocate(me%csv_data)
+    if (allocated(me%header))   deallocate(me%header)
 
     open(newunit=iunit, file=filename, status='OLD', iostat=istat)
 
@@ -339,7 +341,9 @@
     logical :: append_flag !! local copy of `append` argument
     logical :: file_exists !! if the file exists
 
-    call me%destroy()
+    ! clear existing data:
+    if (allocated(me%csv_data)) deallocate(me%csv_data)
+    if (allocated(me%header))   deallocate(me%header)
 
     me%n_cols = n_cols
 
