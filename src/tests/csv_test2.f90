@@ -4,7 +4,7 @@
 !> author: Jacob Williams
 !  license: BSD
 !
-!  Test of reading and writing CSV files.
+!  Test of reading a CSV file.
 
     program csv_test2
 
@@ -15,6 +15,12 @@
 
     type(csv_file) :: file
     logical        :: status_ok
+
+    write(*,*) ''
+    write(*,*) '============================'
+    write(*,*) ' csv_test_2 '
+    write(*,*) '============================'
+    write(*,*) ''
 
     call file%read('files/test2.csv',header_row=1,status_ok=status_ok)
     write(*,*) 'status_ok = ', status_ok

@@ -1,72 +1,82 @@
-program csv_test3
+!*****************************************************************************************
+!>
+!  Test of string conversions that uncover bugs in Gfortran.
 
-use csv_module
-use iso_fortran_env, only: wp => real64
+    program csv_test3
 
-implicit none
+    use csv_module
+    use iso_fortran_env, only: wp => real64
 
-type(csv_file) :: f
-logical :: status_ok
-character(len=30),dimension(:),allocatable :: header, col1
-integer :: i
-character(len=100) :: tmp_str
+    implicit none
 
-! set optional inputs:
-call f%initialize(verbose = .true.)
+    type(csv_file) :: f
+    logical :: status_ok
+    character(len=30),dimension(:),allocatable :: header, col1
+    integer :: i
+    character(len=100) :: tmp_str
 
-! open the file
-call f%open('test.csv',n_cols=4,status_ok=status_ok)
+    write(*,*) ''
+    write(*,*) '============================'
+    write(*,*) ' csv_test_3 '
+    write(*,*) '============================'
+    write(*,*) ''
 
-! add header
-call f%add(['x','y','z','t'])
-call f%next_row()
+    ! set optional inputs:
+    call f%initialize(verbose = .true.)
 
-! add some data:
-call f%add([1.0_wp,2.0_wp,3.0_wp],real_fmt='(F5.3)')
-call f%add(.true.)
-call f%next_row()
-call f%add([2.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
-call f%add(.false.)
-call f%next_row()
-call f%add([3.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
-call f%add(.false.)
-call f%next_row()
-call f%add([4.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
-call f%add(.false.)
-call f%next_row()
-call f%add([5.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
-call f%add(.false.)
-call f%next_row()
+    ! open the file
+    call f%open('test.csv',n_cols=4,status_ok=status_ok)
 
-! finished
-call f%close(status_ok)
-if (.not. status_ok) error stop 'error closing file'
+    ! add header
+    call f%add(['x','y','z','t'])
+    call f%next_row()
 
-! read the file
-call f%read('test.csv',header_row=1,status_ok=status_ok)
-if (.not. status_ok) error stop 'error reading file'
+    ! add some data:
+    call f%add([1.0_wp,2.0_wp,3.0_wp],real_fmt='(F5.3)')
+    call f%add(.true.)
+    call f%next_row()
+    call f%add([2.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
+    call f%add(.false.)
+    call f%next_row()
+    call f%add([3.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
+    call f%add(.false.)
+    call f%next_row()
+    call f%add([4.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
+    call f%add(.false.)
+    call f%next_row()
+    call f%add([5.0_wp,5.0_wp,6.0_wp],real_fmt='(F5.3)')
+    call f%add(.false.)
+    call f%next_row()
 
-! get the header and type info
-call f%get_header(header,status_ok)
+    ! finished
+    call f%close(status_ok)
+    if (.not. status_ok) error stop 'error closing file'
 
-print "(*(g0))", "HEADER:"
-do i = 1, size(header)
-  print "(*(g0))", ">"//trim(header(i))//"<"
-end do
-if (.not. all(header == ['x','y','z','t'])) error stop 'error reading header'
+    ! read the file
+    call f%read('test.csv',header_row=1,status_ok=status_ok)
+    if (.not. status_ok) error stop 'error reading file'
 
-call f%get(1,col1,status_ok)
-print "(*(g0))", "col1:"
-do i = 1, size(col1)
-  print "(*(g0))", ">",trim(col1(i)),"<"
-end do
+    ! get the header and type info
+    call f%get_header(header,status_ok)
 
-do i = 1, 5
-  write(tmp_str,'(F5.3)') real(i,wp)
-  if (col1(i) /= tmp_str) error stop 'error converting cell to string:'//tmp_str
-end do
+    print "(*(g0))", "HEADER:"
+    do i = 1, size(header)
+      print "(*(g0))", ">"//trim(header(i))//"<"
+    end do
+    if (.not. all(header == ['x','y','z','t'])) error stop 'error reading header'
 
-! destroy the file
-call f%destroy()
+    call f%get(1,col1,status_ok)
+    print "(*(g0))", "col1:"
+    do i = 1, size(col1)
+      print "(*(g0))", ">",trim(col1(i)),"<"
+    end do
 
-end program csv_test3
+    do i = 1, 5
+      write(tmp_str,'(F5.3)') real(i,wp)
+      if (col1(i) /= tmp_str) error stop 'error converting cell to string:'//tmp_str
+    end do
+
+    ! destroy the file
+    call f%destroy()
+
+    end program csv_test3
