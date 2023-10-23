@@ -1,4 +1,4 @@
-![fortran-csv-module](/media/logo.png)
+![fortran-csv-module](media/logo.png)
 ============
 
 [![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
@@ -13,6 +13,11 @@ A modern Fortran library for reading and writing CSV (comma-separated value) fil
 ### Latest Release
 
 [![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg?style=plastic)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
+
+### Documentation
+
+The latest API documentation for the `master` branch can be found [here](https://jacobwilliams.github.io/fortran-csv-module/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
+
 
 ### Getting started
 #### Get the code
