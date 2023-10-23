@@ -1,6 +1,7 @@
 ![fortran-csv-module](media/logo.png)
 ============
 
+[![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)](https://github.com/topics/fortran)
 [![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
 [![Build Status](https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg)](https://github.com/jacobwilliams/fortran-csv-module/actions)
 [![codecov](https://codecov.io/gh/jacobwilliams/fortran-csv-module/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/fortran-csv-module)
