@@ -1,11 +1,11 @@
-![fortran-csv-module](media/logo.png)
+![csv-fortran](media/logo.png)
 ============
 
 [![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)](https://github.com/topics/fortran)
-[![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
-[![Build Status](https://github.com/jacobwilliams/fortran-csv-module/actions/workflows/CI.yml/badge.svg)](https://github.com/jacobwilliams/fortran-csv-module/actions)
-[![codecov](https://codecov.io/gh/jacobwilliams/fortran-csv-module/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/fortran-csv-module)
-[![last-commit](https://img.shields.io/github/last-commit/jacobwilliams/fortran-csv-module)](https://github.com/jacobwilliams/fortran-csv-module/commits/master)
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/csv-fortran.svg)](https://github.com/jacobwilliams/csv-fortran/releases/latest)
+[![Build Status](https://github.com/jacobwilliams/csv-fortran/actions/workflows/CI.yml/badge.svg)](https://github.com/jacobwilliams/csv-fortran/actions)
+[![codecov](https://codecov.io/gh/jacobwilliams/csv-fortran/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/csv-fortran)
+[![last-commit](https://img.shields.io/github/last-commit/jacobwilliams/csv-fortran)](https://github.com/jacobwilliams/csv-fortran/commits/master)
 
 ### Description
 
@@ -13,18 +13,18 @@ A modern Fortran library for reading and writing CSV (comma-separated value) fil
 
 ### Latest Release
 
-[![GitHub release](https://img.shields.io/github/release/jacobwilliams/fortran-csv-module.svg?style=plastic)](https://github.com/jacobwilliams/fortran-csv-module/releases/latest)
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/csv-fortran.svg?style=plastic)](https://github.com/jacobwilliams/csv-fortran/releases/latest)
 
 ### Documentation
 
-The latest API documentation for the `master` branch can be found [here](https://jacobwilliams.github.io/fortran-csv-module/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
+The latest API documentation for the `master` branch can be found [here](https://jacobwilliams.github.io/csv-fortran/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
 
 
 ### Getting started
 #### Get the code
 ```bash
-git clone https://github.com/jacobwilliams/fortran-csv-module
-cd fortran-csv-module
+git clone https://github.com/jacobwilliams/csv-fortran
+cd csv-fortran
 ```
 #### Dependencies
 1. Git
@@ -37,10 +37,10 @@ You can build using provided `fpm.toml`:
 ```bash
 fpm build
 ```
-To use `fortran-csv-module` within your fpm project, add the following to your `fpm.toml` file:
+To use `csv-fortran` within your fpm project, add the following to your `fpm.toml` file:
 ```toml
 [dependencies]
-fortran-csv-module = { git="https://github.com/jacobwilliams/fortran-csv-module.git" }
+csv-fortran = { git="https://github.com/jacobwilliams/csv-fortran.git" }
 ```
 
 ### Examples
@@ -131,4 +131,4 @@ Various options are user-selectable for specifying the format (e.g., changing th
 
 ### License
 
-This library is released under a [BSD-3 license](https://github.com/jacobwilliams/fortran-csv-module/blob/master/LICENSE).
+This library is released under a [BSD-3 license](https://github.com/jacobwilliams/csv-fortran/blob/master/LICENSE).

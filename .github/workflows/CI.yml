@@ -77,7 +77,7 @@ jobs:
 
     - name: Build documentation
       if: contains( matrix.gcc_v, 10 )
-      run: ford ./fortran-csv-module.md
+      run: ford ./ford.md
 
     - name: Deploy Documentation
       if: contains( matrix.gcc_v, 10 ) && github.ref == 'refs/heads/master'
