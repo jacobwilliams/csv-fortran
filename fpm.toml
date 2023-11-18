@@ -1,11 +1,11 @@
-name = "fortran-csv-module"
+name = "csv-fortran"
 version = "2.0.1"
 author = "Jacob Williams"
 maintainer = "Jacob Williams"
 copyright = "Copyright (c) 2017-2023, Jacob Williams"
 license = "BSD-3"
 description = "Read and Write CSV Files Using Modern Fortran"
-homepage = "https://github.com/jacobwilliams/fortran-csv-module"
+homepage = "https://github.com/jacobwilliams/csv-fortran"
 categories = ["io"]
 keywords = ["csv"]
 

@@ -8,7 +8,7 @@ cmake_policy(SET CMP0053 NEW)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # Set package metadata
-set(CPACK_PACKAGE_NAME "fortran-csv-module")
+set(CPACK_PACKAGE_NAME "csv-fortran")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "3")
 set(CPACK_PACKAGE_VERSION_PATCH "1")
@@ -18,7 +18,7 @@ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A modern Fortran library for reading and 
 # set(CPACK_PACKAGE_VENDOR "")
 set(CPACK_PACKAGE_CONTACT "Jacob Williams")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
-set(CPACK_PACKAGE_HOMEPAGE_URL "https://github.com/jacobwilliams/fortran-csv-module")
+set(CPACK_PACKAGE_HOMEPAGE_URL "https://github.com/jacobwilliams/csv-fortran")
 # See https://spdx.org/licenses/
 set(SPDX_LICENSE_TAG "BSD-3-Clause")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
@@ -34,7 +34,7 @@ string(TIMESTAMP BUILD_TIMESTAMP UTC)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Set project name and language
-project(fortran-csv-module
+project(csv-fortran
         LANGUAGES Fortran
         VERSION "${CPACK_PACKAGE_VERSION}")
 
@@ -94,9 +94,9 @@ if(${FC_ALLOWS_NO_OPTIMIZATION})
     list(APPEND FCOPTS ${FCOPT_NO_OPTIMIZATION})
 endif()
 
-message(STATUS "Fortran compiler options for fortran-csv-module set to ${FCOPTS}")
+message(STATUS "Fortran compiler options for csv-fortran set to ${FCOPTS}")
 
-# Target FCSV: fortran-csv-module library
+# Target FCSV: csv-fortran library
 set(FCSV_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # Define sources for FCSV library
@@ -126,7 +126,7 @@ install(TARGETS ${LIBFCSV_NAME})
 
 ### Test executables
 
-# Target : fortran-csv-module library
+# Target : csv-fortran library
 set(TEST_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/tests")
 
 # add_executable(csv_write_test "${TEST_SOURCE_DIR}/csv_write_test.f90")
@@ -312,8 +312,8 @@ if(WIN32)
     # Set up NSIS
     find_package(NSIS)
     if(NSIS_FOUND)
-        # set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/img/fortran-csv-module-icon.ico")
-        # set(CPACK_NSIS_MUI_UNIICON "${CMAKE_CURRENT_SOURCE_DIR}/img/fortran-csv-module-icon.ico")
+        # set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/img/csv-fortran-icon.ico")
+        # set(CPACK_NSIS_MUI_UNIICON "${CMAKE_CURRENT_SOURCE_DIR}/img/csv-fortran-icon.ico")
         set(CPACK_NSIS_INSTALLED_ICON_NAME "Uninstall.exe")
         set(CPACK_NSIS_HELP_LINK "${CPACK_PACKAGE_HOMEPAGE_URL}")
         set(CPACK_NSIS_URL_INFO_ABOUT "${CPACK_PACKAGE_HOMEPAGE_URL}")
@@ -332,7 +332,7 @@ if(WIN32)
             RENAME LICENSE.txt
             DESTINATION doc)
 
-        # install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/img/fortran-csv-module-icon.png"
+        # install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/img/csv-fortran-icon.png"
         #     DESTINATION img)
 
         # set(CPACK_NUGET_COMPONENT_INSTALL OFF)
@@ -345,12 +345,12 @@ if(WIN32)
         set(CPACK_NUGET_PACKAGE_HOMEPAGE_URL "${CPACK_PACKAGE_HOMEPAGE_URL}")
         # LicenseURL is deprecated; how to set License with CMake/CPack?
         # set(CPACK_NUGET_PACKAGE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
-        # set(CPACK_NUGET_PACKAGE_LICENSEURL "https://github.com/jacobwilliams/fortran-csv-module/blob/master/LICENSE")
+        # set(CPACK_NUGET_PACKAGE_LICENSEURL "https://github.com/jacobwilliams/csv-fortran/blob/master/LICENSE")
         set(CPACK_NUGET_PACKAGE_LICENSE_EXPRESSION "${SPDX_LICENSE_TAG}")
         # set(CPACK_NUGET_PACKAGE_LICENSE_FILE_NAME "doc/LICENSE.txt")
         #    A URL for a 64x64 image with transparency background to use as the icon for the package in UI display.
-        # set(CPACK_NUGET_PACKAGE_ICONURL "https://example.com/img/fortran-csv-module-icon.png")
-        # set(CPACK_NUGET_PACKAGE_ICON "img/fortran-csv-module-icon.png")
+        # set(CPACK_NUGET_PACKAGE_ICONURL "https://example.com/img/csv-fortran-icon.png")
+        # set(CPACK_NUGET_PACKAGE_ICON "img/csv-fortran-icon.png")
         set(CPACK_NUGET_PACKAGE_DESCRIPTION_SUMMARY "${CPACK_PACKAGE_DESCRIPTION_SUMMARY}")
         set(CPACK_NUGET_PACKAGE_RELEASE_NOTES "Experimental version for testing NuGet packaging. For information only.")
         set(CPACK_NUGET_PACKAGE_COPYRIGHT "Copyright 2021, Jacob Williams")
@@ -359,7 +359,7 @@ if(WIN32)
         set(CPACK_NUGET_PACKAGE_TAGS "CSV" "comma separated values" "Fortran")
 # 	# Repository info
 # 	set(CPACK_NUGET_PACKAGE_REPOSITORY_TYPE "git")
-# 	set(CPACK_NUGET_PACKAGE_REPOSITORY_URL "https://github.com/jacobwilliams/fortran-csv-module.git")
+# 	set(CPACK_NUGET_PACKAGE_REPOSITORY_URL "https://github.com/jacobwilliams/csv-fortran.git")
 # 	set(CPACK_NUGET_PACKAGE_REPOSITORY_BRANCH "1.2.1")
 # 	set(CPACK_NUGET_PACKAGE_REPOSITORY_COMMIT "77a50e78c52<your_hash_here>7bba3bd655b4400b")
         #    A list of package dependencies.
@@ -385,7 +385,7 @@ if(WIN32)
         set(WIX_LICENSE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.rtf")
         set(CPACK_WIX_LICENSE_RTF "${WIX_LICENSE_FILE}")
         install(FILES "${WIX_LICENSE_FILE}" DESTINATION doc)
-        # set(CPACK_WIX_PRODUCT_ICON "${CMAKE_CURRENT_SOURCE_DIR}/img/fortran-csv-module-icon.ico")
+        # set(CPACK_WIX_PRODUCT_ICON "${CMAKE_CURRENT_SOURCE_DIR}/img/csv-fortran-icon.ico")
 
         list(APPEND CPACK_GENERATOR WIX)
     else()

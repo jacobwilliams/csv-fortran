@@ -1,5 +1,5 @@
-# Retrieve fortran-csv-module from external source and include into project
-# See https://github.com/jacobwilliams/fortran-csv-module
+# Retrieve csv-fortran from external source and include into project
+# See https://github.com/jacobwilliams/csv-fortran
 #
 #!!! Verify all these!
 # The following output variables are set by the FCSV subproject
@@ -10,7 +10,7 @@ set(FCSV_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/FCSV-source")
 
 FetchContent_Declare(
     FCSV_external
-    GIT_REPOSITORY         https://github.com/jacobwilliams/fortran-csv-module.git
+    GIT_REPOSITORY         https://github.com/jacobwilliams/csv-fortran.git
     GIT_TAG                1.3.1
     SOURCE_DIR             "${FCSV_SOURCE_DIR}"
 )

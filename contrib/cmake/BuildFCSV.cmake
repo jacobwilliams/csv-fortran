@@ -1,5 +1,5 @@
 if(GIT_FOUND)
-    # Retrieve, build, and install fortran-csv-module (aka FCSV)
+    # Retrieve, build, and install csv-fortran (aka FCSV)
     # distribution from GitHub
     set(FCSV_DIST_DIR "${CMAKE_CURRENT_BINARY_DIR}/FCSV-source")
 
@@ -15,9 +15,9 @@ if(GIT_FOUND)
         # Note: Use URL and URL_HASH [SHA512|SHA256|MD5]=4A54C0DE... to
         # download and checksum an archive. Note that URL may refer to a
         # local file, allowing this to work without net access.
-        #    GIT_REPOSITORY         https://github.com/jacobwilliams/fortran-csv-module.git
+        #    GIT_REPOSITORY         https://github.com/jacobwilliams/csv-fortran.git
         #    GIT_TAG                1.2.0
-        GIT_REPOSITORY         https://github.com/jacobwilliams/fortran-csv-module
+        GIT_REPOSITORY         https://github.com/jacobwilliams/csv-fortran
         GIT_TAG                1.3.1
         SOURCE_DIR             "${FCSV_DIST_DIR}"
         INSTALL_DIR            "${FCSV_LOCAL_INSTALL_DIR}"
@@ -28,7 +28,7 @@ if(GIT_FOUND)
         USES_TERMINAL_UPDATE   YES
     )
 
-    # From fortran-csv-module/CMakeLists.txt:
+    # From csv-fortran/CMakeLists.txt:
     # ...
     # # Set default installation paths; should be invoked after setting project language(s)
     # include(GNUInstallDirs)
@@ -39,7 +39,7 @@ if(GIT_FOUND)
     # ...
 
     # Create ${FCSV_LOCAL_INSTALL_DIR}/finclude based on the module install location
-    # set in fortran-csv-module/CMakeLists.txt. Creating this directory avoids a race
+    # set in csv-fortran/CMakeLists.txt. Creating this directory avoids a race
     # condition - see https://www.scivision.dev/cmake-fetchcontent-vs-external-project/
     file(MAKE_DIRECTORY ${FCSV_LOCAL_INSTALL_DIR}/finclude)
 
@@ -76,7 +76,7 @@ if(GIT_FOUND)
 else()
     message(STATUS "git not available; using fallback CSV source files")
 
-    set(FCSV_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/contrib/fortran-csv-module/src")
+    set(FCSV_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/contrib/csv-fortran/src")
 
     # Full path to csv_kinds.f90
     set(FCSV_KINDS_SRC "${FCSV_SOURCE_DIR}/csv_kinds.f90")
