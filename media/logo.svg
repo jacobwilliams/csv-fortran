@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="80.075722mm"
-   height="33.887844mm"
-   viewBox="0 0 80.075724 33.887843"
+   width="111.43953mm"
+   height="26.749971mm"
+   viewBox="0 0 111.43953 26.749971"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
    sodipodi:docname="logo.svg"
    inkscape:export-xdpi="122.683"
    inkscape:export-ydpi="122.683"
-   inkscape:export-filename="logo.png">
+   inkscape:export-filename="logo.png"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
     <clipPath
@@ -55,7 +55,11 @@
     <filter
        style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
-       id="filter2290">
+       id="filter2290"
+       x="-0.073777"
+       y="-0.15312818"
+       width="1.1385805"
+       height="1.3380626">
       <feFlood
          flood-opacity="0.498039"
          flood-color="rgb(0,0,0)"
@@ -93,21 +97,24 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4623501"
-     inkscape:cx="215.84744"
-     inkscape:cy="68.770156"
+     inkscape:cx="257.46229"
+     inkscape:cy="52.65497"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1248"
-     inkscape:window-height="575"
+     inkscape:window-width="1440"
+     inkscape:window-height="795"
      inkscape:window-x="0"
      inkscape:window-y="25"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -116,7 +123,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -124,29 +130,30 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-155.00561,-75.070125)">
+     transform="translate(-153.31779,-79.35956)">
     <rect
-       style="fill:#afe9c6;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linejoin:round;paint-order:stroke fill markers;filter:url(#filter2290)"
+       style="fill:#afe9c6;fill-opacity:1;stroke:none;stroke-width:0.519305;stroke-linejoin:round;paint-order:stroke fill markers;filter:url(#filter2290)"
        id="rect2038"
        width="66.729767"
        height="28.23987"
        x="161.67859"
        y="77.894112"
-       ry="3.7718284" />
+       ry="3.7718284"
+       transform="matrix(1.4667495,0,0,0.70792001,-76.603212,27.278032)" />
     <text
        xml:space="preserve"
-       style="font-size:8.32577px;line-height:1.25;font-family:'Clarendon BT';-inkscape-font-specification:'Clarendon BT';fill:#734f96;fill-opacity:1;stroke-width:0.372806"
-       x="169.60272"
-       y="103.81487"
+       style="font-size:15.705px;line-height:1.25;font-family:'Clarendon BT';-inkscape-font-specification:'Clarendon BT';fill:#734f96;fill-opacity:1;stroke-width:0.372806"
+       x="162.09888"
+       y="98.002777"
        id="text3900"><tspan
          sodipodi:role="line"
          id="tspan3898"
-         x="169.60272"
-         y="103.81487"
-         style="fill:#734f96;fill-opacity:1;stroke-width:0.372806">CSV Module</tspan></text>
+         x="162.09888"
+         y="98.002777"
+         style="fill:#734f96;fill-opacity:1;stroke-width:0.372806">CSV</tspan></text>
     <g
        id="g887"
-       transform="translate(19.051247,-75.604546)">
+       transform="translate(50.714036,-71.588788)">
       <rect
          style="fill:#734f96;fill-opacity:1;stroke:none;stroke-width:0.144767;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect3876"
