@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -69,8 +72,7 @@
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
-              <a data-bs-toggle="tooltip"
-                 data-bs-placement="bottom" data-html="true"
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
                  title=" 0.9% of total for modules and submodules.">8 statements</a>
             </li>
 
@@ -150,7 +152,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/csv_kinds.html'>csv_kinds</a></li>
+                  <li class="list-inline-item"><a href='csv_kinds.html'>csv_kinds</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -174,7 +176,7 @@
 <!-- module~csv_kinds -->
 <g id="module~~csv_parameters~~UsesGraph_node2" class="node">
 <title>module~csv_kinds</title>
-<g id="a_module~~csv_parameters~~UsesGraph_node2"><a xlink:href=".././module/csv_kinds.html" xlink:title="csv_kinds">
+<g id="a_module~~csv_parameters~~UsesGraph_node2"><a xlink:href="../module/csv_kinds.html" xlink:title="csv_kinds">
 <polygon fill="#337ab7" stroke="#337ab7" points="193,-24 130,-24 130,0 193,0 193,-24"/>
 <text text-anchor="middle" x="161.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_kinds</text>
 </a>
@@ -189,8 +191,11 @@
 <!-- iso_fortran_env -->
 <g id="module~~csv_parameters~~UsesGraph_node3" class="node">
 <title>iso_fortran_env</title>
+<g id="a_module~~csv_parameters~~UsesGraph_node3"><a xlink:href="http://fortranwiki.org/fortran/show/iso_fortran_env" xlink:title="iso_fortran_env">
 <polygon fill="#337ab7" stroke="#337ab7" points="94,-24 0,-24 0,0 94,0 94,-24"/>
 <text text-anchor="middle" x="47" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
 </g>
 <!-- module~csv_kinds&#45;&gt;iso_fortran_env -->
 <g id="module~~csv_parameters~~UsesGraph_edge2" class="edge">
@@ -200,17 +205,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -300,7 +305,7 @@ modules which it uses.
 <!-- module~csv_module -->
 <g id="module~~csv_parameters~~UsedByGraph_node2" class="node">
 <title>module~csv_module</title>
-<g id="a_module~~csv_parameters~~UsedByGraph_node2"><a xlink:href=".././module/csv_module.html" xlink:title="csv_module">
+<g id="a_module~~csv_parameters~~UsedByGraph_node2"><a xlink:href="../module/csv_module.html" xlink:title="csv_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="318,-44 242,-44 242,-20 318,-20 318,-44"/>
 <text text-anchor="middle" x="280" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module</text>
 </a>
@@ -315,7 +320,7 @@ modules which it uses.
 <!-- module~csv_utilities -->
 <g id="module~~csv_parameters~~UsedByGraph_node3" class="node">
 <title>module~csv_utilities</title>
-<g id="a_module~~csv_parameters~~UsedByGraph_node3"><a xlink:href=".././module/csv_utilities.html" xlink:title="csv_utilities">
+<g id="a_module~~csv_parameters~~UsedByGraph_node3"><a xlink:href="../module/csv_utilities.html" xlink:title="csv_utilities">
 <polygon fill="#337ab7" stroke="#337ab7" points="206,-24 133,-24 133,0 206,0 206,-24"/>
 <text text-anchor="middle" x="169.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities</text>
 </a>
@@ -335,17 +340,17 @@ modules which it uses.
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -515,7 +520,10 @@ parameter
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>csv-fortran was developed by Jacob Williams<br>&copy; 2023 
+          <div class="col">
+            <p>
+              csv-fortran
+ was developed by Jacob Williams<br>              &copy; 2024 
 </p>
           </div>
           <div class="col">

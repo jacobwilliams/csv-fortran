@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -69,8 +72,7 @@
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
-              <a data-bs-toggle="tooltip"
-                 data-bs-placement="bottom" data-html="true"
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
                  title="84.3% of total for source files.">787 statements</a>
             </li>
 
@@ -170,7 +172,7 @@
 <!-- sourcefile~csv_kinds.f90 -->
 <g id="sourcefile~~csv_module.f90~~EfferentGraph_node2" class="node">
 <title>sourcefile~csv_kinds.f90</title>
-<g id="a_sourcefile~~csv_module.f90~~EfferentGraph_node2"><a xlink:href=".././sourcefile/csv_kinds.f90.html" xlink:title="csv_kinds.f90">
+<g id="a_sourcefile~~csv_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/csv_kinds.f90.html" xlink:title="csv_kinds.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="83,-38.14 0,-38.14 0,-14.14 83,-14.14 83,-38.14"/>
 <text text-anchor="middle" x="41.5" y="-23.74" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_kinds.f90</text>
 </a>
@@ -185,7 +187,7 @@
 <!-- sourcefile~csv_parameters.f90 -->
 <g id="sourcefile~~csv_module.f90~~EfferentGraph_node3" class="node">
 <title>sourcefile~csv_parameters.f90</title>
-<g id="a_sourcefile~~csv_module.f90~~EfferentGraph_node3"><a xlink:href=".././sourcefile/csv_parameters.f90.html" xlink:title="csv_parameters.f90">
+<g id="a_sourcefile~~csv_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/csv_parameters.f90.html" xlink:title="csv_parameters.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="237,-38.14 119,-38.14 119,-14.14 237,-14.14 237,-38.14"/>
 <text text-anchor="middle" x="178" y="-23.74" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_parameters.f90</text>
 </a>
@@ -201,7 +203,7 @@
 <!-- sourcefile~csv_utilities.f90 -->
 <g id="sourcefile~~csv_module.f90~~EfferentGraph_node4" class="node">
 <title>sourcefile~csv_utilities.f90</title>
-<g id="a_sourcefile~~csv_module.f90~~EfferentGraph_node4"><a xlink:href=".././sourcefile/csv_utilities.f90.html" xlink:title="csv_utilities.f90">
+<g id="a_sourcefile~~csv_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/csv_utilities.f90.html" xlink:title="csv_utilities.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="367,-38.14 273,-38.14 273,-14.14 367,-14.14 367,-38.14"/>
 <text text-anchor="middle" x="320" y="-23.74" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_utilities.f90</text>
 </a>
@@ -233,17 +235,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#EfferentGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -535,7 +537,7 @@ can be.
 <a id="ln-249" name="ln-249" href="#ln-249"></a><span class="w">        </span><span class="k">end if</span>
 <a id="ln-250" name="ln-250" href="#ln-250"></a><span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">header_row</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
 <a id="ln-251" name="ln-251" href="#ln-251"></a><span class="k">            </span><span class="n">iheader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">header_row</span><span class="p">)</span>
-<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="w">            </span><span class="n">n_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_rows</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="w">            </span><span class="n">n_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_rows</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">merge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">iheader</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
 <a id="ln-253" name="ln-253" href="#ln-253"></a><span class="w">        </span><span class="k">else</span>
 <a id="ln-254" name="ln-254" href="#ln-254"></a><span class="k">            </span><span class="n">iheader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <a id="ln-255" name="ln-255" href="#ln-255"></a><span class="w">        </span><span class="k">end if</span>
@@ -1689,7 +1691,10 @@ can be.
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>csv-fortran was developed by Jacob Williams<br>&copy; 2023 
+          <div class="col">
+            <p>
+              csv-fortran
+ was developed by Jacob Williams<br>              &copy; 2024 
 </p>
           </div>
           <div class="col">

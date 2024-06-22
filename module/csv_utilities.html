@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -70,8 +73,7 @@
             <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Jacob Williams</li>
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
-              <a data-bs-toggle="tooltip"
-                 data-bs-placement="bottom" data-html="true"
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
                  title="14.1% of total for modules and submodules.">132 statements</a>
             </li>
 
@@ -175,8 +177,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/csv_parameters.html'>csv_parameters</a></li>
-                  <li class="list-inline-item"><a href='../module/csv_kinds.html'>csv_kinds</a></li>
+                  <li class="list-inline-item"><a href='csv_parameters.html'>csv_parameters</a></li>
+                  <li class="list-inline-item"><a href='csv_kinds.html'>csv_kinds</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -200,7 +202,7 @@
 <!-- module~csv_kinds -->
 <g id="module~~csv_utilities~~UsesGraph_node2" class="node">
 <title>module~csv_kinds</title>
-<g id="a_module~~csv_utilities~~UsesGraph_node2"><a xlink:href=".././module/csv_kinds.html" xlink:title="csv_kinds">
+<g id="a_module~~csv_utilities~~UsesGraph_node2"><a xlink:href="../module/csv_kinds.html" xlink:title="csv_kinds">
 <polygon fill="#337ab7" stroke="#337ab7" points="193,-44 130,-44 130,-20 193,-20 193,-44"/>
 <text text-anchor="middle" x="161.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_kinds</text>
 </a>
@@ -215,7 +217,7 @@
 <!-- module~csv_parameters -->
 <g id="module~~csv_utilities~~UsesGraph_node3" class="node">
 <title>module~csv_parameters</title>
-<g id="a_module~~csv_utilities~~UsesGraph_node3"><a xlink:href=".././module/csv_parameters.html" xlink:title="csv_parameters">
+<g id="a_module~~csv_utilities~~UsesGraph_node3"><a xlink:href="../module/csv_parameters.html" xlink:title="csv_parameters">
 <polygon fill="#337ab7" stroke="#337ab7" points="326,-24 229,-24 229,0 326,0 326,-24"/>
 <text text-anchor="middle" x="277.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_parameters</text>
 </a>
@@ -230,8 +232,11 @@
 <!-- iso_fortran_env -->
 <g id="module~~csv_utilities~~UsesGraph_node4" class="node">
 <title>iso_fortran_env</title>
+<g id="a_module~~csv_utilities~~UsesGraph_node4"><a xlink:href="http://fortranwiki.org/fortran/show/iso_fortran_env" xlink:title="iso_fortran_env">
 <polygon fill="#337ab7" stroke="#337ab7" points="94,-44 0,-44 0,-20 94,-20 94,-44"/>
 <text text-anchor="middle" x="47" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
 </g>
 <!-- module~csv_kinds&#45;&gt;iso_fortran_env -->
 <g id="module~~csv_utilities~~UsesGraph_edge3" class="edge">
@@ -247,17 +252,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -347,7 +352,7 @@ modules which it uses.
 <!-- module~csv_module -->
 <g id="module~~csv_utilities~~UsedByGraph_node2" class="node">
 <title>module~csv_module</title>
-<g id="a_module~~csv_utilities~~UsedByGraph_node2"><a xlink:href=".././module/csv_module.html" xlink:title="csv_module">
+<g id="a_module~~csv_utilities~~UsedByGraph_node2"><a xlink:href="../module/csv_module.html" xlink:title="csv_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="185,-24 109,-24 109,0 185,0 185,-24"/>
 <text text-anchor="middle" x="147" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_module</text>
 </a>
@@ -361,17 +366,17 @@ modules which it uses.
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -515,7 +520,7 @@ parameter
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-unique"></span><h3>public  function <a href='../proc/unique.html'>unique</a>(vec, chunk_size) result(ivec_unique)  
+    <div class="card-header codesum"><span class="anchor" id="proc-unique"></span> <h3>public  function <a href='../proc/unique.html'>unique</a>(vec, chunk_size) result(ivec_unique)  
 </h3></div>
     <div class="card-body">
           
@@ -534,7 +539,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-vec"></span>
+              <span class="anchor" id="variable-vec~2"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -575,7 +580,7 @@ parameter
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-lowercase_string"></span><h3>public pure function <a href='../proc/lowercase_string.html'>lowercase_string</a>(str) result(s_lower)  
+    <div class="card-header codesum"><span class="anchor" id="proc-lowercase_string"></span> <h3>public pure function <a href='../proc/lowercase_string.html'>lowercase_string</a>(str) result(s_lower)  
 </h3></div>
     <div class="card-body">
           
@@ -625,7 +630,7 @@ parameter
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-expand_vector"></span><h3>public pure subroutine <a href='../proc/expand_vector.html'>expand_vector</a>(vec, n, chunk_size, val, finished)  
+    <div class="card-header codesum"><span class="anchor" id="proc-expand_vector"></span> <h3>public pure subroutine <a href='../proc/expand_vector.html'>expand_vector</a>(vec, n, chunk_size, val, finished)  
 </h3></div>
     <div class="card-body">
           
@@ -644,7 +649,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-vec~2"></span>
+              <span class="anchor" id="variable-vec"></span>
               integer,
             </td>
 <td>intent(inout),</td>
@@ -728,7 +733,7 @@ as its correct size (<code>n</code>)</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-sort_ascending"></span><h3>public  subroutine <a href='../proc/sort_ascending.html'>sort_ascending</a>(ivec)  
+    <div class="card-header codesum"><span class="anchor" id="proc-sort_ascending"></span> <h3>public  subroutine <a href='../proc/sort_ascending.html'>sort_ascending</a>(ivec)  
 </h3></div>
     <div class="card-body">
           
@@ -770,7 +775,7 @@ Uses a basic recursive quicksort
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-swap"></span><h3>private pure elemental subroutine <a href='../proc/swap.html'>swap</a>(i1, i2)  
+    <div class="card-header codesum"><span class="anchor" id="proc-swap"></span> <h3>private pure elemental subroutine <a href='../proc/swap.html'>swap</a>(i1, i2)  
 </h3></div>
     <div class="card-body">
           
@@ -789,7 +794,7 @@ Uses a basic recursive quicksort
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-i1~2"></span>
+              <span class="anchor" id="variable-i1"></span>
               integer,
             </td>
 <td>intent(inout)</td>
@@ -804,7 +809,7 @@ Uses a basic recursive quicksort
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i2~2"></span>
+              <span class="anchor" id="variable-i2"></span>
               integer,
             </td>
 <td>intent(inout)</td>
@@ -837,7 +842,10 @@ Uses a basic recursive quicksort
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>csv-fortran was developed by Jacob Williams<br>&copy; 2023 
+          <div class="col">
+            <p>
+              csv-fortran
+ was developed by Jacob Williams<br>              &copy; 2024 
 </p>
           </div>
           <div class="col">
