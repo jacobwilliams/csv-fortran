@@ -75,7 +75,7 @@
     do i = 1, size(header)
       print "(*(g0))", ">"//trim(header(i))//"<"
     end do
-    if (.not. all(header == ['x','y','z','t'])) error stop 'error reading header'
+    if (.not. all(header == ['x  ','y  ','z  ','t  ', 'int', 'str'])) error stop 'error reading header'
 
     call f%get(1,col1,status_ok)
     print "(*(g0))", "col1:"
