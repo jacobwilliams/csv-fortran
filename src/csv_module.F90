@@ -249,7 +249,7 @@
         end if
         if (present(header_row)) then
             iheader = max(0,header_row)
-            n_rows = n_rows - 1
+            n_rows = n_rows - merge(0,1,iheader==0)
         else
             iheader = 0
         end if
