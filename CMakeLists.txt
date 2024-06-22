@@ -9,9 +9,9 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # Set package metadata
 set(CPACK_PACKAGE_NAME "csv-fortran")
-set(CPACK_PACKAGE_VERSION_MAJOR "1")
-set(CPACK_PACKAGE_VERSION_MINOR "3")
-set(CPACK_PACKAGE_VERSION_PATCH "1")
+set(CPACK_PACKAGE_VERSION_MAJOR "2")
+set(CPACK_PACKAGE_VERSION_MINOR "0")
+set(CPACK_PACKAGE_VERSION_PATCH "2")
 set(CPACK_PACKAGE_VERSION_TWEAK "0")
 set(CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}.${CPACK_PACKAGE_VERSION_TWEAK}")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A modern Fortran library for reading and writing CSV (comma-separated value) files.A modern Fortran library for reading and writing CSV (comma-separated value) files.")
@@ -127,7 +127,7 @@ install(TARGETS ${LIBFCSV_NAME})
 ### Test executables
 
 # Target : csv-fortran library
-set(TEST_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/tests")
+set(TEST_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test")
 
 # add_executable(csv_write_test "${TEST_SOURCE_DIR}/csv_write_test.f90")
 # target_link_libraries(csv_write_test ${LIBFCSV_NAME})
