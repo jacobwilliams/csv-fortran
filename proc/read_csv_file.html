@@ -73,7 +73,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 9.7% of total for procedures.">82 statements</a>
+                 title=" 9.9% of total for procedures.">84 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -138,7 +138,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private  subroutine read_csv_file(me, filename, header_row, skip_rows, status_ok)  
+    <h2>private  subroutine read_csv_file(me, filename, header_row, skip_rows, status_ok, delimiter)  
 </h2>
     
 
@@ -233,6 +233,21 @@
             <td><strong>status_ok</strong></td>
             <td>
                 <p>status flag</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-delimiter~3"></span>
+              character(len=1),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>delimiter</strong></td>
+            <td>
+                <p>(Default is <code>,</code>)</p>
             </td>
         </tr>
     </tbody>
@@ -409,7 +424,7 @@
 <!-- Title: Graph Key Pages: 1 -->
 <svg width="641pt" height="28pt"
  viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
 <title>Graph Key</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
 <!-- Subroutine -->
@@ -482,7 +497,7 @@ implementation in a submodule of an interface in a parent module.
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">read_csv_file</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">filename</span><span class="p">,</span><span class="n">header_row</span><span class="p">,</span><span class="n">skip_rows</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">read_csv_file</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">filename</span><span class="p">,</span><span class="n">header_row</span><span class="p">,</span><span class="n">skip_rows</span><span class="p">,</span><span class="n">status_ok</span><span class="p">,</span><span class="n">delimiter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">implicit none</span>
 
@@ -491,6 +506,8 @@ implementation in a submodule of an interface in a parent module.
 <span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w">  </span><span class="c">!! status flag</span>
 <span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">header_row</span><span class="w">  </span><span class="c">!! the header row</span>
 <span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">skip_rows</span><span class="w">  </span><span class="c">!! rows to skip</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">delimiter</span><span class="w">         </span><span class="c">!! note: can only be one character</span>
+<span class="w">                                                              </span><span class="c">!! (Default is `,`)</span>
 
 <span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">csv_string</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">row_data</span><span class="w">  </span><span class="c">!! a tokenized row</span>
 <span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rows_to_skip</span><span class="w">  </span><span class="c">!! the actual rows to skip</span>
@@ -513,6 +530,7 @@ implementation in a submodule of an interface in a parent module.
 <span class="w">    </span><span class="n">arrays_allocated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">))</span><span class="w">   </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">delimiter</span><span class="p">))</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">delimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">delimiter</span>
 
 <span class="w">    </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">iunit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;OLD&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 

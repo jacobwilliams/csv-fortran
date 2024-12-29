@@ -73,7 +73,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p>93.8% of total for derived types.</p>Including implementation: 606 statements, 99.5% of total for derived types.">45 statements</a>
+                 title="<p>93.8% of total for derived types.</p>Including implementation: 608 statements, 99.5% of total for derived types.">45 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -765,7 +765,7 @@ console (default is False)</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/read_csv_file.html'>read_csv_file</a>(me, filename, header_row, skip_rows, status_ok)  
+    private  subroutine <a href='../proc/read_csv_file.html'>read_csv_file</a>(me, filename, header_row, skip_rows, status_ok, delimiter)  
 </h3>
     
 
@@ -855,6 +855,21 @@ console (default is False)</p>
             <td><strong>status_ok</strong></td>
             <td>
 <p>status flag</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=1),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>delimiter</strong></td>
+            <td>
+<p>(Default is <code>,</code>)</p>
             </td>
         </tr>
     </tbody>
