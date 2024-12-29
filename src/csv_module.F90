@@ -199,7 +199,7 @@
 !>
 !  Read a CSV file.
 
-    subroutine read_csv_file(me,filename,header_row,skip_rows,status_ok)
+    subroutine read_csv_file(me,filename,header_row,skip_rows,status_ok,delimiter)
 
     implicit none
 
@@ -208,6 +208,8 @@
     logical,intent(out) :: status_ok  !! status flag
     integer,intent(in),optional :: header_row  !! the header row
     integer,dimension(:),intent(in),optional :: skip_rows  !! rows to skip
+    character(len=1),intent(in),optional :: delimiter         !! note: can only be one character
+                                                              !! (Default is `,`)
 
     type(csv_string),dimension(:),allocatable :: row_data  !! a tokenized row
     integer,dimension(:),allocatable :: rows_to_skip  !! the actual rows to skip
@@ -230,6 +232,7 @@
     arrays_allocated = .false.
     if (allocated(me%csv_data)) deallocate(me%csv_data)
     if (allocated(me%header))   deallocate(me%header)
+    if (present(delimiter)) me%delimiter = delimiter
 
     open(newunit=iunit, file=filename, status='OLD', iostat=istat)
 
