@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         gcc_v: [9,10,11,12]  # gfortran versions to test
-        python-version: [3.9]
+        python-version: [3.12]
     env:
       FC: gfortran-${{ matrix.gcc_v }}
       GCC_V: ${{ matrix.gcc_v }}
@@ -24,7 +24,7 @@ jobs:
 
     - name: Install Python
       if: contains( matrix.gcc_v, 10 )
-      uses: actions/setup-python@v4 # Use pip to install latest CMake, & FORD/Jin2For, etc.
+      uses: actions/setup-python@v5.4.0 # Use pip to install latest CMake, & FORD/Jin2For, etc.
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -33,7 +33,7 @@ jobs:
       uses: ts-graphviz/setup-graphviz@v1
 
     - name: Setup Fortran Package Manager
-      uses: fortran-lang/setup-fpm@v5
+      uses: fortran-lang/setup-fpm@v7
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -81,7 +81,8 @@ jobs:
 
     - name: Deploy Documentation
       if: contains( matrix.gcc_v, 10 ) && github.ref == 'refs/heads/master'
-      uses: JamesIves/github-pages-deploy-action@v4.4.1
+      uses: JamesIves/github-pages-deploy-action@v4.7.3
       with:
         branch: gh-pages # The branch the action should deploy to.
         folder: doc  # The folder the action should deploy.
+        single-commit: true
