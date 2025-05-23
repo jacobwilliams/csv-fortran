@@ -443,7 +443,7 @@
             if (present(real_fmt)) then
                 rfmt = trim(adjustl(real_fmt))
             else
-                rfmt = default_real_fmt
+                rfmt = default_sp_fmt
             end if
             write(real_val,fmt=rfmt,iostat=istat) val
             write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
@@ -451,7 +451,7 @@
             if (present(real_fmt)) then
                 rfmt = trim(adjustl(real_fmt))
             else
-                rfmt = default_real_fmt
+                rfmt = default_wp_fmt
             end if
             write(real_val,fmt=rfmt,iostat=istat) val
             write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
@@ -459,7 +459,7 @@
             if (present(real_fmt)) then
                 rfmt = trim(adjustl(real_fmt))
             else
-                rfmt = default_real_fmt
+                rfmt = default_qp_fmt
             end if
             write(real_val,fmt=rfmt,iostat=istat) val
             write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
