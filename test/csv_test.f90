@@ -7,7 +7,7 @@
     program csv_test
 
     use csv_module
-    use iso_fortran_env, only: wp => real64, sp => real32
+    use iso_fortran_env, only: wp => real64, sp => real32, qp => real128
 
     implicit none
 
@@ -29,6 +29,7 @@
         character(len=30),dimension(:,:),allocatable :: csv_data  !! the data from the file as strings
         real(wp),dimension(:),allocatable :: x  !! for getting a real(wp) vector from a csv file
         real(sp),dimension(:),allocatable :: y  !! for getting a real(sp) vector from a csv file
+        real(qp),dimension(:),allocatable :: z  !! for getting a real(qp) vector from a csv file
         logical :: status_ok  !! error flag
         integer,dimension(:),allocatable :: itypes  !! array of variable types in the file
         integer :: ifile !! file counter
@@ -103,6 +104,9 @@
                 call f%get(3,y,status_ok)
                 write(*,'(F6.3,1x)',advance='NO') y
                 write(*,*) ''
+
+                call f%get(3,z,status_ok) ! also try as quad precision
+
             else
                 write(*,*) ''
                 write(*,*) 'name:'

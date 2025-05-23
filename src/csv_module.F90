@@ -91,6 +91,7 @@
                                  csv_get_value,&
                                  get_real_sp_column,&
                                  get_real_wp_column,&
+                                 get_real_qp_column,&
                                  get_integer_column,&
                                  get_logical_column,&
                                  get_character_column,&
@@ -99,6 +100,7 @@
         procedure :: csv_get_value
         procedure :: get_real_sp_column
         procedure :: get_real_wp_column
+        procedure :: get_real_qp_column
         procedure :: get_integer_column
         procedure :: get_logical_column
         procedure :: get_character_column
@@ -453,6 +455,14 @@
             end if
             write(real_val,fmt=rfmt,iostat=istat) val
             write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
+        type is (real(qp))
+            if (present(real_fmt)) then
+                rfmt = trim(adjustl(real_fmt))
+            else
+                rfmt = default_real_fmt
+            end if
+            write(real_val,fmt=rfmt,iostat=istat) val
+            write(me%iunit,fmt='(A)',advance='NO',iostat=istat) trim(adjustl(real_val))
         type is (logical)
             if (val) then
                 write(me%iunit,fmt='(A)',advance='NO',iostat=istat) me%logical_true_string
@@ -758,6 +768,31 @@
 
 !*****************************************************************************************
 !>
+!  Convert a string to a `real(qp)`
+
+    pure elemental subroutine to_real_qp(str,val,status_ok)
+
+    implicit none
+
+    character(len=*),intent(in) :: str
+    real(qp),intent(out) :: val
+    logical,intent(out) :: status_ok
+
+    integer :: istat  !! read `iostat` error code
+
+    read(str,fmt=*,iostat=istat) val
+    if (istat==0) then
+        status_ok = .true.
+    else
+        status_ok = .false.
+        val = zero
+    end if
+
+    end subroutine to_real_qp
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
 !  Convert a string to a `integer(ip)`
 
     pure elemental subroutine to_integer(str,val,status_ok)
@@ -924,6 +959,8 @@
         call to_real_sp(me%csv_data(row,col)%str,val,status_ok)
     type is (real(wp))
         call to_real_wp(me%csv_data(row,col)%str,val,status_ok)
+    type is (real(qp))
+        call to_real_qp(me%csv_data(row,col)%str,val,status_ok)
     type is (logical)
         call to_logical(me%csv_data(row,col)%str,val,status_ok)
     type is (character(len=*))
@@ -1003,6 +1040,10 @@
                     if (me%verbose) write(error_unit,'(A)') &
                         'Error converting string to real(real64): '//trim(me%csv_data(i,icol)%str)
                     r(i) = zero
+                type is (real(qp))
+                    if (me%verbose) write(error_unit,'(A)') &
+                        'Error converting string to real(real128): '//trim(me%csv_data(i,icol)%str)
+                    r(i) = zero
                 type is (logical)
                     if (me%verbose) write(error_unit,'(A)') &
                         'Error converting string to logical: '//trim(me%csv_data(i,icol)%str)
@@ -1066,6 +1107,30 @@
     end if
 
     end subroutine get_real_wp_column
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  Return a column from a CSV file as a `real(qp)` vector.
+
+    subroutine get_real_qp_column(me,icol,r,status_ok)
+
+    implicit none
+
+    class(csv_file),intent(inout) :: me
+    integer,intent(in) :: icol  !! column number
+    real(qp),dimension(:),allocatable,intent(out) :: r
+    logical,intent(out) :: status_ok
+
+    if (allocated(me%csv_data)) then
+        allocate(r(me%n_rows))  ! size the output vector
+        call me%get_column(icol,r,status_ok)
+    else
+        if (me%verbose) write(error_unit,'(A,1X,I5)') 'Error: class has not been initialized'
+        status_ok = .false.
+    end if
+
+    end subroutine get_real_qp_column
 !*****************************************************************************************
 
 !*****************************************************************************************
