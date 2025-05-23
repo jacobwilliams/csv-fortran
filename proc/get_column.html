@@ -1,0 +1,781 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Read and Write CSV Files Using Modern Fortran">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>get_column &ndash; csv-fortran</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">csv-fortran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>get_column
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 4.8% of total for procedures.">43 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/csv_module.F90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/csv_module.f90.html'>csv_module.F90</a></li>
+                <li class="breadcrumb-item"><a href='../module/csv_module.html'>csv_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">get_column</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/get_column.html#src">get_column</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine get_column(me, icol, r, status_ok)  
+</h2>
+    
+
+    <p>Return a column from a CSV file vector.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>This routine requires that the <code>r</code> array already be allocated.
+      This is because Fortran doesn't want to allow to you pass
+      a non-polymorphic variable into a routine with a dummy variable
+      with <code>class(*),dimension(:),allocatable,intent(out)</code> attributes.</p>
+</div>
+
+    <h3>Type Bound</h3>
+    <p><a href='../type/csv_file.html'>csv_file</a></p>
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~15"></span>
+              class(<a href='../type/csv_file.html'>csv_file</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-icol~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>icol</strong></td>
+            <td>
+                <p>column number</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-r"></span>
+              class(*),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>r</strong></td>
+            <td>
+                <p>assumed to have been allocated to
+the correct size by the caller.
+(<code>n_rows</code>)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-status_ok~15"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>status_ok</strong></td>
+            <td>
+                <p>status flag</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~get_column~~CallsGraph Pages: 1 -->
+<svg id="procget_columnCallsGraph" width="546pt" height="200pt"
+ viewBox="0.00 0.00 546.00 200.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~get_column~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 196)">
+<title>proc~~get_column~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-196 542,-196 542,4 -4,4"/>
+<!-- proc~get_column -->
+<g id="proc~~get_column~~CallsGraph_node1" class="node">
+<title>proc~get_column</title>
+<polygon fill="none" stroke="black" points="124,-108 0,-108 0,-84 124,-84 124,-108"/>
+<text text-anchor="middle" x="62" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_file%get_column</text>
+</g>
+<!-- proc~csv_get_value -->
+<g id="proc~~get_column~~CallsGraph_node2" class="node">
+<title>proc~csv_get_value</title>
+<g id="a_proc~~get_column~~CallsGraph_node2"><a xlink:href="../proc/csv_get_value.html" xlink:title="csv_file%csv_get_value">
+<polygon fill="#d9534f" stroke="#d9534f" points="296,-108 160,-108 160,-84 296,-84 296,-108"/>
+<text text-anchor="middle" x="228" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%csv_get_value</text>
+</a>
+</g>
+</g>
+<!-- proc~get_column&#45;&gt;proc~csv_get_value -->
+<g id="proc~~get_column~~CallsGraph_edge1" class="edge">
+<title>proc~get_column&#45;&gt;proc~csv_get_value</title>
+<path fill="none" stroke="#000000" d="M124.07,-96C132.45,-96 141.14,-96 149.76,-96"/>
+<polygon fill="#000000" stroke="#000000" points="149.82,-99.5 159.82,-96 149.82,-92.5 149.82,-99.5"/>
+</g>
+<!-- proc~to_integer -->
+<g id="proc~~get_column~~CallsGraph_node3" class="node">
+<title>proc~to_integer</title>
+<g id="a_proc~~get_column~~CallsGraph_node3"><a xlink:href="../proc/to_integer.html" xlink:title="to_integer">
+<polygon fill="#d9534f" stroke="#d9534f" points="400,-192 333,-192 333,-168 400,-168 400,-192"/>
+<text text-anchor="middle" x="366.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_integer</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_get_value&#45;&gt;proc~to_integer -->
+<g id="proc~~get_column~~CallsGraph_edge2" class="edge">
+<title>proc~csv_get_value&#45;&gt;proc~to_integer</title>
+<path fill="none" stroke="#000000" d="M248.56,-108.04C271.77,-122.32 310.66,-146.25 337.17,-162.56"/>
+<polygon fill="#000000" stroke="#000000" points="335.63,-165.73 345.98,-167.99 339.3,-159.77 335.63,-165.73"/>
+</g>
+<!-- proc~to_logical -->
+<g id="proc~~get_column~~CallsGraph_node4" class="node">
+<title>proc~to_logical</title>
+<g id="a_proc~~get_column~~CallsGraph_node4"><a xlink:href="../proc/to_logical.html" xlink:title="to_logical">
+<polygon fill="#d9534f" stroke="#d9534f" points="398.5,-150 334.5,-150 334.5,-126 398.5,-126 398.5,-150"/>
+<text text-anchor="middle" x="366.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_logical</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_get_value&#45;&gt;proc~to_logical -->
+<g id="proc~~get_column~~CallsGraph_edge3" class="edge">
+<title>proc~csv_get_value&#45;&gt;proc~to_logical</title>
+<path fill="none" stroke="#000000" d="M268.12,-108.04C285.8,-113.48 306.69,-119.9 324.58,-125.41"/>
+<polygon fill="#000000" stroke="#000000" points="323.58,-128.76 334.17,-128.36 325.64,-122.07 323.58,-128.76"/>
+</g>
+<!-- proc~to_real_qp -->
+<g id="proc~~get_column~~CallsGraph_node5" class="node">
+<title>proc~to_real_qp</title>
+<g id="a_proc~~get_column~~CallsGraph_node5"><a xlink:href="../proc/to_real_qp.html" xlink:title="to_real_qp">
+<polygon fill="#d9534f" stroke="#d9534f" points="400,-108 333,-108 333,-84 400,-84 400,-108"/>
+<text text-anchor="middle" x="366.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_real_qp</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_get_value&#45;&gt;proc~to_real_qp -->
+<g id="proc~~get_column~~CallsGraph_edge4" class="edge">
+<title>proc~csv_get_value&#45;&gt;proc~to_real_qp</title>
+<path fill="none" stroke="#000000" d="M296.05,-96C305.16,-96 314.29,-96 322.81,-96"/>
+<polygon fill="#000000" stroke="#000000" points="322.84,-99.5 332.84,-96 322.84,-92.5 322.84,-99.5"/>
+</g>
+<!-- proc~to_real_sp -->
+<g id="proc~~get_column~~CallsGraph_node6" class="node">
+<title>proc~to_real_sp</title>
+<g id="a_proc~~get_column~~CallsGraph_node6"><a xlink:href="../proc/to_real_sp.html" xlink:title="to_real_sp">
+<polygon fill="#d9534f" stroke="#d9534f" points="399.5,-66 333.5,-66 333.5,-42 399.5,-42 399.5,-66"/>
+<text text-anchor="middle" x="366.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_real_sp</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_get_value&#45;&gt;proc~to_real_sp -->
+<g id="proc~~get_column~~CallsGraph_edge5" class="edge">
+<title>proc~csv_get_value&#45;&gt;proc~to_real_sp</title>
+<path fill="none" stroke="#000000" d="M268.12,-83.96C285.37,-78.66 305.68,-72.41 323.28,-66.99"/>
+<polygon fill="#000000" stroke="#000000" points="324.75,-70.2 333.28,-63.91 322.7,-63.51 324.75,-70.2"/>
+</g>
+<!-- proc~to_real_wp -->
+<g id="proc~~get_column~~CallsGraph_node7" class="node">
+<title>proc~to_real_wp</title>
+<g id="a_proc~~get_column~~CallsGraph_node7"><a xlink:href="../proc/to_real_wp.html" xlink:title="to_real_wp">
+<polygon fill="#d9534f" stroke="#d9534f" points="401,-24 332,-24 332,0 401,0 401,-24"/>
+<text text-anchor="middle" x="366.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">to_real_wp</text>
+</a>
+</g>
+</g>
+<!-- proc~csv_get_value&#45;&gt;proc~to_real_wp -->
+<g id="proc~~get_column~~CallsGraph_edge6" class="edge">
+<title>proc~csv_get_value&#45;&gt;proc~to_real_wp</title>
+<path fill="none" stroke="#000000" d="M248.56,-83.96C271.77,-69.68 310.66,-45.75 337.17,-29.44"/>
+<polygon fill="#000000" stroke="#000000" points="339.3,-32.23 345.98,-24.01 335.63,-26.27 339.3,-32.23"/>
+</g>
+<!-- proc~lowercase_string -->
+<g id="proc~~get_column~~CallsGraph_node8" class="node">
+<title>proc~lowercase_string</title>
+<g id="a_proc~~get_column~~CallsGraph_node8"><a xlink:href="../proc/lowercase_string.html" xlink:title="lowercase_string">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="538,-150 437,-150 437,-126 538,-126 538,-150"/>
+<text text-anchor="middle" x="487.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">lowercase_string</text>
+</a>
+</g>
+</g>
+<!-- proc~to_logical&#45;&gt;proc~lowercase_string -->
+<g id="proc~~get_column~~CallsGraph_edge7" class="edge">
+<title>proc~to_logical&#45;&gt;proc~lowercase_string</title>
+<path fill="none" stroke="#000000" d="M398.77,-138C407.26,-138 416.76,-138 426.28,-138"/>
+<polygon fill="#000000" stroke="#000000" points="426.57,-141.5 436.57,-138 426.57,-134.5 426.57,-141.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~get_column~~CalledByGraph Pages: 1 -->
+<svg id="procget_columnCalledByGraph" width="349pt" height="284pt"
+ viewBox="0.00 0.00 349.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~get_column~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<title>proc~~get_column~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 345,-280 345,4 -4,4"/>
+<!-- proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_node1" class="node">
+<title>proc~get_column</title>
+<polygon fill="none" stroke="black" points="341,-150 217,-150 217,-126 341,-126 341,-150"/>
+<text text-anchor="middle" x="279" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">csv_file%get_column</text>
+</g>
+<!-- proc~get_character_column -->
+<g id="proc~~get_column~~CalledByGraph_node2" class="node">
+<title>proc~get_character_column</title>
+<g id="a_proc~~get_column~~CalledByGraph_node2"><a xlink:href="../proc/get_character_column.html" xlink:title="csv_file%get_character_column">
+<polygon fill="#d9534f" stroke="#d9534f" points="181,-276 0,-276 0,-252 181,-252 181,-276"/>
+<text text-anchor="middle" x="90.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%get_character_column</text>
+</a>
+</g>
+</g>
+<!-- proc~get_character_column&#45;&gt;proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_edge1" class="edge">
+<title>proc~get_character_column&#45;&gt;proc~get_column</title>
+<path fill="none" stroke="#000000" d="M161.49,-251.92C168.31,-249.48 174.93,-246.54 181,-243 217.31,-221.83 248.03,-182.72 264.67,-158.67"/>
+<polygon fill="#000000" stroke="#000000" points="267.65,-160.5 270.34,-150.25 261.85,-156.59 267.65,-160.5"/>
+</g>
+<!-- proc~get_csv_string_column -->
+<g id="proc~~get_column~~CalledByGraph_node3" class="node">
+<title>proc~get_csv_string_column</title>
+<g id="a_proc~~get_column~~CalledByGraph_node3"><a xlink:href="../proc/get_csv_string_column.html" xlink:title="csv_file%get_csv_string_column">
+<polygon fill="#d9534f" stroke="#d9534f" points="181,-234 0,-234 0,-210 181,-210 181,-234"/>
+<text text-anchor="middle" x="90.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%get_csv_string_column</text>
+</a>
+</g>
+</g>
+<!-- proc~get_csv_string_column&#45;&gt;proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_edge2" class="edge">
+<title>proc~get_csv_string_column&#45;&gt;proc~get_column</title>
+<path fill="none" stroke="#000000" d="M154.97,-210C163.87,-207.48 172.78,-204.51 181,-201 208.23,-189.38 236.26,-170.25 255.15,-156.12"/>
+<polygon fill="#000000" stroke="#000000" points="257.32,-158.86 263.14,-150.02 253.07,-153.3 257.32,-158.86"/>
+</g>
+<!-- proc~get_integer_column -->
+<g id="proc~~get_column~~CalledByGraph_node4" class="node">
+<title>proc~get_integer_column</title>
+<g id="a_proc~~get_column~~CalledByGraph_node4"><a xlink:href="../proc/get_integer_column.html" xlink:title="csv_file%get_integer_column">
+<polygon fill="#d9534f" stroke="#d9534f" points="174,-192 7,-192 7,-168 174,-168 174,-192"/>
+<text text-anchor="middle" x="90.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%get_integer_column</text>
+</a>
+</g>
+</g>
+<!-- proc~get_integer_column&#45;&gt;proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_edge3" class="edge">
+<title>proc~get_integer_column&#45;&gt;proc~get_column</title>
+<path fill="none" stroke="#000000" d="M144.94,-167.96C166.7,-163.07 192.01,-157.37 214.68,-152.26"/>
+<polygon fill="#000000" stroke="#000000" points="215.56,-155.65 224.55,-150.04 214.02,-148.82 215.56,-155.65"/>
+</g>
+<!-- proc~get_logical_column -->
+<g id="proc~~get_column~~CalledByGraph_node5" class="node">
+<title>proc~get_logical_column</title>
+<g id="a_proc~~get_column~~CalledByGraph_node5"><a xlink:href="../proc/get_logical_column.html" xlink:title="csv_file%get_logical_column">
+<polygon fill="#d9534f" stroke="#d9534f" points="172.5,-150 8.5,-150 8.5,-126 172.5,-126 172.5,-150"/>
+<text text-anchor="middle" x="90.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%get_logical_column</text>
+</a>
+</g>
+</g>
+<!-- proc~get_logical_column&#45;&gt;proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_edge4" class="edge">
+<title>proc~get_logical_column&#45;&gt;proc~get_column</title>
+<path fill="none" stroke="#000000" d="M172.76,-138C184.11,-138 195.7,-138 206.84,-138"/>
+<polygon fill="#000000" stroke="#000000" points="206.93,-141.5 216.93,-138 206.93,-134.5 206.93,-141.5"/>
+</g>
+<!-- proc~get_real_qp_column -->
+<g id="proc~~get_column~~CalledByGraph_node6" class="node">
+<title>proc~get_real_qp_column</title>
+<g id="a_proc~~get_column~~CalledByGraph_node6"><a xlink:href="../proc/get_real_qp_column.html" xlink:title="csv_file%get_real_qp_column">
+<polygon fill="#d9534f" stroke="#d9534f" points="174.5,-108 6.5,-108 6.5,-84 174.5,-84 174.5,-108"/>
+<text text-anchor="middle" x="90.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%get_real_qp_column</text>
+</a>
+</g>
+</g>
+<!-- proc~get_real_qp_column&#45;&gt;proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_edge5" class="edge">
+<title>proc~get_real_qp_column&#45;&gt;proc~get_column</title>
+<path fill="none" stroke="#000000" d="M144.94,-108.04C166.7,-112.93 192.01,-118.63 214.68,-123.74"/>
+<polygon fill="#000000" stroke="#000000" points="214.02,-127.18 224.55,-125.96 215.56,-120.35 214.02,-127.18"/>
+</g>
+<!-- proc~get_real_sp_column -->
+<g id="proc~~get_column~~CalledByGraph_node7" class="node">
+<title>proc~get_real_sp_column</title>
+<g id="a_proc~~get_column~~CalledByGraph_node7"><a xlink:href="../proc/get_real_sp_column.html" xlink:title="csv_file%get_real_sp_column">
+<polygon fill="#d9534f" stroke="#d9534f" points="173.5,-66 7.5,-66 7.5,-42 173.5,-42 173.5,-66"/>
+<text text-anchor="middle" x="90.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%get_real_sp_column</text>
+</a>
+</g>
+</g>
+<!-- proc~get_real_sp_column&#45;&gt;proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_edge6" class="edge">
+<title>proc~get_real_sp_column&#45;&gt;proc~get_column</title>
+<path fill="none" stroke="#000000" d="M154.97,-66C163.87,-68.52 172.78,-71.49 181,-75 208.23,-86.62 236.26,-105.75 255.15,-119.88"/>
+<polygon fill="#000000" stroke="#000000" points="253.07,-122.7 263.14,-125.98 257.32,-117.14 253.07,-122.7"/>
+</g>
+<!-- proc~get_real_wp_column -->
+<g id="proc~~get_column~~CalledByGraph_node8" class="node">
+<title>proc~get_real_wp_column</title>
+<g id="a_proc~~get_column~~CalledByGraph_node8"><a xlink:href="../proc/get_real_wp_column.html" xlink:title="csv_file%get_real_wp_column">
+<polygon fill="#d9534f" stroke="#d9534f" points="175,-24 6,-24 6,0 175,0 175,-24"/>
+<text text-anchor="middle" x="90.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">csv_file%get_real_wp_column</text>
+</a>
+</g>
+</g>
+<!-- proc~get_real_wp_column&#45;&gt;proc~get_column -->
+<g id="proc~~get_column~~CalledByGraph_edge7" class="edge">
+<title>proc~get_real_wp_column&#45;&gt;proc~get_column</title>
+<path fill="none" stroke="#000000" d="M161.49,-24.08C168.31,-26.52 174.93,-29.46 181,-33 217.31,-54.17 248.03,-93.28 264.67,-117.33"/>
+<polygon fill="#000000" stroke="#000000" points="261.85,-119.41 270.34,-125.75 267.65,-115.5 261.85,-119.41"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">get_column</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">icol</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    class</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">icol</span><span class="w">  </span><span class="c">!! column number</span>
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="w">  </span><span class="c">!! assumed to have been allocated to</span>
+<span class="w">                                            </span><span class="c">!! the correct size by the caller.</span>
+<span class="w">                                            </span><span class="c">!! (`n_rows`)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w">  </span><span class="c">!! status flag</span>
+
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="c">!! counter</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="c">!! for gfortran workaround</span>
+
+<span class="w">    </span><span class="c">! we know the data is allocated, since that</span>
+<span class="w">    </span><span class="c">! was checked by the calling routines.</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">n_cols</span><span class="o">&gt;=</span><span class="n">icol</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">icol</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">n_rows</span><span class="w">  </span><span class="c">! row loop</span>
+
+<span class="cp">#if ( defined __GFORTRAN__ ) &amp;&amp; ( __GNUC__ &lt;= 10 )</span>
+<span class="w">            </span><span class="c">! the following is a workaround for gfortran bugs:</span>
+<span class="w">            </span><span class="k">select type</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="w">            </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">))</span>
+<span class="w">                </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">repeat</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="w"> </span><span class="c">! size the string</span>
+<span class="w">                </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">csv_get_value</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">,</span><span class="n">tmp</span><span class="p">,</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="w">                </span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span>
+<span class="w">            </span><span class="k">class </span><span class="n">default</span>
+<span class="w">                </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">csv_get_value</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">,</span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="w">            </span><span class="k">end select</span>
+<span class="cp">#else</span>
+<span class="w">            </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">csv_get_value</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">,</span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">status_ok</span><span class="p">)</span>
+<span class="cp">#endif</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">status_ok</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                select type</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="w">                </span><span class="c">! note: character conversion can never fail, so not</span>
+<span class="w">                </span><span class="c">! checking for that here. also we know it is real,</span>
+<span class="w">                </span><span class="c">! integer, or logical at this point.</span>
+<span class="w">                </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">integer</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;Error converting string to integer: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">)%</span><span class="n">str</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">sp</span><span class="p">))</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;Error converting string to real(real32): &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">)%</span><span class="n">str</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span>
+<span class="w">                </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">))</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;Error converting string to real(real64): &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">)%</span><span class="n">str</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span>
+<span class="w">                </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">qp</span><span class="p">))</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;Error converting string to real(real128): &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">)%</span><span class="n">str</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span>
+<span class="w">                </span><span class="k">type is</span><span class="w"> </span><span class="p">(</span><span class="kt">logical</span><span class="p">)</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                        </span><span class="s1">&#39;Error converting string to logical: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">csv_data</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">icol</span><span class="p">)%</span><span class="n">str</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">r</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">                </span><span class="k">end select</span>
+<span class="k">            end if</span>
+
+<span class="k">        end do</span>
+
+<span class="k">    else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="s1">&#39;(A,1X,I5)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Error: invalid column number: &#39;</span><span class="p">,</span><span class="n">icol</span>
+<span class="w">        </span><span class="n">status_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">get_column</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              csv-fortran
+ was developed by Jacob Williams<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
