@@ -10,8 +10,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        gcc_v: [9,10,11,12]  # gfortran versions to test
-        python-version: [3.9]
+        gcc_v: [12, 13]  # gfortran versions to test
+        python-version: [3.12]
     env:
       FC: gfortran-${{ matrix.gcc_v }}
       GCC_V: ${{ matrix.gcc_v }}
@@ -23,22 +23,22 @@ jobs:
         submodules: recursive
 
     - name: Install Python
-      if: contains( matrix.gcc_v, 10 )
-      uses: actions/setup-python@v4 # Use pip to install latest CMake, & FORD/Jin2For, etc.
+      if: contains( matrix.gcc_v, 12 )
+      uses: actions/setup-python@v5.4.0 # Use pip to install latest CMake, & FORD/Jin2For, etc.
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Setup Graphviz
-      if: contains( matrix.gcc_v, 10 )
+      if: contains( matrix.gcc_v, 12 )
       uses: ts-graphviz/setup-graphviz@v1
 
     - name: Setup Fortran Package Manager
-      uses: fortran-lang/setup-fpm@v5
+      uses: fortran-lang/setup-fpm@v7
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install Python dependencies
-      if: contains( matrix.gcc_v, 10 )
+      if: contains( matrix.gcc_v, 12 )
       run: |
         python -m pip install --upgrade pip
         pip install ford numpy matplotlib
@@ -59,7 +59,7 @@ jobs:
       run: fpm test --profile debug --flag -coverage
 
     - name: Create coverage report
-      if: contains( matrix.gcc_v, 10 )
+      if: contains( matrix.gcc_v, 12 )
       run: |
         mkdir -p ${{ env.COV_DIR }}
         mv ./build/gfortran_*/*/* ${{ env.COV_DIR }}
@@ -70,18 +70,19 @@ jobs:
         COV_DIR: build/coverage
 
     - name: Upload coverage report
-      if: contains( matrix.gcc_v, 10 )
+      if: contains( matrix.gcc_v, 12 )
       uses: codecov/codecov-action@v3
       with:
         files: build/coverage/coverage.info
 
     - name: Build documentation
-      if: contains( matrix.gcc_v, 10 )
+      if: contains( matrix.gcc_v, 12 )
       run: ford ./ford.md
 
     - name: Deploy Documentation
-      if: contains( matrix.gcc_v, 10 ) && github.ref == 'refs/heads/master'
-      uses: JamesIves/github-pages-deploy-action@v4.4.1
+      if: contains( matrix.gcc_v, 12 ) && github.ref == 'refs/heads/master'
+      uses: JamesIves/github-pages-deploy-action@v4.7.3
       with:
         branch: gh-pages # The branch the action should deploy to.
         folder: doc  # The folder the action should deploy.
+        single-commit: true
